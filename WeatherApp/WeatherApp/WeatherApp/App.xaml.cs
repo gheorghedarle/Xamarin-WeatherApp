@@ -1,11 +1,9 @@
 ﻿using Prism;
 using Prism.DryIoc;
 using Prism.Ioc;
-using System;
 using WeatherApp.ViewModels;
 using WeatherApp.Views;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace WeatherApp
 {
@@ -21,12 +19,13 @@ namespace WeatherApp
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync($"/{nameof(NavigationPage)}/{nameof(WeatherPage)}");
+            await NavigationService.NavigateAsync($"/{nameof(NavigationPage)}/{nameof(EntryPage)}");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<NavigationPage>("NavigationPage");
+            containerRegistry.RegisterForNavigation<EntryPage, EntryPageViewModel>("EntryPage");
             containerRegistry.RegisterForNavigation<WeatherPage, WeatherPageViewModel>("WeatherPage");
         }
 
