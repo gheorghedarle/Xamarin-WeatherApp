@@ -1,8 +1,9 @@
-﻿using Prism.Navigation;
+﻿using Prism.AppModel;
+using Prism.Navigation;
 
 namespace WeatherApp.ViewModels
 {
-    public class BaseViewModel: INavigationAware
+    public class BaseViewModel: INavigationAware, IPageLifecycleAware
     {
         #region Private & Protected
 
@@ -35,5 +36,13 @@ namespace WeatherApp.ViewModels
         public virtual void OnNavigatedFrom(INavigationParameters parameters) { }
 
         #endregion INavigationAware
+
+        #region IPageLifecycleAware
+
+        public virtual void OnAppearing() { }
+
+        public virtual void OnDisappearing() { }
+
+        #endregion IPageLifecycleAware
     }
 }
