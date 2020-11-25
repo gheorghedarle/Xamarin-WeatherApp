@@ -1,6 +1,7 @@
 ﻿using Prism;
 using Prism.DryIoc;
 using Prism.Ioc;
+using WeatherApp.Core;
 using WeatherApp.Services.Location;
 using WeatherApp.ViewModels;
 using WeatherApp.Views;
@@ -25,6 +26,7 @@ namespace WeatherApp
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            containerRegistry.RegisterInstance(new HttpClientFactory());
             containerRegistry.Register<ILocationService, LocationService>();
 
             containerRegistry.RegisterForNavigation<NavigationPage>("NavigationPage");

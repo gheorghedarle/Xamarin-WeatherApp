@@ -4,13 +4,13 @@
              x:Class="WeatherApp.Views.EntryPage"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout
+            Orientation="Vertical"
+                VerticalOptions="CenterAndExpand" >
             <Label Text="Welcome to Weather App!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+                HorizontalOptions="Center" />
             <Label Text="{Binding CurrentLocation}"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+                HorizontalOptions="Center" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
