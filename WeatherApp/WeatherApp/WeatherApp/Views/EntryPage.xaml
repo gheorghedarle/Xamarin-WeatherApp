@@ -1,16 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:fragments="clr-namespace:WeatherApp.Fragments"
              x:Class="WeatherApp.Views.EntryPage"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <StackLayout
-            Orientation="Vertical"
-                VerticalOptions="CenterAndExpand" >
-            <Label Text="Welcome to Weather App!"
-                HorizontalOptions="Center" />
-            <Label Text="{Binding CurrentLocation}"
-                HorizontalOptions="Center" />
-        </StackLayout>
+        <Grid RowDefinitions="*, Auto">
+            <StackLayout
+                Grid.Row="0"
+                VerticalOptions="CenterAndExpand">
+                <Label
+                    Text="Welcome to Weather App!"
+                    HorizontalOptions="Center"/>
+                <Label
+                    Text="{Binding CurrentLocation}"
+                    HorizontalOptions="Center"/>
+            </StackLayout>
+            <fragments:ConnectionView
+                Grid.Row="1"/>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

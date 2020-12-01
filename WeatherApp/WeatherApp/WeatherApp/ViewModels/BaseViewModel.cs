@@ -1,9 +1,11 @@
 ﻿using Prism.AppModel;
 using Prism.Navigation;
+using System.ComponentModel;
+using Xamarin.Essentials;
 
 namespace WeatherApp.ViewModels
 {
-    public class BaseViewModel: INavigationAware, IPageLifecycleAware
+    public class BaseViewModel: INavigationAware, IPageLifecycleAware, INotifyPropertyChanged
     {
         #region Private & Protected
 
@@ -13,8 +15,11 @@ namespace WeatherApp.ViewModels
 
         #region Properties
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public string Title { get; set; }
         public bool IsBusy { get; set; }
+        public bool HasNoInternetConnection { get; set; }
 
         #endregion
 
@@ -23,6 +28,17 @@ namespace WeatherApp.ViewModels
         public BaseViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
+            Connectivity.ConnectivityChanged += ConnectivityChanged;
+            HasNoInternetConnection = !Connectivity.NetworkAccess.Equals(NetworkAccess.Internet);
+        }
+
+        #endregion
+
+        #region Internet Connection
+
+        private void ConnectivityChanged(object sender, ConnectivityChangedEventArgs e)
+        {
+            HasNoInternetConnection = !e.NetworkAccess.Equals(NetworkAccess.Internet);
         }
 
         #endregion
