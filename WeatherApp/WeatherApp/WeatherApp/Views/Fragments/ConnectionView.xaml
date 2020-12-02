@@ -6,6 +6,7 @@
              BackgroundColor="#D42E2E">
     <Label 
         Text="No Internet Connection"
+        FontFamily="Rubik_Regular"
         TextColor="White"
         Margin="16, 8, 16, 8"/>
 </StackLayout>

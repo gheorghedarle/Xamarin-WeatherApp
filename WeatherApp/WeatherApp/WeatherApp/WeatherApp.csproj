@@ -11,6 +11,32 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Fonts\FrankRuhlLibre-Black.ttf" />
+    <None Remove="Resources\Fonts\FrankRuhlLibre-Bold.ttf" />
+    <None Remove="Resources\Fonts\FrankRuhlLibre-Light.ttf" />
+    <None Remove="Resources\Fonts\FrankRuhlLibre-Medium.ttf" />
+    <None Remove="Resources\Fonts\FrankRuhlLibre-Regular.ttf" />
+    <None Remove="Resources\Fonts\Rubik-Bold.ttf" />
+    <None Remove="Resources\Fonts\Rubik-Light.ttf" />
+    <None Remove="Resources\Fonts\Rubik-Medium.ttf" />
+    <None Remove="Resources\Fonts\Rubik-Regular.ttf" />
+    <None Remove="Resources\Fonts\Rubik-SemiBold.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Fonts\FrankRuhlLibre-Black.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\FrankRuhlLibre-Bold.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\FrankRuhlLibre-Light.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\FrankRuhlLibre-Medium.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\FrankRuhlLibre-Regular.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\Rubik-Bold.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\Rubik-Light.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\Rubik-Medium.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\Rubik-Regular.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\Rubik-SemiBold.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Fody" Version="6.3.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

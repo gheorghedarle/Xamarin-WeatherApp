@@ -11,10 +11,12 @@
                 VerticalOptions="CenterAndExpand">
                 <Label
                     Text="Welcome to Weather App!"
-                    HorizontalOptions="Center"/>
+                    HorizontalOptions="Center"
+                    FontFamily="FrankRuhle_Regular"/>
                 <Label
                     Text="{Binding CurrentLocation}"
-                    HorizontalOptions="Center"/>
+                    HorizontalOptions="Center"
+                    FontFamily="FrankRuhle_Regular"/>
             </StackLayout>
             <fragments:ConnectionView
                 Grid.Row="1"/>
