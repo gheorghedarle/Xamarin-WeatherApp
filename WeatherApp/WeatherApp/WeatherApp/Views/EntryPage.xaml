@@ -26,14 +26,14 @@
                         Text="Welcome to your weather app"
                         HorizontalOptions="Start"
                         FontFamily="FrankRuhle_Medium"
-                        FontSize="38"
-                        TextColor="LightGray"/>
+                        FontSize="{StaticResource Headline2FontSize}"
+                        TextColor="{StaticResource WhiteColor}"/>
                 </StackLayout>
                 <Button
                     Grid.Row="3"
                     Text="USE YOUR CURRENT LOCATION"
                     FontFamily="Rubik_Medium"
-                    FontSize="14"
+                    FontSize="{StaticResource ButtonFontSize}"
                     BackgroundColor="{StaticResource AccentColor}"
                     TextColor="{StaticResource TextColor}"
                     Padding="16, 22, 16, 22"
@@ -44,7 +44,7 @@
                     Text="Or enter your place name"
                     HorizontalOptions="Center"
                     FontFamily="Rubik_Regular"
-                    FontSize="14"
+                    FontSize="{StaticResource ButtonFontSize}"
                     Margin="0, 8, 0, 24"
                     TextColor="{StaticResource WhiteColor}"/>
             </Grid>

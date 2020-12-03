@@ -5,6 +5,11 @@
              xmlns:styles="clr-namespace:WeatherApp.Styles"
              x:Class="WeatherApp.App">
     <prism:PrismApplication.Resources>
-        <styles:Colors></styles:Colors>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <styles:Colors></styles:Colors>
+                <styles:Fonts></styles:Fonts>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </prism:PrismApplication.Resources>
 </prism:PrismApplication>
