@@ -5,21 +5,51 @@
              x:Class="WeatherApp.Views.EntryPage"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <Grid RowDefinitions="*, Auto">
-            <StackLayout
-                Grid.Row="0"
-                VerticalOptions="CenterAndExpand">
+        <Grid>
+            <Grid.Background>
+                <LinearGradientBrush 
+                    StartPoint="0, 0" 
+                    EndPoint="0, 1">
+                    <GradientStop Color="#0033A1" Offset="0.1"></GradientStop>
+                    <GradientStop Color="#000E6F" Offset="1.0"></GradientStop>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Grid 
+                RowDefinitions=".25*, *, .25*, Auto, Auto"
+                RowSpacing="0"
+                Margin="24, 0, 24, 0">
+                <StackLayout
+                    Grid.Row="1"
+                    Spacing="0"
+                    VerticalOptions="End">
+                    <Label
+                        Text="Welcome to your weather app"
+                        HorizontalOptions="Start"
+                        FontFamily="FrankRuhle_Medium"
+                        FontSize="38"
+                        TextColor="LightGray"/>
+                </StackLayout>
+                <Button
+                    Grid.Row="3"
+                    Text="USE YOUR CURRENT LOCATION"
+                    FontFamily="Rubik_Medium"
+                    FontSize="14"
+                    BackgroundColor="#FFB951"
+                    TextColor="#222"
+                    Padding="16, 22, 16, 22"
+                    Margin="16, 8, 16, 8"
+                    CornerRadius="36"></Button>
                 <Label
-                    Text="Welcome to Weather App!"
+                    Grid.Row="4"
+                    Text="Or enter your place name"
                     HorizontalOptions="Center"
-                    FontFamily="FrankRuhle_Regular"/>
-                <Label
-                    Text="{Binding CurrentLocation}"
-                    HorizontalOptions="Center"
-                    FontFamily="FrankRuhle_Regular"/>
-            </StackLayout>
-            <fragments:ConnectionView
-                Grid.Row="1"/>
+                    FontFamily="Rubik_Regular"
+                    FontSize="14"
+                    Margin="0, 8, 0, 24"
+                    TextColor="LightGray"/>
+                <fragments:ConnectionView
+                    Grid.Row="1"/>
+            </Grid>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
