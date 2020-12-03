@@ -5,7 +5,7 @@
              x:Class="WeatherApp.Views.EntryPage"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <Grid>
+        <Grid RowDefinitions="*, Auto">
             <Grid.Background>
                 <LinearGradientBrush 
                     StartPoint="0, 0" 
@@ -47,9 +47,9 @@
                     FontSize="14"
                     Margin="0, 8, 0, 24"
                     TextColor="{StaticResource WhiteColor}"/>
-                <fragments:ConnectionView
-                    Grid.Row="1"/>
             </Grid>
+            <fragments:ConnectionView
+                Grid.Row="1"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

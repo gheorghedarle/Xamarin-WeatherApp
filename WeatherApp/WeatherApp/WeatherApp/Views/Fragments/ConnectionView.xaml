@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WeatherApp.Fragments.ConnectionView"
              IsVisible="{Binding HasNoInternetConnection}" 
-             BackgroundColor="#D42E2E">
+             BackgroundColor="{StaticResource FailColor}">
     <Label 
         Text="No Internet Connection"
         FontFamily="Rubik_Regular"
