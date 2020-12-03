@@ -10,8 +10,8 @@
                 <LinearGradientBrush 
                     StartPoint="0, 0" 
                     EndPoint="0, 1">
-                    <GradientStop Color="#0033A1" Offset="0.1"></GradientStop>
-                    <GradientStop Color="#000E6F" Offset="1.0"></GradientStop>
+                    <GradientStop Color="{StaticResource PrimaryColor}" Offset="0.1"></GradientStop>
+                    <GradientStop Color="{StaticResource PrimaryDarkColor}" Offset="1.0"></GradientStop>
                 </LinearGradientBrush>
             </Grid.Background>
             <Grid 
@@ -34,8 +34,8 @@
                     Text="USE YOUR CURRENT LOCATION"
                     FontFamily="Rubik_Medium"
                     FontSize="14"
-                    BackgroundColor="#FFB951"
-                    TextColor="#222"
+                    BackgroundColor="{StaticResource AccentColor}"
+                    TextColor="{StaticResource TextColor}"
                     Padding="16, 22, 16, 22"
                     Margin="16, 8, 16, 8"
                     CornerRadius="36"></Button>
@@ -46,7 +46,7 @@
                     FontFamily="Rubik_Regular"
                     FontSize="14"
                     Margin="0, 8, 0, 24"
-                    TextColor="LightGray"/>
+                    TextColor="{StaticResource WhiteColor}"/>
                 <fragments:ConnectionView
                     Grid.Row="1"/>
             </Grid>
