@@ -58,5 +58,10 @@
       x:TypeArguments="x:Double"
       Android="54"
       iOS="54" />
+    <OnPlatform
+      x:Key="Headline0FontSize"
+      x:TypeArguments="x:Double"
+      Android="68"
+      iOS="68" />
 
 </ResourceDictionary>

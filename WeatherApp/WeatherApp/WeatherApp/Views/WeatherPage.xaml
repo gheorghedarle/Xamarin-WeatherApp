@@ -4,10 +4,117 @@
              x:Class="WeatherApp.Views.WeatherPage"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Weather Page"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout
+            Spacing="0"
+            Margin="24, 0, 24, 0"
+            BackgroundColor="{StaticResource WhiteColor}">
+            <Label
+                Text="Timisoara"
+                FontSize="{StaticResource Headline2FontSize}"
+                FontFamily="FrankRuhle_Medium"
+                TextColor="{StaticResource TextColor}"
+                HorizontalOptions="Start"></Label>
+            <Label
+                Text="Romania"
+                FontSize="{StaticResource Headline4FontSize}"
+                FontFamily="Rubik_Light"
+                TextColor="{StaticResource TextColor}"
+                HorizontalOptions="Start"></Label>
+            <Label
+                Text="Monday, 4 December 2020"
+                FontSize="{StaticResource Body1FontSize}"
+                FontFamily="Rubik_Light"
+                TextColor="{StaticResource GrayColor}"
+                HorizontalOptions="Start"
+                Margin="0, 4, 0, 0"></Label>
+            <Image 
+                Source="icon_02d.png"
+                Margin="0, 36, 0, 4"></Image>
+            <Label
+                Text="Few clouds"
+                FontSize="{StaticResource Body2FontSize}"
+                FontFamily="Rubik_Medium"
+                TextColor="{StaticResource TextColor}"
+                HorizontalOptions="Center"
+                Margin="0, 0, 0, 36"></Label>
+            <Grid
+                ColumnDefinitions="*, *"
+                HorizontalOptions="FillAndExpand">
+                <StackLayout
+                    Grid.Column="0"
+                    VerticalOptions="Center">
+                    <Label
+                        HorizontalOptions="Start">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span
+                                    Text="Wind speed: "
+                                    FontFamily="Rubik_Light"
+                                    FontSize="{StaticResource Body2FontSize}"
+                                    TextColor="{StaticResource GrayColor}"></Span>
+                                <Span
+                                    Text="2 km/h"
+                                    FontFamily="Rubik_Light"
+                                    FontSize="{StaticResource Body2FontSize}"
+                                    TextColor="{StaticResource TextColor}"></Span>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label
+                        HorizontalOptions="Start">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span
+                                    Text="Humidity: "
+                                    FontFamily="Rubik_Light"
+                                    FontSize="{StaticResource Body2FontSize}"
+                                    TextColor="{StaticResource GrayColor}"></Span>
+                                <Span
+                                    Text="70%"
+                                    FontFamily="Rubik_Light"
+                                    FontSize="{StaticResource Body2FontSize}"
+                                    TextColor="{StaticResource TextColor}"></Span>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label
+                        HorizontalOptions="Start">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span
+                                    Text="Rain probability: "
+                                    FontFamily="Rubik_Light"
+                                    FontSize="{StaticResource Body2FontSize}"
+                                    TextColor="{StaticResource GrayColor}"></Span>
+                                <Span
+                                    Text="10%"
+                                    FontFamily="Rubik_Light"
+                                    FontSize="{StaticResource Body2FontSize}"
+                                    TextColor="{StaticResource TextColor}"></Span>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+                <Label
+                    Grid.Column="1"
+                    HorizontalOptions="End"
+                    VerticalOptions="StartAndExpand">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span
+                                Text="23°"
+                                FontFamily="Rubik_Light"
+                                FontSize="{StaticResource Headline0FontSize}"
+                                TextColor="{StaticResource TextColor}"></Span>
+                            <Span
+                                Text="C"
+                                FontFamily="Rubik_Medium"
+                                FontSize="{StaticResource Subtitle1FontSize}"
+                                TextColor="{StaticResource TextColor}"></Span>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
