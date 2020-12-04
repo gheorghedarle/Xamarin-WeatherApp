@@ -4,7 +4,7 @@
              x:Class="WeatherApp.Styles.Colors">
 
     <Color x:Key="TextColor">#222</Color>
-    <Color x:Key="GrayColor">#888</Color>
+    <Color x:Key="GrayColor">#777</Color>
     <Color x:Key="WhiteColor">#FFF</Color>
     
     <Color x:Key="PrimaryColor">#0033A1</Color>

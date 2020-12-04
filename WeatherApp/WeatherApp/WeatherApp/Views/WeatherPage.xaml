@@ -21,7 +21,7 @@
                 TextColor="{StaticResource TextColor}"
                 HorizontalOptions="Start"></Label>
             <Label
-                Text="Monday, 4 December 2020"
+                Text="{Binding CurrentDate}"
                 FontSize="{StaticResource Body1FontSize}"
                 FontFamily="Rubik_Light"
                 TextColor="{StaticResource GrayColor}"
