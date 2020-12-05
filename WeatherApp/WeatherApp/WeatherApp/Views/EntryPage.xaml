@@ -38,6 +38,7 @@
                     TextColor="{StaticResource TextColor}"
                     Padding="16, 22, 16, 22"
                     Margin="16, 8, 16, 8"
+                    Command="{Binding UseCurrentLocationCommand}"
                     CornerRadius="36"></Button>
                 <Label
                     Grid.Row="4"

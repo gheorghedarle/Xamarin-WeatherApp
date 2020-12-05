@@ -33,7 +33,7 @@ namespace WeatherApp
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync($"/{nameof(NavigationPage)}/{nameof(WeatherPage)}");
+            await NavigationService.NavigateAsync($"/{nameof(NavigationPage)}/{nameof(EntryPage)}");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)

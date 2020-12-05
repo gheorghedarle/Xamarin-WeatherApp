@@ -1,7 +1,10 @@
-﻿using Prism.Navigation;
+﻿using Prism.Commands;
+using Prism.Navigation;
 using System;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using WeatherApp.Services.Location;
+using WeatherApp.Views;
 
 namespace WeatherApp.ViewModels
 {
@@ -11,11 +14,20 @@ namespace WeatherApp.ViewModels
 
         public string CurrentLocation { get; set; }
 
+        public DelegateCommand UseCurrentLocationCommand { get; set; }
+
         public EntryPageViewModel(
             INavigationService navigationService, 
             ILocationService locationService): base(navigationService) 
         {
             _locationService = locationService;
+
+            UseCurrentLocationCommand = new DelegateCommand(UseCurrentLocationCommandHandler);
+        }
+
+        private async void UseCurrentLocationCommandHandler()
+        {
+            await _navigationService.NavigateAsync(nameof(WeatherPage));
         }
 
         public override async void OnAppearing()
