@@ -6,16 +6,16 @@
     <ContentPage.Content>
         <StackLayout
             Spacing="0"
-            Margin="24, 0, 24, 0"
+            Padding="24, 0, 24, 0"
             BackgroundColor="{StaticResource WhiteColor}">
             <Label
-                Text="Timisoara"
+                Text="{Binding CurrentCity}"
                 FontSize="{StaticResource Headline2FontSize}"
                 FontFamily="FrankRuhle_Medium"
                 TextColor="{StaticResource TextColor}"
                 HorizontalOptions="Start"></Label>
             <Label
-                Text="Romania"
+                Text="{Binding CurrentCountry}"
                 FontSize="{StaticResource Headline4FontSize}"
                 FontFamily="Rubik_Light"
                 TextColor="{StaticResource TextColor}"
@@ -54,7 +54,7 @@
                                     TextColor="{StaticResource GrayColor}"></Span>
                                 <Span
                                     Text="2 km/h"
-                                    FontFamily="Rubik_Light"
+                                    FontFamily="Rubik_Regular"
                                     FontSize="{StaticResource Body2FontSize}"
                                     TextColor="{StaticResource TextColor}"></Span>
                             </FormattedString>
@@ -71,7 +71,7 @@
                                     TextColor="{StaticResource GrayColor}"></Span>
                                 <Span
                                     Text="70%"
-                                    FontFamily="Rubik_Light"
+                                    FontFamily="Rubik_Regular"
                                     FontSize="{StaticResource Body2FontSize}"
                                     TextColor="{StaticResource TextColor}"></Span>
                             </FormattedString>
@@ -88,7 +88,7 @@
                                     TextColor="{StaticResource GrayColor}"></Span>
                                 <Span
                                     Text="10%"
-                                    FontFamily="Rubik_Light"
+                                    FontFamily="Rubik_Regular"
                                     FontSize="{StaticResource Body2FontSize}"
                                     TextColor="{StaticResource TextColor}"></Span>
                             </FormattedString>

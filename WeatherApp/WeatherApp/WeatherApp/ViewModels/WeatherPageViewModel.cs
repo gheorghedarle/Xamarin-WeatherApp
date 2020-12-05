@@ -8,9 +8,13 @@ namespace WeatherApp.ViewModels
     public class WeatherPageViewModel : BaseViewModel
     {
         public string CurrentDate { get; set; }
+        public string CurrentCity { get; set; }
+        public string CurrentCountry { get; set; }
 
         public WeatherPageViewModel(INavigationService navigationService): base(navigationService)
         {
+            CurrentCity = "Timișoara";
+            CurrentCountry = "Romania";
             CurrentDate = CreateDateString();
         }
 
