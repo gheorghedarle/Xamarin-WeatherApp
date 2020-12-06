@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using WeatherApp.Services.Location;
 using WeatherApp.Views;
+using Xamarin.Essentials;
 
 namespace WeatherApp.ViewModels
 {
@@ -27,28 +28,30 @@ namespace WeatherApp.ViewModels
 
         private async void UseCurrentLocationCommandHandler()
         {
-            await _navigationService.NavigateAsync(nameof(WeatherPage));
-        }
-
-        public override async void OnAppearing()
-        {
-            base.OnAppearing();
             IsBusy = true;
             try
             {
                 var location = await _locationService.GetCurrentLocationCoordinates();
                 if (location != null)
                 {
-                    //CurrentLocation = String.Format("Lat: {0}, Long: {1}", location.Latitude, location.Longitude);
                     var placemark = await _locationService.GetCurrentLocationName(location.Latitude, location.Longitude);
-                    CurrentLocation = String.Format("{0}, {1}", placemark.Locality, placemark.CountryName);
+                    await SaveLocationAndPlacemark(location, placemark);
+                    await _navigationService.NavigateAsync(nameof(WeatherPage));
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Debug.WriteLine(ex);
             }
             IsBusy = false;
+        }
+
+        private async Task SaveLocationAndPlacemark(Location location, Placemark placemark)
+        {
+            await SecureStorage.SetAsync("currentLatitude", location.Latitude.ToString());
+            await SecureStorage.SetAsync("currentLongitude", location.Longitude.ToString());
+            await SecureStorage.SetAsync("currentCity", placemark.Locality);
+            await SecureStorage.SetAsync("currentCountry", placemark.CountryName);
         }
     }
 }
