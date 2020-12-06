@@ -6,12 +6,12 @@
     <Color x:Key="TextColor">#222</Color>
     <Color x:Key="GrayColor">#777</Color>
     <Color x:Key="WhiteColor">#FFF</Color>
-    
-    <Color x:Key="PrimaryColor">#0033A1</Color>
-    <Color x:Key="PrimaryDarkColor">#000E6F</Color>
-    <Color x:Key="AccentColor">#FFB951</Color>
 
-    <Color x:Key="FailColor">#D1002C</Color>
-    <Color x:Key="SuccessColor">#008A65</Color>
+    <Color x:Key="PrimaryColor">#007CD1</Color>
+    <Color x:Key="PrimaryDarkColor">#00357E</Color>
+    <Color x:Key="AccentColor">#F3C623</Color>
+
+    <Color x:Key="FailColor">#D04C41</Color>
+    <Color x:Key="SuccessColor">#00AF49</Color>
     
 </ResourceDictionary>
