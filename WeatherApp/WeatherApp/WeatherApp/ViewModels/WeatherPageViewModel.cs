@@ -1,8 +1,7 @@
 ﻿using Prism.Navigation;
 using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 
@@ -13,10 +12,14 @@ namespace WeatherApp.ViewModels
         public string CurrentDate { get; set; }
         public string CurrentCity { get; set; }
         public string CurrentCountry { get; set; }
+        public ObservableCollection<string> TodayWeatherList { get; set; }
 
         public WeatherPageViewModel(INavigationService navigationService): base(navigationService)
         {
             CurrentDate = CreateDateString();
+            TodayWeatherList = new ObservableCollection<string>() { 
+                "12:00", "13:00", "14:00"
+            };
         }
 
         public override async void OnNavigatedTo(INavigationParameters parameters)

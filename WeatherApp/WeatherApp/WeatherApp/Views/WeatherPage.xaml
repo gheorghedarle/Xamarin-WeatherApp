@@ -37,11 +37,10 @@
                 TextColor="{StaticResource TextColor}"
                 HorizontalOptions="Center"
                 Margin="0, 0, 0, 36"></Label>
-            <Grid
-                ColumnDefinitions="*, *"
+            <StackLayout
+                Orientation="Horizontal"
                 HorizontalOptions="FillAndExpand">
                 <StackLayout
-                    Grid.Column="0"
                     VerticalOptions="Center">
                     <Label
                         HorizontalOptions="Start">
@@ -96,8 +95,7 @@
                     </Label>
                 </StackLayout>
                 <Label
-                    Grid.Column="1"
-                    HorizontalOptions="End"
+                    HorizontalOptions="EndAndExpand"
                     VerticalOptions="StartAndExpand">
                     <Label.FormattedText>
                         <FormattedString>
@@ -114,7 +112,28 @@
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-            </Grid>
+            </StackLayout>
+            <Label
+                Text="Today"
+                FontSize="{StaticResource Headline4FontSize}"
+                FontFamily="FrankRuhle_Medium"
+                TextColor="{StaticResource TextColor}"
+                HorizontalOptions="Start"
+                Margin="0, 8, 0, 0"></Label>
+            <CollectionView
+                ItemsSource="{Binding TodayWeatherList}"
+                VerticalOptions="Center">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Margin="16">
+                            <Label Text="{Binding .}"></Label>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
