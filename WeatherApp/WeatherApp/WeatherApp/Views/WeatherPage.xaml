@@ -35,9 +35,9 @@
                 Grid.Row="3"
                 VerticalOptions="CenterAndExpand">
                 <Image 
-                    Source="icon_02d.png"></Image>
+                    Source="{Binding CurrentWeather.weather.icon, StringFormat='icon_{0}.png'}"></Image>
                 <Label
-                    Text="Few clouds"
+                    Text="{Binding CurrentWeather.weather.description}"
                     FontSize="{StaticResource Body2FontSize}"
                     FontFamily="Rubik_Medium"
                     TextColor="{StaticResource TextColor}"
@@ -59,7 +59,7 @@
                                     FontSize="{StaticResource Body2FontSize}"
                                     TextColor="{StaticResource GrayColor}"></Span>
                                 <Span
-                                    Text="2 km/h"
+                                    Text="{Binding CurrentWeather.wind_speed, StringFormat='{0:N1} km/h'}"
                                     FontFamily="Rubik_Regular"
                                     FontSize="{StaticResource Body2FontSize}"
                                     TextColor="{StaticResource TextColor}"></Span>
@@ -76,7 +76,7 @@
                                     FontSize="{StaticResource Body2FontSize}"
                                     TextColor="{StaticResource GrayColor}"></Span>
                                 <Span
-                                    Text="70%"
+                                    Text="{Binding CurrentWeather.humidity, StringFormat='{0}%'}"
                                     FontFamily="Rubik_Regular"
                                     FontSize="{StaticResource Body2FontSize}"
                                     TextColor="{StaticResource TextColor}"></Span>
@@ -93,7 +93,7 @@
                                     FontSize="{StaticResource Body2FontSize}"
                                     TextColor="{StaticResource GrayColor}"></Span>
                                 <Span
-                                    Text="10%"
+                                    Text="{Binding CurrentWeather.rain, StringFormat='{0}%'}"
                                     FontFamily="Rubik_Regular"
                                     FontSize="{StaticResource Body2FontSize}"
                                     TextColor="{StaticResource TextColor}"></Span>
@@ -107,7 +107,7 @@
                     <Label.FormattedText>
                         <FormattedString>
                             <Span
-                                Text="23°"
+                                Text="{Binding CurrentWeather.temp, StringFormat='{0:N0}°'}"
                                 FontFamily="Rubik_Light"
                                 FontSize="{StaticResource Headline0FontSize}"
                                 TextColor="{StaticResource TextColor}"></Span>

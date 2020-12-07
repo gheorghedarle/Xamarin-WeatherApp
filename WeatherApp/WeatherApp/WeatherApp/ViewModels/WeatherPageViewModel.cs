@@ -4,19 +4,27 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using WeatherApp.Models;
+using WeatherApp.Services.Weather;
 using Xamarin.Essentials;
 
 namespace WeatherApp.ViewModels
 {
     public class WeatherPageViewModel : BaseViewModel
     {
+        private readonly IWeatherService _weatherService;
+
         public string CurrentDate { get; set; }
         public string CurrentCity { get; set; }
         public string CurrentCountry { get; set; }
+        public CurrentWeatherModel CurrentWeather { get; set; }
         public ObservableCollection<TodayWeatherListModel> TodayWeatherList { get; set; }
 
-        public WeatherPageViewModel(INavigationService navigationService): base(navigationService)
+        public WeatherPageViewModel(
+            INavigationService navigationService,
+            IWeatherService weatherService): base(navigationService)
         {
+            _weatherService = weatherService;
+
             CurrentDate = CreateDateString();
             TodayWeatherList = new ObservableCollection<TodayWeatherListModel>() {
                 new TodayWeatherListModel("NOW", "02d", "23"),
@@ -33,6 +41,7 @@ namespace WeatherApp.ViewModels
         public override async void OnNavigatedTo(INavigationParameters parameters)
         {
             await GetCurrentLocalityAndCountry();
+            CurrentWeather = await _weatherService.GetCurrentWeatherAndHourlyForecastByLatLon(45.76, 21.24);
         }
 
         private string CreateDateString()
