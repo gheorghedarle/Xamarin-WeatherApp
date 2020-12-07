@@ -3,6 +3,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using WeatherApp.Models;
 using Xamarin.Essentials;
 
 namespace WeatherApp.ViewModels
@@ -12,13 +13,20 @@ namespace WeatherApp.ViewModels
         public string CurrentDate { get; set; }
         public string CurrentCity { get; set; }
         public string CurrentCountry { get; set; }
-        public ObservableCollection<string> TodayWeatherList { get; set; }
+        public ObservableCollection<TodayWeatherListModel> TodayWeatherList { get; set; }
 
         public WeatherPageViewModel(INavigationService navigationService): base(navigationService)
         {
             CurrentDate = CreateDateString();
-            TodayWeatherList = new ObservableCollection<string>() { 
-                "12:00", "13:00", "14:00"
+            TodayWeatherList = new ObservableCollection<TodayWeatherListModel>() {
+                new TodayWeatherListModel("NOW", "02d", "23"),
+                new TodayWeatherListModel("12:00", "01d", "23"),
+                new TodayWeatherListModel("13:00", "01d", "24"),
+                new TodayWeatherListModel("14:00", "02d", "25"),
+                new TodayWeatherListModel("15:00", "02d", "27"),
+                new TodayWeatherListModel("16:00", "02d", "26"),
+                new TodayWeatherListModel("17:00", "03d", "20"),
+                new TodayWeatherListModel("18:00", "03d", "26"),
             };
         }
 

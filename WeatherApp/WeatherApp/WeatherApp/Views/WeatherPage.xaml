@@ -4,40 +4,47 @@
              x:Class="WeatherApp.Views.WeatherPage"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <StackLayout
-            Spacing="0"
-            Padding="24, 0, 24, 0"
+        <Grid
+            RowDefinitions="Auto, Auto, Auto, *, Auto, Auto"
+            RowSpacing="0"
+            Padding="24, 8, 24, 8"
             BackgroundColor="{StaticResource WhiteColor}">
             <Label
+                Grid.Row="0"
                 Text="{Binding CurrentCity}"
                 FontSize="{StaticResource Headline2FontSize}"
                 FontFamily="FrankRuhle_Medium"
                 TextColor="{StaticResource TextColor}"
                 HorizontalOptions="Start"></Label>
             <Label
+                Grid.Row="1"
                 Text="{Binding CurrentCountry}"
                 FontSize="{StaticResource Headline4FontSize}"
                 FontFamily="Rubik_Light"
                 TextColor="{StaticResource TextColor}"
                 HorizontalOptions="Start"></Label>
             <Label
+                Grid.Row="2"
                 Text="{Binding CurrentDate}"
                 FontSize="{StaticResource Body1FontSize}"
                 FontFamily="Rubik_Light"
                 TextColor="{StaticResource GrayColor}"
                 HorizontalOptions="Start"
                 Margin="0, 4, 0, 0"></Label>
-            <Image 
-                Source="icon_02d.png"
-                Margin="0, 36, 0, 4"></Image>
-            <Label
-                Text="Few clouds"
-                FontSize="{StaticResource Body2FontSize}"
-                FontFamily="Rubik_Medium"
-                TextColor="{StaticResource TextColor}"
-                HorizontalOptions="Center"
-                Margin="0, 0, 0, 36"></Label>
             <StackLayout
+                Grid.Row="3"
+                VerticalOptions="CenterAndExpand">
+                <Image 
+                    Source="icon_02d.png"></Image>
+                <Label
+                    Text="Few clouds"
+                    FontSize="{StaticResource Body2FontSize}"
+                    FontFamily="Rubik_Medium"
+                    TextColor="{StaticResource TextColor}"
+                    HorizontalOptions="Center"></Label>
+            </StackLayout>
+            <StackLayout
+                Grid.Row="4"
                 Orientation="Horizontal"
                 HorizontalOptions="FillAndExpand">
                 <StackLayout
@@ -113,27 +120,42 @@
                     </Label.FormattedText>
                 </Label>
             </StackLayout>
-            <Label
-                Text="Today"
-                FontSize="{StaticResource Headline4FontSize}"
-                FontFamily="FrankRuhle_Medium"
-                TextColor="{StaticResource TextColor}"
-                HorizontalOptions="Start"
-                Margin="0, 8, 0, 0"></Label>
-            <CollectionView
-                ItemsSource="{Binding TodayWeatherList}"
-                VerticalOptions="Center">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout Orientation="Horizontal"/>
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <StackLayout Margin="16">
-                            <Label Text="{Binding .}"></Label>
-                        </StackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </StackLayout>
+            <StackLayout
+                Grid.Row="5">
+                <Label
+                    Text="Today"
+                    FontSize="{StaticResource Headline4FontSize}"
+                    FontFamily="FrankRuhle_Medium"
+                    TextColor="{StaticResource TextColor}"
+                    HorizontalOptions="Start"
+                    Margin="0, 8, 0, 8"></Label>
+                <CollectionView
+                    ItemsSource="{Binding TodayWeatherList}"
+                    ItemSizingStrategy="MeasureFirstItem"
+                    HeightRequest="100">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Horizontal"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Margin="12, 16, 12, 16">
+                                <Label 
+                                    Text="{Binding Hour}"
+                                    HorizontalOptions="Center"
+                                    FontFamily="Rubik_Regular"></Label>
+                                <Image 
+                                    Source="{Binding Icon}"
+                                    WidthRequest="30"
+                                    HeightRequest="30"></Image>
+                                <Label 
+                                    Text="{Binding Temperature, StringFormat='{0}°C'}"
+                                    HorizontalOptions="Center"
+                                    FontFamily="Rubik_Regular"></Label>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
