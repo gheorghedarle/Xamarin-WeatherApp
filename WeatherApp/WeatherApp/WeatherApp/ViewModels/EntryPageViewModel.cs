@@ -3,6 +3,7 @@ using Prism.Navigation;
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using WeatherApp.Services.LocalSettings;
 using WeatherApp.Services.Location;
 using WeatherApp.Views;
 using Xamarin.Essentials;
@@ -12,6 +13,7 @@ namespace WeatherApp.ViewModels
     public class EntryPageViewModel: BaseViewModel
     {
         private ILocationService _locationService;
+        private ILocalSettingsService _localSettingsService;
 
         public string CurrentLocation { get; set; }
 
@@ -19,11 +21,19 @@ namespace WeatherApp.ViewModels
 
         public EntryPageViewModel(
             INavigationService navigationService, 
-            ILocationService locationService): base(navigationService) 
+            ILocationService locationService,
+            ILocalSettingsService localSettingsService) : base(navigationService) 
         {
             _locationService = locationService;
+            _localSettingsService = localSettingsService;
 
             UseCurrentLocationCommand = new DelegateCommand(UseCurrentLocationCommandHandler);
+        }
+
+        public override async void OnAppearing()
+        {
+            base.OnAppearing();
+            await LoadAndSaveLocalSettings();
         }
 
         private async void UseCurrentLocationCommandHandler()
@@ -52,6 +62,13 @@ namespace WeatherApp.ViewModels
             await SecureStorage.SetAsync("currentLongitude", location.Longitude.ToString());
             await SecureStorage.SetAsync("currentCity", placemark.Locality);
             await SecureStorage.SetAsync("currentCountry", placemark.CountryName);
+        }
+
+        private async Task LoadAndSaveLocalSettings()
+        {
+            var localSettings = _localSettingsService.LoadLocalSettings();
+            await SecureStorage.SetAsync("weatherApiBaseUrl", localSettings.WeatherApiBaseUrl);
+            await SecureStorage.SetAsync("weatherApiKey", localSettings.WeatherApiKey);
         }
     }
 }

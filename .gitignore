@@ -348,3 +348,4 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+/WeatherApp/WeatherApp/WeatherApp/local.settings.json

@@ -2,6 +2,7 @@
 using Prism.DryIoc;
 using Prism.Ioc;
 using WeatherApp.Core;
+using WeatherApp.Services.LocalSettings;
 using WeatherApp.Services.Location;
 using WeatherApp.ViewModels;
 using WeatherApp.Views;
@@ -40,6 +41,7 @@ namespace WeatherApp
         {
             containerRegistry.RegisterInstance(new HttpClientFactory());
             containerRegistry.Register<ILocationService, LocationService>();
+            containerRegistry.Register<ILocalSettingsService, LocalSettingsService>();
 
             containerRegistry.RegisterForNavigation<NavigationPage>("NavigationPage");
             containerRegistry.RegisterForNavigation<EntryPage, EntryPageViewModel>("EntryPage");
