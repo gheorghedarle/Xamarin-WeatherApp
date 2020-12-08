@@ -13,6 +13,9 @@ namespace WeatherApp.ViewModels
     {
         private readonly IWeatherService _weatherService;
 
+        private double _currentLat;
+        private double _currentLon;
+
         public string CurrentDate { get; set; }
         public string CurrentCity { get; set; }
         public string CurrentCountry { get; set; }
@@ -41,7 +44,8 @@ namespace WeatherApp.ViewModels
         public override async void OnNavigatedTo(INavigationParameters parameters)
         {
             await GetCurrentLocalityAndCountry();
-            CurrentWeather = await _weatherService.GetCurrentWeatherAndHourlyForecastByLatLon(45.76, 21.24);
+            await GetCurrentLatLon();
+            CurrentWeather = await _weatherService.GetCurrentWeatherAndHourlyForecastByLatLon(_currentLat, _currentLon);
         }
 
         private string CreateDateString()
@@ -58,6 +62,21 @@ namespace WeatherApp.ViewModels
                 CurrentCountry = await SecureStorage.GetAsync("currentCountry");
             }
             catch(Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+        }
+
+        private async Task GetCurrentLatLon()
+        {
+            try
+            {
+                var currentLat = await SecureStorage.GetAsync("currentLatitude");
+                var currentLon = await SecureStorage.GetAsync("currentLongitude");
+                _currentLat = Convert.ToDouble(currentLat);
+                _currentLon = Convert.ToDouble(currentLon);
+            }
+            catch (Exception ex)
             {
                 Debug.WriteLine(ex);
             }
