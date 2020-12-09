@@ -39,13 +39,15 @@ namespace WeatherApp.ViewModels
                 new TodayWeatherListModel("17:00", "03d", "20"),
                 new TodayWeatherListModel("18:00", "03d", "26"),
             };
+            IsBusy = true;
         }
 
         public override async void OnNavigatedTo(INavigationParameters parameters)
         {
             await GetCurrentLocalityAndCountry();
             await GetCurrentLatLon();
-            CurrentWeather = await _weatherService.GetCurrentWeatherAndHourlyForecastByLatLon(_currentLat, _currentLon);
+            await GetCurrentWeather();
+            IsBusy = false;
         }
 
         private string CreateDateString()
@@ -80,6 +82,11 @@ namespace WeatherApp.ViewModels
             {
                 Debug.WriteLine(ex);
             }
+        }
+
+        private async Task GetCurrentWeather()
+        {
+            CurrentWeather = await _weatherService.GetCurrentWeatherAndHourlyForecastByLatLon(_currentLat, _currentLon);
         }
     }
 }

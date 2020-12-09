@@ -13,5 +13,7 @@
 
     <Color x:Key="FailColor">#D04C41</Color>
     <Color x:Key="SuccessColor">#00AF49</Color>
+
+    <Color x:Key="TransparentBackground">#AA00357E</Color>
     
 </ResourceDictionary>

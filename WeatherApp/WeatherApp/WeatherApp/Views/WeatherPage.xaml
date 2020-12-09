@@ -35,11 +35,13 @@
                 Grid.Row="3"
                 VerticalOptions="CenterAndExpand">
                 <Image 
-                    Source="{Binding CurrentWeather.weather.icon, StringFormat='icon_{0}.png'}"></Image>
+                    Source="{Binding CurrentWeather.weather.icon, StringFormat='icon_{0}.png'}"
+                    WidthRequest="160"
+                    HeightRequest="160"></Image>
                 <Label
                     Text="{Binding CurrentWeather.weather.description}"
                     FontSize="{StaticResource Body2FontSize}"
-                    FontFamily="Rubik_Medium"
+                    FontFamily="Rubik_Regular"
                     TextColor="{StaticResource TextColor}"
                     HorizontalOptions="Center"></Label>
             </StackLayout>
@@ -48,7 +50,7 @@
                 Orientation="Horizontal"
                 HorizontalOptions="FillAndExpand">
                 <StackLayout
-                    VerticalOptions="Center">
+                    VerticalOptions="End">
                     <Label
                         HorizontalOptions="Start">
                         <Label.FormattedText>
@@ -101,24 +103,45 @@
                         </Label.FormattedText>
                     </Label>
                 </StackLayout>
-                <Label
+                <StackLayout
+                    Spacing="0"
                     HorizontalOptions="EndAndExpand"
-                    VerticalOptions="StartAndExpand">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span
-                                Text="{Binding CurrentWeather.temp, StringFormat='{0:N0}°'}"
-                                FontFamily="Rubik_Light"
-                                FontSize="{StaticResource Headline0FontSize}"
-                                TextColor="{StaticResource TextColor}"></Span>
-                            <Span
-                                Text="C"
-                                FontFamily="Rubik_Medium"
-                                FontSize="{StaticResource Subtitle1FontSize}"
-                                TextColor="{StaticResource TextColor}"></Span>
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
+                    VerticalOptions="EndAndExpand">
+                    <Label
+                        HorizontalOptions="End">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span
+                                    Text="{Binding CurrentWeather.temp, StringFormat='{0:N0}°'}"
+                                    FontFamily="Rubik_Light"
+                                    FontSize="{StaticResource Headline0FontSize}"
+                                    TextColor="{StaticResource TextColor}"></Span>
+                                <Span
+                                    Text="C"
+                                    FontFamily="Rubik_Regular"
+                                    FontSize="{StaticResource Subtitle1FontSize}"
+                                    TextColor="{StaticResource TextColor}"></Span>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label
+                        HorizontalOptions="End">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span
+                                    Text="Feels like "
+                                    FontFamily="Rubik_Light"
+                                    FontSize="{StaticResource Body2FontSize}"
+                                    TextColor="{StaticResource GrayColor}"></Span>
+                                <Span
+                                    Text="{Binding CurrentWeather.feels_like, StringFormat='{0:N0}°C'}"
+                                    FontFamily="Rubik_Medium"
+                                    FontSize="{StaticResource Body2FontSize}"
+                                    TextColor="{StaticResource TextColor}"></Span>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
             </StackLayout>
             <StackLayout
                 Grid.Row="5">
@@ -128,7 +151,7 @@
                     FontFamily="FrankRuhle_Medium"
                     TextColor="{StaticResource TextColor}"
                     HorizontalOptions="Start"
-                    Margin="0, 8, 0, 8"></Label>
+                    Margin="0, 12, 0, 8"></Label>
                 <CollectionView
                     ItemsSource="{Binding TodayWeatherList}"
                     ItemSizingStrategy="MeasureFirstItem"
@@ -155,6 +178,20 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
+            </StackLayout>
+            <StackLayout
+                IsVisible="{Binding IsBusy}"
+                Grid.Row="0"
+                Grid.RowSpan="6"
+                Margin="-24, -8, -24, -8"
+                BackgroundColor="{StaticResource TransparentBackground}">
+                <ActivityIndicator
+                    Color="{StaticResource WhiteColor}"
+                    IsRunning="True"
+                    WidthRequest="48"
+                    HeightRequest="48"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"></ActivityIndicator>
             </StackLayout>
         </Grid>
     </ContentPage.Content>
