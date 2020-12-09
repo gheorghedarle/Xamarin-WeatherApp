@@ -46,6 +46,7 @@
     <PackageReference Include="Prism.DryIoc.Forms" Version="8.0.0.1909" />
     <PackageReference Include="Prism.Forms" Version="8.0.0.1909" />
     <PackageReference Include="PropertyChanged.Fody" Version="3.3.1" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="1.0.0-pre5" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.1709-pre4" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.0-pre4" />
   </ItemGroup>
@@ -72,12 +73,7 @@
   </ItemGroup>
   
 <ItemGroup>
-  <EmbeddedResource
-    Include="settings.json"
-    Condition="'$(Configuration)' != 'Debug' or !Exists('local.settings.json')" />
-  <EmbeddedResource
-    Include="local.settings.json"
-    Link="settings.json"
-    Condition="'$(Configuration)' == 'Debug' and Exists('local.settings.json')" />
+  <EmbeddedResource Include="settings.json" Condition="'$(Configuration)' != 'Debug' or !Exists('local.settings.json')" />
+  <EmbeddedResource Include="local.settings.json" Link="settings.json" Condition="'$(Configuration)' == 'Debug' and Exists('local.settings.json')" />
 </ItemGroup>
 </Project>

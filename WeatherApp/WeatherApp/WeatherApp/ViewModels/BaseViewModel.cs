@@ -1,6 +1,7 @@
 ﻿using Prism.AppModel;
 using Prism.Navigation;
 using System.ComponentModel;
+using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.Essentials;
 
 namespace WeatherApp.ViewModels
@@ -18,7 +19,7 @@ namespace WeatherApp.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
 
         public string Title { get; set; }
-        public bool IsBusy { get; set; }
+        public LayoutState MainState { get; set; }
         public bool HasNoInternetConnection { get; set; }
 
         #endregion

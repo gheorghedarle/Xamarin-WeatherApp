@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using WeatherApp.Services.LocalSettings;
 using WeatherApp.Services.Location;
 using WeatherApp.Views;
+using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.Essentials;
 
 namespace WeatherApp.ViewModels
@@ -38,7 +39,7 @@ namespace WeatherApp.ViewModels
 
         private async void UseCurrentLocationCommandHandler()
         {
-            IsBusy = true;
+            MainState = LayoutState.Loading;
             try
             {
                 var location = await _locationService.GetCurrentLocationCoordinates();
@@ -53,7 +54,10 @@ namespace WeatherApp.ViewModels
             {
                 Debug.WriteLine(ex);
             }
-            IsBusy = false;
+            finally
+            {
+                MainState = LayoutState.None;
+            }
         }
 
         private async Task SaveLocationAndPlacemark(Location location, Placemark placemark)

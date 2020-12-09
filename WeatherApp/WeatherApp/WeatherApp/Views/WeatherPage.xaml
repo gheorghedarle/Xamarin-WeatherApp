@@ -1,28 +1,60 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              x:Class="WeatherApp.Views.WeatherPage"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <Grid
+            xct:StateLayout.CurrentState="{Binding MainState}" 
+            xct:StateLayout.AnimateStateChanges="True"
             RowDefinitions="Auto, Auto, Auto, *, Auto, Auto"
-            RowSpacing="0"
-            Padding="24, 8, 24, 8"
-            BackgroundColor="{StaticResource WhiteColor}">
+            RowSpacing="0">
+            <Grid.Background>
+                <LinearGradientBrush 
+                    StartPoint="0, 0" 
+                    EndPoint="0, 1">
+                    <GradientStop Color="{StaticResource WhiteColor}" Offset="0.1"></GradientStop>
+                    <GradientStop Color="{StaticResource LightGrayColor}" Offset="1.0"></GradientStop>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <xct:StateLayout.StateViews>
+                <xct:StateView
+                    StateKey="Loading"
+                    VerticalOptions="FillAndExpand">
+                    <xct:StateView.Background>
+                        <LinearGradientBrush 
+                            StartPoint="0, 0" 
+                            EndPoint="0, 1">
+                            <GradientStop Color="{StaticResource WhiteColor}" Offset="0.1"></GradientStop>
+                            <GradientStop Color="{StaticResource LightGrayColor}" Offset="1.0"></GradientStop>
+                        </LinearGradientBrush>
+                    </xct:StateView.Background>
+                    <ActivityIndicator
+                        Color="{StaticResource PrimaryColor}"
+                        IsRunning="True"
+                        WidthRequest="48"
+                        HeightRequest="48"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="CenterAndExpand"></ActivityIndicator>
+                </xct:StateView>
+            </xct:StateLayout.StateViews>
             <Label
                 Grid.Row="0"
                 Text="{Binding CurrentCity}"
                 FontSize="{StaticResource Headline2FontSize}"
                 FontFamily="FrankRuhle_Medium"
                 TextColor="{StaticResource TextColor}"
-                HorizontalOptions="Start"></Label>
+                HorizontalOptions="Start"
+                Margin="16, 0, 0, 0"></Label>
             <Label
                 Grid.Row="1"
                 Text="{Binding CurrentCountry}"
                 FontSize="{StaticResource Headline4FontSize}"
                 FontFamily="Rubik_Light"
                 TextColor="{StaticResource TextColor}"
-                HorizontalOptions="Start"></Label>
+                HorizontalOptions="Start"
+                Margin="16, 0, 0, 0"></Label>
             <Label
                 Grid.Row="2"
                 Text="{Binding CurrentDate}"
@@ -30,25 +62,27 @@
                 FontFamily="Rubik_Light"
                 TextColor="{StaticResource GrayColor}"
                 HorizontalOptions="Start"
-                Margin="0, 4, 0, 0"></Label>
+                Margin="16, 4, 0, 0"></Label>
             <StackLayout
                 Grid.Row="3"
                 VerticalOptions="CenterAndExpand">
                 <Image 
                     Source="{Binding CurrentWeather.weather.icon, StringFormat='icon_{0}.png'}"
-                    WidthRequest="160"
-                    HeightRequest="160"></Image>
+                    WidthRequest="120"
+                    HeightRequest="120"></Image>
                 <Label
                     Text="{Binding CurrentWeather.weather.description}"
                     FontSize="{StaticResource Body2FontSize}"
                     FontFamily="Rubik_Regular"
                     TextColor="{StaticResource TextColor}"
-                    HorizontalOptions="Center"></Label>
+                    HorizontalOptions="Center"
+                    Margin="0, 8, 0, 0"></Label>
             </StackLayout>
             <StackLayout
                 Grid.Row="4"
                 Orientation="Horizontal"
-                HorizontalOptions="FillAndExpand">
+                HorizontalOptions="FillAndExpand"
+                Margin="16, 0, 16, 0">
                 <StackLayout
                     VerticalOptions="End">
                     <Label
@@ -132,10 +166,10 @@
                                     Text="Feels like "
                                     FontFamily="Rubik_Light"
                                     FontSize="{StaticResource Body2FontSize}"
-                                    TextColor="{StaticResource GrayColor}"></Span>
+                                    TextColor="{StaticResource TextColor}"></Span>
                                 <Span
                                     Text="{Binding CurrentWeather.feels_like, StringFormat='{0:N0}°C'}"
-                                    FontFamily="Rubik_Medium"
+                                    FontFamily="Rubik_Regular"
                                     FontSize="{StaticResource Body2FontSize}"
                                     TextColor="{StaticResource TextColor}"></Span>
                             </FormattedString>
@@ -144,7 +178,8 @@
                 </StackLayout>
             </StackLayout>
             <StackLayout
-                Grid.Row="5">
+                Grid.Row="5"
+                Margin="16, 0, 16, 0">
                 <Label
                     Text="Today"
                     FontSize="{StaticResource Headline4FontSize}"
@@ -178,20 +213,6 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-            </StackLayout>
-            <StackLayout
-                IsVisible="{Binding IsBusy}"
-                Grid.Row="0"
-                Grid.RowSpan="6"
-                Margin="-24, -8, -24, -8"
-                BackgroundColor="{StaticResource TransparentBackground}">
-                <ActivityIndicator
-                    Color="{StaticResource WhiteColor}"
-                    IsRunning="True"
-                    WidthRequest="48"
-                    HeightRequest="48"
-                    HorizontalOptions="CenterAndExpand"
-                    VerticalOptions="CenterAndExpand"></ActivityIndicator>
             </StackLayout>
         </Grid>
     </ContentPage.Content>

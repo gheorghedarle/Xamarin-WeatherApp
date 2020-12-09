@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using WeatherApp.Models;
 using WeatherApp.Services.Weather;
+using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.Essentials;
 
 namespace WeatherApp.ViewModels
@@ -39,7 +40,7 @@ namespace WeatherApp.ViewModels
                 new TodayWeatherListModel("17:00", "03d", "20"),
                 new TodayWeatherListModel("18:00", "03d", "26"),
             };
-            IsBusy = true;
+            MainState = LayoutState.Loading;
         }
 
         public override async void OnNavigatedTo(INavigationParameters parameters)
@@ -47,7 +48,7 @@ namespace WeatherApp.ViewModels
             await GetCurrentLocalityAndCountry();
             await GetCurrentLatLon();
             await GetCurrentWeather();
-            IsBusy = false;
+            MainState = LayoutState.None;
         }
 
         private string CreateDateString()
