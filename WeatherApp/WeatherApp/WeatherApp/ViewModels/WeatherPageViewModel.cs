@@ -1,4 +1,5 @@
-﻿using Prism.Navigation;
+﻿using Prism.Commands;
+using Prism.Navigation;
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -22,6 +23,8 @@ namespace WeatherApp.ViewModels
         public string CurrentCountry { get; set; }
         public CurrentWeatherModel CurrentWeather { get; set; }
         public ObservableCollection<TodayWeatherListModel> TodayWeatherList { get; set; }
+        public bool IsRefreshing { get; set; }
+        public DelegateCommand RefreshCommand { get; set; }
 
         public WeatherPageViewModel(
             INavigationService navigationService,
@@ -40,7 +43,16 @@ namespace WeatherApp.ViewModels
                 new TodayWeatherListModel("17:00", "03d", "20"),
                 new TodayWeatherListModel("18:00", "03d", "26"),
             };
+            RefreshCommand = new DelegateCommand(RefreshCommandHandler);
+
             MainState = LayoutState.Loading;
+        }
+
+        private async void RefreshCommandHandler()
+        {
+            IsRefreshing = true;
+            await GetCurrentWeather();
+            IsRefreshing = false;
         }
 
         public override async void OnNavigatedTo(INavigationParameters parameters)

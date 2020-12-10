@@ -41,7 +41,7 @@ namespace WeatherApp.Services.Weather
                         icon = json["current"]["weather"][0]["icon"].ToString(),
                         description = json["current"]["weather"][0]["description"].ToString()
                     },
-                    rain = json["current"]["rain"] != null ? Convert.ToDouble(json["current"]["rain"]["1h"].ToString()) * 100 : 0,
+                    rain = json["current"]["rain"] != null ? Convert.ToDouble(json["current"]["rain"]["1h"].ToString()) : 0,
                 };
             }
             return null;
