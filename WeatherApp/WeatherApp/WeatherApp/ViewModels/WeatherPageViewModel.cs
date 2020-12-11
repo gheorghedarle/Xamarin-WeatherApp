@@ -22,7 +22,6 @@ namespace WeatherApp.ViewModels
         public string CurrentCity { get; set; }
         public string CurrentCountry { get; set; }
         public CurrentWeatherModel CurrentWeather { get; set; }
-        public ObservableCollection<TodayWeatherListModel> TodayWeatherList { get; set; }
         public bool IsRefreshing { get; set; }
         public DelegateCommand RefreshCommand { get; set; }
 
@@ -33,16 +32,6 @@ namespace WeatherApp.ViewModels
             _weatherService = weatherService;
 
             CurrentDate = CreateDateString();
-            TodayWeatherList = new ObservableCollection<TodayWeatherListModel>() {
-                new TodayWeatherListModel("NOW", "02d", "23"),
-                new TodayWeatherListModel("12:00", "01d", "23"),
-                new TodayWeatherListModel("13:00", "01d", "24"),
-                new TodayWeatherListModel("14:00", "02d", "25"),
-                new TodayWeatherListModel("15:00", "02d", "27"),
-                new TodayWeatherListModel("16:00", "02d", "26"),
-                new TodayWeatherListModel("17:00", "03d", "20"),
-                new TodayWeatherListModel("18:00", "03d", "26"),
-            };
             RefreshCommand = new DelegateCommand(RefreshCommandHandler);
 
             MainState = LayoutState.Loading;

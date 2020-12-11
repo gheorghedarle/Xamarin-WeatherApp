@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 
 namespace WeatherApp.Models
 {
@@ -6,6 +7,13 @@ namespace WeatherApp.Models
     {
         public string icon { get; set; }
         public string description { get; set; }
+    }
+
+    public record HourlyModel
+    {
+        public DateTime dt { get; set; }
+        public double temp { get; set; }
+        public WeatherModel weather { get; set; }
     }
 
     public record CurrentWeatherModel
@@ -20,5 +28,6 @@ namespace WeatherApp.Models
         public double humidity { get; set; }
         public double rain { get; set; }
         public WeatherModel weather { get; set; }
+        public ObservableCollection<HourlyModel> todayWeatherHourly { get; set; }
     }
 }

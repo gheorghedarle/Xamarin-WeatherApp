@@ -7,7 +7,7 @@
     <ContentPage.Content>
         <RefreshView
             IsRefreshing="{Binding IsRefreshing}"
-            RefreshColor="{Binding PrimaryColor}"
+            RefreshColor="{StaticResource PrimaryColor}"
             Command="{Binding RefreshCommand}">
             <ScrollView>
                 <Grid
@@ -193,7 +193,7 @@
                             HorizontalOptions="Start"
                             Margin="0, 12, 0, 8"></Label>
                         <CollectionView
-                            ItemsSource="{Binding TodayWeatherList}"
+                            ItemsSource="{Binding CurrentWeather.todayWeatherHourly}"
                             ItemSizingStrategy="MeasureFirstItem"
                             HeightRequest="100">
                             <CollectionView.ItemsLayout>
@@ -201,19 +201,23 @@
                             </CollectionView.ItemsLayout>
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
-                                    <StackLayout Margin="12, 16, 12, 16">
+                                    <StackLayout Margin="8, 16, 8, 16">
                                         <Label 
-                                            Text="{Binding Hour}"
+                                            Text="{Binding dt, StringFormat='{0:t}'}"
                                             HorizontalOptions="Center"
-                                            FontFamily="Rubik_Regular"></Label>
+                                            FontFamily="Rubik_Regular"
+                                            FontSize="{StaticResource Body2FontSize}"
+                                            TextColor="{StaticResource TextColor}"></Label>
                                         <Image 
-                                            Source="{Binding Icon}"
+                                            Source="{Binding weather.icon, StringFormat='icon_{0}.png'}"
                                             WidthRequest="30"
                                             HeightRequest="30"></Image>
                                         <Label 
-                                            Text="{Binding Temperature, StringFormat='{0}°C'}"
+                                            Text="{Binding temp, StringFormat='{0:N0}°C'}"
                                             HorizontalOptions="Center"
-                                            FontFamily="Rubik_Regular"></Label>
+                                            FontFamily="Rubik_Regular"
+                                            FontSize="{StaticResource Body2FontSize}"
+                                            TextColor="{StaticResource TextColor}"></Label>
                                     </StackLayout>
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
