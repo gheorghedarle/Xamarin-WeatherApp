@@ -43,6 +43,51 @@
                                 HorizontalOptions="CenterAndExpand"
                                 VerticalOptions="CenterAndExpand"></ActivityIndicator>
                         </xct:StateView>
+                        <xct:StateView
+                            StateKey="Error"
+                            VerticalOptions="FillAndExpand">
+                            <xct:StateView.Background>
+                                <LinearGradientBrush 
+                                StartPoint="0, 0" 
+                                EndPoint="0, 1">
+                                    <GradientStop Color="{StaticResource PrimaryColor}" Offset="0.1"></GradientStop>
+                                    <GradientStop Color="{StaticResource PrimaryDarkColor}" Offset="1.0"></GradientStop>
+                                </LinearGradientBrush>
+                            </xct:StateView.Background>
+                            <Grid 
+                                RowDefinitions=".25*, *, .25*, Auto"
+                                RowSpacing="0"
+                                Margin="16, 0, 16, 0">
+                                <StackLayout
+                                    Grid.Row="1"
+                                    Spacing="0"
+                                    VerticalOptions="End">
+                                    <Label
+                                        Text="Error"
+                                        HorizontalOptions="Start"
+                                        FontFamily="FrankRuhle_Medium"
+                                        FontSize="{StaticResource Headline2FontSize}"
+                                        TextColor="{StaticResource WhiteColor}"/>
+                                    <Label
+                                        Text="Oops, something went wrong! Please wait few moments and try again."
+                                        FontSize="{StaticResource Body1FontSize}"
+                                        FontFamily="Rubik_Light"
+                                        TextColor="{StaticResource WhiteColor}"
+                                        Margin="0, 4, 0, 0"></Label>
+                                </StackLayout>
+                                <Button
+                                    Grid.Row="3"
+                                    Text="TRY AGAIN"
+                                    FontFamily="Rubik_Medium"
+                                    FontSize="{StaticResource ButtonFontSize}"
+                                    BackgroundColor="{StaticResource AccentColor}"
+                                    TextColor="{StaticResource TextColor}"
+                                    Padding="16, 22, 16, 22"
+                                    Margin="16, 8, 16, 24"
+                                    Command="{Binding UseCurrentLocationCommand}"
+                                    CornerRadius="36"></Button>
+                            </Grid>
+                        </xct:StateView>
                     </xct:StateLayout.StateViews>
                     <Label
                         Grid.Row="0"

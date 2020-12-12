@@ -49,7 +49,6 @@ namespace WeatherApp.ViewModels
             await GetCurrentLocalityAndCountry();
             await GetCurrentLatLon();
             await GetCurrentWeather();
-            MainState = LayoutState.None;
         }
 
         private string CreateDateString()
@@ -88,7 +87,23 @@ namespace WeatherApp.ViewModels
 
         private async Task GetCurrentWeather()
         {
-            CurrentWeather = await _weatherService.GetCurrentWeatherAndHourlyForecastByLatLon(_currentLat, _currentLon);
+            try
+            {
+                CurrentWeather = await _weatherService.GetCurrentWeatherAndHourlyForecastByLatLon(_currentLat, _currentLon);
+                if(CurrentWeather != null)
+                {
+                    MainState = LayoutState.None;
+                }
+                else
+                {
+                    MainState = LayoutState.Error;
+                }
+            }
+            catch(Exception ex)
+            {
+                Debug.WriteLine(ex.ToString());
+                MainState = LayoutState.Error;
+            }
         }
     }
 }
