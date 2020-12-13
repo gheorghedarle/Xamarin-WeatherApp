@@ -45,7 +45,7 @@ namespace WeatherApp.Services.Weather
                         description = json["current"]["weather"][0]["description"].ToString()
                     },
                     rain = json["current"]["rain"] != null ? Convert.ToDouble(json["current"]["rain"]["1h"].ToString()) : 0,
-                    todayWeatherHourly = hourlyForecast
+                    hourlyWeatherForecast = hourlyForecast
                 };
             }
             return null;
@@ -54,7 +54,7 @@ namespace WeatherApp.Services.Weather
         private ObservableCollection<HourlyModel> CreateHourlyForecast(JToken hourly)
         {
             var hourlyForecast = new ObservableCollection<HourlyModel>();
-            for (var i = 1; i < 48; i++)
+            for (var i = 0; i < 48; i++)
             {
                 hourlyForecast.Add(new HourlyModel()
                 {

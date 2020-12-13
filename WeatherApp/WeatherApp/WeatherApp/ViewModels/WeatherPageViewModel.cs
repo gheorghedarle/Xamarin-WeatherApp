@@ -18,7 +18,6 @@ namespace WeatherApp.ViewModels
         private double _currentLat;
         private double _currentLon;
 
-        public string CurrentDate { get; set; }
         public string CurrentCity { get; set; }
         public string CurrentCountry { get; set; }
         public CurrentWeatherModel CurrentWeather { get; set; }
@@ -31,7 +30,6 @@ namespace WeatherApp.ViewModels
         {
             _weatherService = weatherService;
 
-            CurrentDate = CreateDateString();
             RefreshCommand = new DelegateCommand(RefreshCommandHandler);
 
             MainState = LayoutState.Loading;
@@ -49,12 +47,6 @@ namespace WeatherApp.ViewModels
             await GetCurrentLocalityAndCountry();
             await GetCurrentLatLon();
             await GetCurrentWeather();
-        }
-
-        private string CreateDateString()
-        {
-            var currentDate = DateTime.Now;
-            return currentDate.ToString("dddd, d MMMM yyyy");
         }
 
         private async Task GetCurrentLocalityAndCountry()

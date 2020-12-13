@@ -28,6 +28,6 @@ namespace WeatherApp.Models
         public double humidity { get; set; }
         public double rain { get; set; }
         public WeatherModel weather { get; set; }
-        public ObservableCollection<HourlyModel> todayWeatherHourly { get; set; }
+        public ObservableCollection<HourlyModel> hourlyWeatherForecast { get; set; }
     }
 }
