@@ -84,6 +84,7 @@ namespace WeatherApp.ViewModels
                 CurrentWeather = await _weatherService.GetCurrentWeatherAndHourlyForecastByLatLon(_currentLat, _currentLon);
                 if(CurrentWeather != null)
                 {
+                    CurrentWeather.hourlyWeatherForecast[0].isActive = true;
                     MainState = LayoutState.None;
                 }
                 else

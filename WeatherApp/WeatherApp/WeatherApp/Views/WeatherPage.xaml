@@ -107,7 +107,7 @@
                         Margin="16, 0, 0, 0"></Label>
                     <Label
                         Grid.Row="2"
-                        Text="{Binding CurrentWeather.dt, StringFormat='{0:dddd, d MMMM yyyy HH:mm}'}"
+                        Text="{Binding CurrentWeather.dt, StringFormat='{0:dddd, d MMMM yyyy hh:mm tt}'}"
                         FontSize="{StaticResource Body1FontSize}"
                         FontFamily="Rubik_Light"
                         TextColor="{StaticResource GrayColor}"
@@ -239,6 +239,8 @@
                             Margin="0, 12, 0, 8"></Label>
                         <CollectionView
                             ItemsSource="{Binding CurrentWeather.hourlyWeatherForecast}"
+                            SelectedItem="{Binding CurrentWeatherItem}"
+                            SelectionMode="None"
                             ItemSizingStrategy="MeasureFirstItem"
                             HeightRequest="100">
                             <CollectionView.ItemsLayout>
@@ -250,18 +252,47 @@
                                         <Label 
                                             Text="{Binding dt, StringFormat='{0:t}'}"
                                             HorizontalOptions="Center"
-                                            FontFamily="Rubik_Regular"
-                                            FontSize="{StaticResource Body2FontSize}"
-                                            TextColor="{StaticResource TextColor}"></Label>
+                                            FontSize="{StaticResource Body2FontSize}">
+                                            <Label.Triggers>
+                                                <MultiTrigger TargetType="Label">
+                                                    <MultiTrigger.Conditions>
+                                                        <BindingCondition Binding="{Binding isActive}" Value="True"/>
+                                                    </MultiTrigger.Conditions>
+                                                    <Setter Property="FontFamily" Value="Rubik_Regular"/>
+                                                    <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
+                                                </MultiTrigger>
+                                                <MultiTrigger TargetType="Label">
+                                                    <MultiTrigger.Conditions>
+                                                        <BindingCondition Binding="{Binding isActive}" Value="False"/>
+                                                    </MultiTrigger.Conditions>
+                                                    <Setter Property="FontFamily" Value="Rubik_Light"/>
+                                                    <Setter Property="TextColor" Value="{StaticResource GrayColor}"/>
+                                                </MultiTrigger>
+                                            </Label.Triggers>
+                                        </Label>
                                         <Image 
                                             Source="{Binding weather.icon, StringFormat='icon_{0}.png'}"
                                             HeightRequest="30"></Image>
                                         <Label 
                                             Text="{Binding temp, StringFormat='{0:N0}°C'}"
                                             HorizontalOptions="Center"
-                                            FontFamily="Rubik_Regular"
-                                            FontSize="{StaticResource Body2FontSize}"
-                                            TextColor="{StaticResource TextColor}"></Label>
+                                            FontSize="{StaticResource Body2FontSize}">
+                                            <Label.Triggers>
+                                                <MultiTrigger TargetType="Label">
+                                                    <MultiTrigger.Conditions>
+                                                        <BindingCondition Binding="{Binding isActive}" Value="True"/>
+                                                    </MultiTrigger.Conditions>
+                                                    <Setter Property="FontFamily" Value="Rubik_Regular"/>
+                                                    <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
+                                                </MultiTrigger>
+                                                <MultiTrigger TargetType="Label">
+                                                    <MultiTrigger.Conditions>
+                                                        <BindingCondition Binding="{Binding isActive}" Value="False"/>
+                                                    </MultiTrigger.Conditions>
+                                                    <Setter Property="FontFamily" Value="Rubik_Light"/>
+                                                    <Setter Property="TextColor" Value="{StaticResource GrayColor}"/>
+                                                </MultiTrigger>
+                                            </Label.Triggers></Label>
                                     </StackLayout>
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>

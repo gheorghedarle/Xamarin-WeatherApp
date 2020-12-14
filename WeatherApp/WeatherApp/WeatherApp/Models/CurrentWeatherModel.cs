@@ -14,6 +14,7 @@ namespace WeatherApp.Models
         public DateTime dt { get; set; }
         public double temp { get; set; }
         public WeatherModel weather { get; set; }
+        public bool isActive { get; set; }
     }
 
     public record CurrentWeatherModel
