@@ -3,7 +3,9 @@ using Prism.Navigation;
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using WeatherApp.Models;
 using WeatherApp.Services.Weather;
 using Xamarin.CommunityToolkit.UI.Views;
@@ -23,6 +25,7 @@ namespace WeatherApp.ViewModels
         public CurrentWeatherModel CurrentWeather { get; set; }
         public bool IsRefreshing { get; set; }
         public DelegateCommand RefreshCommand { get; set; }
+        public DelegateCommand<HourlyModel> HourlySelectionChangedCommand { get; set; }
 
         public WeatherPageViewModel(
             INavigationService navigationService,
@@ -31,6 +34,7 @@ namespace WeatherApp.ViewModels
             _weatherService = weatherService;
 
             RefreshCommand = new DelegateCommand(RefreshCommandHandler);
+            HourlySelectionChangedCommand = new DelegateCommand<HourlyModel>(HourlySelectionChangedCommandHandler);
 
             MainState = LayoutState.Loading;
         }
@@ -40,6 +44,14 @@ namespace WeatherApp.ViewModels
             IsRefreshing = true;
             await GetCurrentWeather();
             IsRefreshing = false;
+        }
+
+        private void HourlySelectionChangedCommandHandler(HourlyModel item)
+        {
+            var lastItem = CurrentWeather.hourlyWeatherForecast.FirstOrDefault(h => h.isActive);
+            if (lastItem != null)
+                lastItem.isActive = false;
+            item.isActive = true;
         }
 
         public override async void OnNavigatedTo(INavigationParameters parameters)

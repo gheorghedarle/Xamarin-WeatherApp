@@ -229,27 +229,46 @@
                     </StackLayout>
                     <StackLayout
                         Grid.Row="5"
-                        Margin="16, 0, 16, 0">
+                        Margin="16, 0, 16, 8">
                         <Label
                             Text="Hourly"
                             FontSize="{StaticResource Headline4FontSize}"
                             FontFamily="FrankRuhle_Medium"
                             TextColor="{StaticResource TextColor}"
                             HorizontalOptions="Start"
-                            Margin="0, 12, 0, 8"></Label>
+                            Margin="0, 12, 0, 0"></Label>
                         <CollectionView
                             ItemsSource="{Binding CurrentWeather.hourlyWeatherForecast}"
-                            SelectedItem="{Binding CurrentWeatherItem}"
-                            SelectionMode="None"
-                            ItemSizingStrategy="MeasureFirstItem"
-                            HeightRequest="100">
+                            SelectionChangedCommand="{Binding HourlySelectionChangedCommand}"
+                            SelectionChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=SelectedItem}"
+                            SelectionMode="Single"
+                            HeightRequest="90">
                             <CollectionView.ItemsLayout>
-                                <LinearItemsLayout Orientation="Horizontal"/>
+                                <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10" SnapPointsType="Mandatory" SnapPointsAlignment="Start"/>
                             </CollectionView.ItemsLayout>
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
-                                    <StackLayout Margin="8, 16, 8, 16">
-                                        <Label 
+                                    <Grid 
+                                        Margin="8, 16, 8, 16"
+                                        Padding="0, 4, 0, 4"
+                                        BackgroundColor="{StaticResource WhiteColor}"
+                                        RowDefinitions="Auto, *, Auto">
+                                        <Grid.Triggers>
+                                            <MultiTrigger TargetType="Grid">
+                                                <MultiTrigger.Conditions>
+                                                    <BindingCondition Binding="{Binding isActive}" Value="True"/>
+                                                </MultiTrigger.Conditions>
+                                                <Setter Property="BackgroundColor" Value="{StaticResource WhiteColor}"/>
+                                            </MultiTrigger>
+                                            <MultiTrigger TargetType="Grid">
+                                                <MultiTrigger.Conditions>
+                                                    <BindingCondition Binding="{Binding isActive}" Value="False"/>
+                                                </MultiTrigger.Conditions>
+                                                <Setter Property="BackgroundColor" Value="Transparent"/>
+                                            </MultiTrigger>
+                                        </Grid.Triggers>
+                                        <Label
+                                            Grid.Row="0"
                                             Text="{Binding dt, StringFormat='{0:t}'}"
                                             HorizontalOptions="Center"
                                             FontSize="{StaticResource Body2FontSize}">
@@ -271,9 +290,12 @@
                                             </Label.Triggers>
                                         </Label>
                                         <Image 
+                                            Grid.Row="1"
                                             Source="{Binding weather.icon, StringFormat='icon_{0}.png'}"
-                                            HeightRequest="30"></Image>
-                                        <Label 
+                                            HeightRequest="30"
+                                            VerticalOptions="Center"></Image>
+                                        <Label
+                                            Grid.Row="2"
                                             Text="{Binding temp, StringFormat='{0:N0}°C'}"
                                             HorizontalOptions="Center"
                                             FontSize="{StaticResource Body2FontSize}">
@@ -293,7 +315,7 @@
                                                     <Setter Property="TextColor" Value="{StaticResource GrayColor}"/>
                                                 </MultiTrigger>
                                             </Label.Triggers></Label>
-                                    </StackLayout>
+                                    </Grid>
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
                         </CollectionView>
