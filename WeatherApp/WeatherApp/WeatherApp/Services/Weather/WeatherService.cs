@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
@@ -54,7 +53,7 @@ namespace WeatherApp.Services.Weather
         private ObservableCollection<HourlyModel> CreateHourlyForecast(JToken hourly)
         {
             var hourlyForecast = new ObservableCollection<HourlyModel>();
-            for (var i = 0; i < 48; i++)
+            for (var i = 0; i < 24; i++)
             {
                 hourlyForecast.Add(new HourlyModel()
                 {

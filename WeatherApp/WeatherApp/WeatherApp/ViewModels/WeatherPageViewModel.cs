@@ -1,15 +1,14 @@
 ﻿using Prism.Commands;
 using Prism.Navigation;
 using System;
-using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Windows.Input;
 using WeatherApp.Models;
 using WeatherApp.Services.Weather;
 using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.Essentials;
+using Xamarin.Forms;
 
 namespace WeatherApp.ViewModels
 {
@@ -25,7 +24,7 @@ namespace WeatherApp.ViewModels
         public CurrentWeatherModel CurrentWeather { get; set; }
         public bool IsRefreshing { get; set; }
         public DelegateCommand RefreshCommand { get; set; }
-        public DelegateCommand<HourlyModel> HourlySelectionChangedCommand { get; set; }
+        public Command<HourlyModel> HourlySelectionChangedCommand { get; set; }
 
         public WeatherPageViewModel(
             INavigationService navigationService,
@@ -34,7 +33,7 @@ namespace WeatherApp.ViewModels
             _weatherService = weatherService;
 
             RefreshCommand = new DelegateCommand(RefreshCommandHandler);
-            HourlySelectionChangedCommand = new DelegateCommand<HourlyModel>(HourlySelectionChangedCommandHandler);
+            HourlySelectionChangedCommand = new Command<HourlyModel>((model) => HourlySelectionChangedCommandHandler(model));
 
             MainState = LayoutState.Loading;
         }
@@ -48,10 +47,15 @@ namespace WeatherApp.ViewModels
 
         private void HourlySelectionChangedCommandHandler(HourlyModel item)
         {
-            var lastItem = CurrentWeather.hourlyWeatherForecast.FirstOrDefault(h => h.isActive);
-            if (lastItem != null)
-                lastItem.isActive = false;
-            item.isActive = true;
+            var index = CurrentWeather.hourlyWeatherForecast
+                .IndexOf(item);
+
+            if (index > -1)
+            {
+                CurrentWeather.hourlyWeatherForecast.ToList().ForEach(a => a.isActive = false);
+
+                CurrentWeather.hourlyWeatherForecast[index].isActive = true;
+            }
         }
 
         public override async void OnNavigatedTo(INavigationParameters parameters)

@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace WeatherApp.Models
 {
-    public record TodayWeatherListModel
+    public class TodayWeatherListModel
     {
         public string Hour { get; }
         public string Temperature { get; }

@@ -1,15 +1,18 @@
-﻿using System;
+﻿using Prism.Mvvm;
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace WeatherApp.Models
 {
-    public record WeatherModel
+    public class WeatherModel
     {
         public string icon { get; set; }
         public string description { get; set; }
     }
 
-    public record HourlyModel
+    public class HourlyModel: BaseModel
     {
         public DateTime dt { get; set; }
         public double temp { get; set; }
@@ -17,7 +20,7 @@ namespace WeatherApp.Models
         public bool isActive { get; set; }
     }
 
-    public record CurrentWeatherModel
+    public class CurrentWeatherModel
     {
         public DateTime dt { get; set; }
         public DateTime sunrise { get; set; }

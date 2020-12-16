@@ -11,30 +11,15 @@
             Command="{Binding RefreshCommand}">
             <ScrollView>
                 <Grid
+                    BackgroundColor="{StaticResource BackgroundColor}"
                     xct:StateLayout.CurrentState="{Binding MainState}" 
                     xct:StateLayout.AnimateStateChanges="True"
-                    RowDefinitions="Auto, Auto, Auto, *, Auto, Auto"
+                    RowDefinitions="Auto, Auto, Auto, *, Auto, Auto, Auto"
                     RowSpacing="0">
-                    <Grid.Background>
-                        <LinearGradientBrush 
-                        StartPoint="0, 0" 
-                        EndPoint="0, 1">
-                            <GradientStop Color="{StaticResource WhiteColor}" Offset="0.1"></GradientStop>
-                            <GradientStop Color="{StaticResource LightGrayColor}" Offset="1.0"></GradientStop>
-                        </LinearGradientBrush>
-                    </Grid.Background>
                     <xct:StateLayout.StateViews>
                         <xct:StateView
                             StateKey="Loading"
                             VerticalOptions="FillAndExpand">
-                            <xct:StateView.Background>
-                                <LinearGradientBrush 
-                                StartPoint="0, 0" 
-                                EndPoint="0, 1">
-                                    <GradientStop Color="{StaticResource WhiteColor}" Offset="0.1"></GradientStop>
-                                    <GradientStop Color="{StaticResource LightGrayColor}" Offset="1.0"></GradientStop>
-                                </LinearGradientBrush>
-                            </xct:StateView.Background>
                             <ActivityIndicator
                                 Color="{StaticResource PrimaryColor}"
                                 IsRunning="True"
@@ -229,97 +214,154 @@
                     </StackLayout>
                     <StackLayout
                         Grid.Row="5"
-                        Margin="16, 0, 16, 8">
+                        Margin="16, 0, 16, 8"
+                        Padding="0, 0, 0, 8">
                         <Label
-                            Text="Hourly"
+                            Text="24 hours forecast"
                             FontSize="{StaticResource Headline4FontSize}"
                             FontFamily="FrankRuhle_Medium"
                             TextColor="{StaticResource TextColor}"
                             HorizontalOptions="Start"
                             Margin="0, 12, 0, 0"></Label>
                         <CollectionView
+                            x:Name="hourlyForecast"
                             ItemsSource="{Binding CurrentWeather.hourlyWeatherForecast}"
-                            SelectionChangedCommand="{Binding HourlySelectionChangedCommand}"
-                            SelectionChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=SelectedItem}"
-                            SelectionMode="Single"
-                            HeightRequest="90">
+                            HeightRequest="90"
+                            SelectionMode="None">
                             <CollectionView.ItemsLayout>
-                                <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10" SnapPointsType="Mandatory" SnapPointsAlignment="Start"/>
+                                <LinearItemsLayout Orientation="Horizontal" ItemSpacing="8" SnapPointsType="Mandatory" SnapPointsAlignment="Start"/>
                             </CollectionView.ItemsLayout>
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
-                                    <Grid 
-                                        Margin="8, 16, 8, 16"
-                                        Padding="0, 4, 0, 4"
-                                        BackgroundColor="{StaticResource WhiteColor}"
-                                        RowDefinitions="Auto, *, Auto">
-                                        <Grid.Triggers>
-                                            <MultiTrigger TargetType="Grid">
-                                                <MultiTrigger.Conditions>
-                                                    <BindingCondition Binding="{Binding isActive}" Value="True"/>
-                                                </MultiTrigger.Conditions>
-                                                <Setter Property="BackgroundColor" Value="{StaticResource WhiteColor}"/>
-                                            </MultiTrigger>
-                                            <MultiTrigger TargetType="Grid">
-                                                <MultiTrigger.Conditions>
-                                                    <BindingCondition Binding="{Binding isActive}" Value="False"/>
-                                                </MultiTrigger.Conditions>
-                                                <Setter Property="BackgroundColor" Value="Transparent"/>
-                                            </MultiTrigger>
-                                        </Grid.Triggers>
-                                        <Label
-                                            Grid.Row="0"
-                                            Text="{Binding dt, StringFormat='{0:t}'}"
-                                            HorizontalOptions="Center"
-                                            FontSize="{StaticResource Body2FontSize}">
-                                            <Label.Triggers>
-                                                <MultiTrigger TargetType="Label">
+                                    <StackLayout
+                                        Margin="0"
+                                        Spacing="0"
+                                        Padding="0">
+                                        <Frame
+                                            Padding="16, 4, 16, 4"
+                                            CornerRadius="24">
+                                            <Frame.GestureRecognizers>
+                                                <TapGestureRecognizer
+                                                    Command="{Binding Path=BindingContext.HourlySelectionChangedCommand, Source={x:Reference hourlyForecast}}"
+                                                    CommandParameter="{Binding .}"
+                                                    NumberOfTapsRequired="1" />
+                                            </Frame.GestureRecognizers>
+                                            <Frame.Triggers>
+                                                <MultiTrigger TargetType="Frame">
                                                     <MultiTrigger.Conditions>
-                                                        <BindingCondition Binding="{Binding isActive}" Value="True"/>
+                                                        <BindingCondition Binding="{Binding isActive, Mode=TwoWay}" Value="True"/>
                                                     </MultiTrigger.Conditions>
-                                                    <Setter Property="FontFamily" Value="Rubik_Regular"/>
-                                                    <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
+                                                    <Setter Property="BackgroundColor" Value="{StaticResource WhiteColor}"/>
                                                 </MultiTrigger>
-                                                <MultiTrigger TargetType="Label">
+                                                <MultiTrigger TargetType="Frame">
                                                     <MultiTrigger.Conditions>
-                                                        <BindingCondition Binding="{Binding isActive}" Value="False"/>
+                                                        <BindingCondition Binding="{Binding isActive, Mode=TwoWay}" Value="False"/>
                                                     </MultiTrigger.Conditions>
-                                                    <Setter Property="FontFamily" Value="Rubik_Light"/>
-                                                    <Setter Property="TextColor" Value="{StaticResource GrayColor}"/>
+                                                    <Setter Property="BackgroundColor" Value="{StaticResource LightGrayColor}"/>
+                                                    <Setter Property="HasShadow" Value="False"/>
                                                 </MultiTrigger>
-                                            </Label.Triggers>
-                                        </Label>
-                                        <Image 
-                                            Grid.Row="1"
-                                            Source="{Binding weather.icon, StringFormat='icon_{0}.png'}"
-                                            HeightRequest="30"
-                                            VerticalOptions="Center"></Image>
-                                        <Label
-                                            Grid.Row="2"
-                                            Text="{Binding temp, StringFormat='{0:N0}°C'}"
-                                            HorizontalOptions="Center"
-                                            FontSize="{StaticResource Body2FontSize}">
-                                            <Label.Triggers>
-                                                <MultiTrigger TargetType="Label">
-                                                    <MultiTrigger.Conditions>
-                                                        <BindingCondition Binding="{Binding isActive}" Value="True"/>
-                                                    </MultiTrigger.Conditions>
-                                                    <Setter Property="FontFamily" Value="Rubik_Regular"/>
-                                                    <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
-                                                </MultiTrigger>
-                                                <MultiTrigger TargetType="Label">
-                                                    <MultiTrigger.Conditions>
-                                                        <BindingCondition Binding="{Binding isActive}" Value="False"/>
-                                                    </MultiTrigger.Conditions>
-                                                    <Setter Property="FontFamily" Value="Rubik_Light"/>
-                                                    <Setter Property="TextColor" Value="{StaticResource GrayColor}"/>
-                                                </MultiTrigger>
-                                            </Label.Triggers></Label>
-                                    </Grid>
+                                            </Frame.Triggers>
+                                            <Grid
+                                                RowDefinitions="Auto, *, Auto">
+                                                <Label
+                                                    Grid.Row="0"
+                                                    Text="{Binding dt, StringFormat='{0:HH:mm}'}"
+                                                    HorizontalOptions="Center"
+                                                    FontSize="{StaticResource Body2FontSize}">
+                                                    <Label.Triggers>
+                                                        <MultiTrigger TargetType="Label">
+                                                            <MultiTrigger.Conditions>
+                                                                <BindingCondition Binding="{Binding isActive}" Value="True"/>
+                                                            </MultiTrigger.Conditions>
+                                                            <Setter Property="FontFamily" Value="Rubik_Regular"/>
+                                                            <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
+                                                        </MultiTrigger>
+                                                        <MultiTrigger TargetType="Label">
+                                                            <MultiTrigger.Conditions>
+                                                                <BindingCondition Binding="{Binding isActive}" Value="False"/>
+                                                            </MultiTrigger.Conditions>
+                                                            <Setter Property="FontFamily" Value="Rubik_Light"/>
+                                                            <Setter Property="TextColor" Value="{StaticResource GrayColor}"/>
+                                                        </MultiTrigger>
+                                                    </Label.Triggers>
+                                                </Label>
+                                                <Image 
+                                                    Grid.Row="1"
+                                                    Source="{Binding weather.icon, StringFormat='icon_{0}.png'}"
+                                                    HeightRequest="30"
+                                                    VerticalOptions="Center">
+                                                </Image>
+                                                <Label
+                                                    Grid.Row="2"
+                                                    Text="{Binding temp, StringFormat='{0:N0}°C'}"
+                                                    HorizontalOptions="Center"
+                                                    FontSize="{StaticResource Body2FontSize}">
+                                                    <Label.Triggers>
+                                                        <MultiTrigger TargetType="Label">
+                                                            <MultiTrigger.Conditions>
+                                                                <BindingCondition Binding="{Binding isActive}" Value="True"/>
+                                                            </MultiTrigger.Conditions>
+                                                            <Setter Property="FontFamily" Value="Rubik_Regular"/>
+                                                            <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
+                                                        </MultiTrigger>
+                                                        <MultiTrigger TargetType="Label">
+                                                            <MultiTrigger.Conditions>
+                                                                <BindingCondition Binding="{Binding isActive}" Value="False"/>
+                                                            </MultiTrigger.Conditions>
+                                                            <Setter Property="FontFamily" Value="Rubik_Light"/>
+                                                            <Setter Property="TextColor" Value="{StaticResource GrayColor}"/>
+                                                        </MultiTrigger>
+                                                    </Label.Triggers>
+                                                </Label>
+                                            </Grid>
+                                        </Frame>
+                                    </StackLayout>
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
                         </CollectionView>
                     </StackLayout>
+                    <!--<StackLayout
+                        Grid.Row="6"
+                        Margin="16, 0, 16, 8">
+                        <Label
+                            Text="7 days forecast"
+                            FontSize="{StaticResource Headline4FontSize}"
+                            FontFamily="FrankRuhle_Medium"
+                            TextColor="{StaticResource TextColor}"
+                            HorizontalOptions="Start"
+                            Margin="0, 12, 0, 0"></Label>
+                        <StackLayout
+                            BindableLayout.ItemsSource="{Binding CurrentWeather.hourlyWeatherForecast}">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid 
+                                        Margin="8, 0, 8, 0"
+                                        BackgroundColor="{StaticResource WhiteColor}"
+                                        ColumnDefinitions="Auto, *, Auto">
+                                        <Image 
+                                            Grid.Column="0"
+                                            Source="{Binding weather.icon, StringFormat='icon_{0}.png'}"
+                                            WidthRequest="30"
+                                            VerticalOptions="Center"></Image>
+                                        <Label
+                                            Grid.Column="1"
+                                            Text="{Binding dt, StringFormat='{0:t}'}"
+                                            HorizontalOptions="Start"
+                                            VerticalOptions="Center"
+                                            FontSize="{StaticResource Body2FontSize}">
+                                        </Label>
+                                        <Label
+                                            Grid.Column="2"
+                                            Text="{Binding temp, StringFormat='{0:N0}°C'}"
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Center"
+                                            FontSize="{StaticResource Body2FontSize}">
+                                        </Label>
+                                    </Grid>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+                    </StackLayout>-->
                 </Grid>
             </ScrollView>
         </RefreshView>

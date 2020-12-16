@@ -55,6 +55,12 @@
     <Compile Update="Styles\Fonts.xaml.cs">
       <DependentUpon>Fonts.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\Templates\HourlyItemTemplate.xaml.cs">
+      <DependentUpon>HourlyItemTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Templates\HourlyItemSelectedTemplate.xaml.cs">
+      <DependentUpon>HourlyItemSelectedTemplate.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -65,6 +71,12 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\EntryPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Templates\HourlyItemTemplate.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Templates\HourlyItemSelectedTemplate.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\WeatherPage.xaml">
