@@ -14,7 +14,7 @@
                     BackgroundColor="{StaticResource BackgroundColor}"
                     xct:StateLayout.CurrentState="{Binding MainState}" 
                     xct:StateLayout.AnimateStateChanges="True"
-                    RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto"
+                    RowDefinitions="Auto, Auto, Auto, *, Auto, Auto, Auto"
                     RowSpacing="0">
                     <xct:StateLayout.StateViews>
                         <xct:StateView
@@ -92,7 +92,7 @@
                         Margin="16, 0, 0, 0"></Label>
                     <Label
                         Grid.Row="2"
-                        Text="{Binding CurrentWeather.dt, StringFormat='{0:dddd, d MMMM yyyy hh:mm tt}'}"
+                        Text="{Binding SelectedHour.dt, StringFormat='{0:dddd, d MMMM yyyy HH:mm}'}"
                         FontSize="{StaticResource Body1FontSize}"
                         FontFamily="Rubik_Light"
                         TextColor="{StaticResource GrayColor}"
@@ -103,7 +103,7 @@
                         VerticalOptions="CenterAndExpand"
                         Margin="0, 32, 0, 16">
                         <Image 
-                            Source="{Binding CurrentWeather.weather.icon, StringFormat='icon_{0}.png'}"
+                            Source="{Binding SelectedHour.weather.icon, StringFormat='icon_{0}.png'}"
                             WidthRequest="120"
                             HeightRequest="120"></Image>
                         <Label
@@ -182,7 +182,7 @@
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span
-                                            Text="{Binding CurrentWeather.temp, StringFormat='{0:N0}°'}"
+                                            Text="{Binding SelectedHour.temp, StringFormat='{0:N0}°'}"
                                             FontFamily="Rubik_Light"
                                             FontSize="{StaticResource Headline0FontSize}"
                                             TextColor="{StaticResource TextColor}"></Span>
@@ -226,9 +226,10 @@
                             Margin="0, 12, 0, 0"></Label>
                         <CollectionView
                             x:Name="hourlyForecast"
+                            SelectionMode="Single"
+                            SelectedItem="{Binding SelectedHour}"
                             ItemsSource="{Binding CurrentWeather.hourlyWeatherForecast}"
-                            HeightRequest="90"
-                            SelectionMode="None">
+                            HeightRequest="90">
                             <CollectionView.ItemsLayout>
                                 <LinearItemsLayout Orientation="Horizontal" ItemSpacing="8" SnapPointsType="Mandatory" SnapPointsAlignment="Start"/>
                             </CollectionView.ItemsLayout>
@@ -238,15 +239,19 @@
                                         Margin="0"
                                         Spacing="0"
                                         Padding="0">
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup Name="CommonStates">
+                                                <VisualState Name="Normal" />
+                                                <VisualState Name="Selected">
+                                                    <VisualState.Setters>
+                                                        <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateManager.VisualStateGroups>
                                         <Frame
                                             Padding="16, 6, 16, 6"
                                             CornerRadius="24">
-                                            <Frame.GestureRecognizers>
-                                                <TapGestureRecognizer
-                                                    Command="{Binding Path=BindingContext.HourlySelectionChangedCommand, Source={x:Reference hourlyForecast}}"
-                                                    CommandParameter="{Binding .}"
-                                                    NumberOfTapsRequired="1" />
-                                            </Frame.GestureRecognizers>
                                             <Frame.Triggers>
                                                 <MultiTrigger TargetType="Frame">
                                                     <MultiTrigger.Conditions>

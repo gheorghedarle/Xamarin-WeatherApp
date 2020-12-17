@@ -8,7 +8,6 @@ using WeatherApp.Models;
 using WeatherApp.Services.Weather;
 using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.Essentials;
-using Xamarin.Forms;
 
 namespace WeatherApp.ViewModels
 {
@@ -22,9 +21,9 @@ namespace WeatherApp.ViewModels
         public string CurrentCity { get; set; }
         public string CurrentCountry { get; set; }
         public CurrentWeatherModel CurrentWeather { get; set; }
+        public HourlyModel SelectedHour { get; set; }
         public bool IsRefreshing { get; set; }
         public DelegateCommand RefreshCommand { get; set; }
-        public Command<HourlyModel> HourlySelectionChangedCommand { get; set; }
 
         public WeatherPageViewModel(
             INavigationService navigationService,
@@ -33,7 +32,6 @@ namespace WeatherApp.ViewModels
             _weatherService = weatherService;
 
             RefreshCommand = new DelegateCommand(RefreshCommandHandler);
-            HourlySelectionChangedCommand = new Command<HourlyModel>((model) => HourlySelectionChangedCommandHandler(model));
 
             MainState = LayoutState.Loading;
         }
@@ -45,17 +43,10 @@ namespace WeatherApp.ViewModels
             IsRefreshing = false;
         }
 
-        private void HourlySelectionChangedCommandHandler(HourlyModel item)
+        private void OnSelectedHourChanged()
         {
-            var index = CurrentWeather.hourlyWeatherForecast
-                .IndexOf(item);
-
-            if (index > -1)
-            {
-                CurrentWeather.hourlyWeatherForecast.ToList().ForEach(a => a.isActive = false);
-
-                CurrentWeather.hourlyWeatherForecast[index].isActive = true;
-            }
+            CurrentWeather.hourlyWeatherForecast.ToList().ForEach(a => a.isActive = false);
+            SelectedHour.isActive = true;
         }
 
         public override async void OnNavigatedTo(INavigationParameters parameters)
@@ -100,7 +91,8 @@ namespace WeatherApp.ViewModels
                 CurrentWeather = await _weatherService.GetCurrentWeatherAndHourlyForecastByLatLon(_currentLat, _currentLon);
                 if(CurrentWeather != null)
                 {
-                    CurrentWeather.hourlyWeatherForecast[0].isActive = true;
+                    SelectedHour = CurrentWeather.hourlyWeatherForecast[0];
+                    SelectedHour.isActive = true;
                     MainState = LayoutState.None;
                 }
                 else
