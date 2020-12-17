@@ -14,7 +14,7 @@
                     BackgroundColor="{StaticResource BackgroundColor}"
                     xct:StateLayout.CurrentState="{Binding MainState}" 
                     xct:StateLayout.AnimateStateChanges="True"
-                    RowDefinitions="Auto, Auto, Auto, *, Auto, Auto, Auto"
+                    RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto"
                     RowSpacing="0">
                     <xct:StateLayout.StateViews>
                         <xct:StateView
@@ -100,11 +100,12 @@
                         Margin="16, 4, 0, 0"></Label>
                     <StackLayout
                         Grid.Row="3"
-                        VerticalOptions="CenterAndExpand">
+                        VerticalOptions="CenterAndExpand"
+                        Margin="0, 32, 0, 16">
                         <Image 
                             Source="{Binding CurrentWeather.weather.icon, StringFormat='icon_{0}.png'}"
-                            WidthRequest="160"
-                            HeightRequest="160"></Image>
+                            WidthRequest="120"
+                            HeightRequest="120"></Image>
                         <Label
                             Text="{Binding CurrentWeather.weather.description}"
                             FontSize="{StaticResource Body2FontSize}"
@@ -214,8 +215,8 @@
                     </StackLayout>
                     <StackLayout
                         Grid.Row="5"
-                        Margin="16, 0, 16, 8"
-                        Padding="0, 0, 0, 8">
+                        Margin="16, 0, 16, 0"
+                        Padding="0, 0, 0, 2">
                         <Label
                             Text="24 hours forecast"
                             FontSize="{StaticResource Headline4FontSize}"
@@ -238,7 +239,7 @@
                                         Spacing="0"
                                         Padding="0">
                                         <Frame
-                                            Padding="16, 4, 16, 4"
+                                            Padding="16, 6, 16, 6"
                                             CornerRadius="24">
                                             <Frame.GestureRecognizers>
                                                 <TapGestureRecognizer
@@ -320,7 +321,7 @@
                             </CollectionView.ItemTemplate>
                         </CollectionView>
                     </StackLayout>
-                    <!--<StackLayout
+                    <StackLayout
                         Grid.Row="6"
                         Margin="16, 0, 16, 8">
                         <Label
@@ -334,34 +335,77 @@
                             BindableLayout.ItemsSource="{Binding CurrentWeather.hourlyWeatherForecast}">
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
-                                    <Grid 
-                                        Margin="8, 0, 8, 0"
-                                        BackgroundColor="{StaticResource WhiteColor}"
-                                        ColumnDefinitions="Auto, *, Auto">
-                                        <Image 
-                                            Grid.Column="0"
-                                            Source="{Binding weather.icon, StringFormat='icon_{0}.png'}"
-                                            WidthRequest="30"
-                                            VerticalOptions="Center"></Image>
-                                        <Label
-                                            Grid.Column="1"
-                                            Text="{Binding dt, StringFormat='{0:t}'}"
-                                            HorizontalOptions="Start"
-                                            VerticalOptions="Center"
-                                            FontSize="{StaticResource Body2FontSize}">
-                                        </Label>
-                                        <Label
-                                            Grid.Column="2"
-                                            Text="{Binding temp, StringFormat='{0:N0}°C'}"
-                                            HorizontalOptions="Center"
-                                            VerticalOptions="Center"
-                                            FontSize="{StaticResource Body2FontSize}">
-                                        </Label>
-                                    </Grid>
+                                    <StackLayout
+                                        Margin="0"
+                                        Spacing="0"
+                                        Padding="0">
+                                        <Frame
+                                            Padding="16, 8, 16, 8"
+                                            CornerRadius="24"
+                                            HasShadow="False"
+                                            BackgroundColor="{StaticResource LightGrayColor}">
+                                            <Grid 
+                                                ColumnDefinitions="Auto, *, Auto">
+                                                <Image 
+                                                    Grid.Column="0"
+                                                    Source="{Binding weather.icon, StringFormat='icon_{0}.png'}"
+                                                    WidthRequest="30"
+                                                    VerticalOptions="Center"></Image>
+                                                <Label
+                                                    Grid.Column="1"
+                                                    Margin="8, 0, 0, 0"
+                                                    Text="{Binding dt, StringFormat='{0:t}'}"
+                                                    HorizontalOptions="Start"
+                                                    VerticalOptions="Center"
+                                                    FontSize="{StaticResource Body2FontSize}">
+                                                    <Label.Triggers>
+                                                        <MultiTrigger TargetType="Label">
+                                                            <MultiTrigger.Conditions>
+                                                                <BindingCondition Binding="{Binding isActive}" Value="True"/>
+                                                            </MultiTrigger.Conditions>
+                                                            <Setter Property="FontFamily" Value="Rubik_Regular"/>
+                                                            <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
+                                                        </MultiTrigger>
+                                                        <MultiTrigger TargetType="Label">
+                                                            <MultiTrigger.Conditions>
+                                                                <BindingCondition Binding="{Binding isActive}" Value="False"/>
+                                                            </MultiTrigger.Conditions>
+                                                            <Setter Property="FontFamily" Value="Rubik_Light"/>
+                                                            <Setter Property="TextColor" Value="{StaticResource GrayColor}"/>
+                                                        </MultiTrigger>
+                                                    </Label.Triggers>
+                                                </Label>
+                                                <Label
+                                                    Grid.Column="2"
+                                                    Margin="0, 0, 8, 0"
+                                                    Text="{Binding temp, StringFormat='{0:N0}°C'}"
+                                                    HorizontalOptions="Center"
+                                                    VerticalOptions="Center"
+                                                    FontSize="{StaticResource Body2FontSize}">
+                                                    <Label.Triggers>
+                                                        <MultiTrigger TargetType="Label">
+                                                            <MultiTrigger.Conditions>
+                                                                <BindingCondition Binding="{Binding isActive}" Value="True"/>
+                                                            </MultiTrigger.Conditions>
+                                                            <Setter Property="FontFamily" Value="Rubik_Regular"/>
+                                                            <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
+                                                        </MultiTrigger>
+                                                        <MultiTrigger TargetType="Label">
+                                                            <MultiTrigger.Conditions>
+                                                                <BindingCondition Binding="{Binding isActive}" Value="False"/>
+                                                            </MultiTrigger.Conditions>
+                                                            <Setter Property="FontFamily" Value="Rubik_Light"/>
+                                                            <Setter Property="TextColor" Value="{StaticResource GrayColor}"/>
+                                                        </MultiTrigger>
+                                                    </Label.Triggers>
+                                                </Label>
+                                            </Grid>
+                                        </Frame>
+                                    </StackLayout>
                                 </DataTemplate>
                             </BindableLayout.ItemTemplate>
                         </StackLayout>
-                    </StackLayout>-->
+                    </StackLayout>
                 </Grid>
             </ScrollView>
         </RefreshView>
