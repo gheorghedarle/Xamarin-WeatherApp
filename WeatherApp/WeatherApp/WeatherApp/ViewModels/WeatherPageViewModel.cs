@@ -8,6 +8,7 @@ using WeatherApp.Models;
 using WeatherApp.Services.Weather;
 using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.Essentials;
+using Xamarin.Forms;
 
 namespace WeatherApp.ViewModels
 {
@@ -21,9 +22,10 @@ namespace WeatherApp.ViewModels
         public string CurrentCity { get; set; }
         public string CurrentCountry { get; set; }
         public CurrentWeatherModel CurrentWeather { get; set; }
-        public HourlyModel SelectedHour { get; set; }
+        public WeatherDetailsModel SelectedHour { get; set; }
         public bool IsRefreshing { get; set; }
-        public DelegateCommand RefreshCommand { get; set; }
+        public Command RefreshCommand { get; set; }
+        public Command TryAgainCommand { get; set; }
 
         public WeatherPageViewModel(
             INavigationService navigationService,
@@ -31,7 +33,8 @@ namespace WeatherApp.ViewModels
         {
             _weatherService = weatherService;
 
-            RefreshCommand = new DelegateCommand(RefreshCommandHandler);
+            RefreshCommand = new Command(RefreshCommandHandler);
+            TryAgainCommand = new Command(TryAgainCommandHandler);
 
             MainState = LayoutState.Loading;
         }
@@ -41,6 +44,12 @@ namespace WeatherApp.ViewModels
             IsRefreshing = true;
             await GetCurrentWeather();
             IsRefreshing = false;
+        }
+
+        private async void TryAgainCommandHandler()
+        {
+            MainState = LayoutState.Loading;
+            await GetCurrentWeather();
         }
 
         private void OnSelectedHourChanged()
