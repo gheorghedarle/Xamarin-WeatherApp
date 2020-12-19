@@ -55,6 +55,9 @@
     <Compile Update="Styles\Fonts.xaml.cs">
       <DependentUpon>Fonts.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\WelcomePage.xaml.cs">
+      <DependentUpon>WelcomePage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\Templates\HourlyItemTemplate.xaml.cs">
       <DependentUpon>HourlyItemTemplate.xaml</DependentUpon>
     </Compile>
@@ -70,7 +73,13 @@
     <EmbeddedResource Update="Views\Fragments\ConnectionView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\EntryPage.xaml">
+    <EmbeddedResource Update="Views\WeatherDetailsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\WelcomePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\SettingsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Templates\HourlyItemTemplate.xaml">

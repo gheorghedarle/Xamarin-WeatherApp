@@ -11,7 +11,7 @@ using Xamarin.Essentials;
 
 namespace WeatherApp.ViewModels
 {
-    public class EntryPageViewModel: BaseViewModel
+    public class WelcomePageViewModel: BaseViewModel
     {
         private ILocationService _locationService;
         private ILocalSettingsService _localSettingsService;
@@ -20,7 +20,7 @@ namespace WeatherApp.ViewModels
 
         public DelegateCommand UseCurrentLocationCommand { get; set; }
 
-        public EntryPageViewModel(
+        public WelcomePageViewModel(
             INavigationService navigationService, 
             ILocationService locationService,
             ILocalSettingsService localSettingsService) : base(navigationService) 
