@@ -14,7 +14,7 @@
                     BackgroundColor="{StaticResource BackgroundColor}"
                     xct:StateLayout.CurrentState="{Binding MainState}" 
                     xct:StateLayout.AnimateStateChanges="True"
-                    RowDefinitions="Auto, Auto, Auto, *, Auto, Auto, Auto"
+                    RowDefinitions="Auto, Auto, Auto, Auto, *, Auto, Auto, Auto"
                     RowSpacing="0">
                     <xct:StateLayout.StateViews>
                         <xct:StateView
@@ -74,8 +74,28 @@
                             </Grid>
                         </xct:StateView>
                     </xct:StateLayout.StateViews>
-                    <Label
+                    <StackLayout
                         Grid.Row="0"
+                        Margin="16, 16, 0, 16"
+                        Spacing="4">
+                        <BoxView
+                            BackgroundColor="{StaticResource TextColor}"
+                            HeightRequest="2"
+                            WidthRequest="24"
+                            HorizontalOptions="Start"></BoxView>
+                        <BoxView
+                            BackgroundColor="{StaticResource TextColor}"
+                            HeightRequest="2"
+                            WidthRequest="24"
+                            HorizontalOptions="Start"></BoxView>
+                        <BoxView
+                            BackgroundColor="{StaticResource TextColor}"
+                            HeightRequest="2"
+                            WidthRequest="24"
+                            HorizontalOptions="Start"></BoxView>
+                    </StackLayout>
+                    <Label
+                        Grid.Row="1"
                         Text="{Binding CurrentCity}"
                         FontSize="{StaticResource Headline2FontSize}"
                         FontFamily="FrankRuhle_Medium"
@@ -83,15 +103,15 @@
                         HorizontalOptions="Start"
                         Margin="16, 0, 0, 0"></Label>
                     <Label
-                        Grid.Row="1"
+                        Grid.Row="2"
                         Text="{Binding CurrentCountry}"
                         FontSize="{StaticResource Headline4FontSize}"
                         FontFamily="Rubik_Light"
                         TextColor="{StaticResource TextColor}"
                         HorizontalOptions="Start"
-                        Margin="16, 0, 0, 0"></Label>
+                        Margin="16, -4, 0, 0"></Label>
                     <Label
-                        Grid.Row="2"
+                        Grid.Row="3"
                         Text="{Binding SelectedHour.dt, StringFormat='{0:dddd, d MMMM yyyy HH:mm}'}"
                         FontSize="{StaticResource Body1FontSize}"
                         FontFamily="Rubik_Light"
@@ -99,23 +119,23 @@
                         HorizontalOptions="Start"
                         Margin="16, 4, 0, 0"></Label>
                     <StackLayout
-                        Grid.Row="3"
+                        Grid.Row="4"
                         VerticalOptions="CenterAndExpand"
                         Margin="0, 32, 0, 16">
                         <Image 
                             Source="{Binding SelectedHour.weather.icon, StringFormat='icon_{0}.png'}"
-                            WidthRequest="120"
-                            HeightRequest="120"></Image>
+                            WidthRequest="100"
+                            HeightRequest="100"></Image>
                         <Label
                             Text="{Binding SelectedHour.weather.description}"
                             FontSize="{StaticResource Body2FontSize}"
                             FontFamily="Rubik_Regular"
                             TextColor="{StaticResource TextColor}"
                             HorizontalOptions="Center"
-                            Margin="0, 8, 0, 0"></Label>
+                            Margin="0, 4, 0, 0"></Label>
                     </StackLayout>
                     <StackLayout
-                        Grid.Row="4"
+                        Grid.Row="5"
                         Orientation="Horizontal"
                         HorizontalOptions="FillAndExpand"
                         Margin="16, 0, 16, 0">
@@ -214,7 +234,7 @@
                         </StackLayout>
                     </StackLayout>
                     <StackLayout
-                        Grid.Row="5"
+                        Grid.Row="6"
                         Margin="16, 0, 16, 0"
                         Padding="0, 0, 0, 2">
                         <Label
@@ -327,7 +347,7 @@
                         </CollectionView>
                     </StackLayout>
                     <StackLayout
-                        Grid.Row="6"
+                        Grid.Row="7"
                         Margin="16, 0, 16, 8">
                         <Label
                             Text="6 days forecast"
