@@ -2,7 +2,6 @@
 <ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WeatherApp.Styles.Fonts">
-
     <OnPlatform
       x:Key="OverlineFontSize"
       x:TypeArguments="x:Double"
@@ -63,5 +62,4 @@
       x:TypeArguments="x:Double"
       Android="68"
       iOS="68" />
-
 </ResourceDictionary>

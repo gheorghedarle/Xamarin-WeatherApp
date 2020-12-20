@@ -9,6 +9,8 @@ using WeatherApp.ViewModels;
 using WeatherApp.Views;
 using Xamarin.Forms;
 
+[assembly: ExportFont("FontAwesome.ttf", Alias = "FontAwesome")]
+
 [assembly: ExportFont("FrankRuhlLibre-Light.ttf", Alias = "FrankRuhle_Light")]
 [assembly: ExportFont("FrankRuhlLibre-Regular.ttf", Alias = "FrankRuhle_Regular")]
 [assembly: ExportFont("FrankRuhlLibre-Medium.ttf", Alias = "FrankRuhle_Medium")]
