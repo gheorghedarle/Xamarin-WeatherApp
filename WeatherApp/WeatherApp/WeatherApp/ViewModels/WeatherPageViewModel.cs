@@ -26,6 +26,7 @@ namespace WeatherApp.ViewModels
         public bool IsRefreshing { get; set; }
         public Command RefreshCommand { get; set; }
         public Command TryAgainCommand { get; set; }
+        public double MenuSize { get; set; } = DeviceDisplay.MainDisplayInfo.Width / 4;
 
         public WeatherPageViewModel(
             INavigationService navigationService,
