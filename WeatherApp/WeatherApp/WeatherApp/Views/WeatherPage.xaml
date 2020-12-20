@@ -2,12 +2,15 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:behaviors="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
              x:Class="WeatherApp.Views.WeatherPage"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <SwipeView
+            x:Name="menuView"
             HorizontalOptions="FillAndExpand"
-            VerticalOptions="FillAndExpand">
+            VerticalOptions="FillAndExpand"
+            IsEnabled="False">
             <SwipeView.LeftItems>
                 <SwipeItemView>
                     <StackLayout 
@@ -57,6 +60,7 @@
                 </SwipeItemView>
             </SwipeView.LeftItems>
             <RefreshView
+                x:Name="content"
                 IsRefreshing="{Binding IsRefreshing}"
                 RefreshColor="{StaticResource PrimaryColor}"
                 Command="{Binding RefreshCommand}">
@@ -129,6 +133,9 @@
                             Grid.Row="0"
                             Margin="16, 16, 0, 16"
                             Spacing="4">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding MenuCommand}"></TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
                             <BoxView
                                 BackgroundColor="{StaticResource TextColor}"
                                 HeightRequest="2"

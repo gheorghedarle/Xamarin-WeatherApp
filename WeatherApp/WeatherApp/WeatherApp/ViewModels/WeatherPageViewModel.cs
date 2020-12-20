@@ -1,9 +1,11 @@
 ﻿using Prism.Commands;
+using Prism.Events;
 using Prism.Navigation;
 using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using WeatherApp.Events;
 using WeatherApp.Models;
 using WeatherApp.Services.Weather;
 using Xamarin.CommunityToolkit.UI.Views;
@@ -15,6 +17,7 @@ namespace WeatherApp.ViewModels
     public class WeatherPageViewModel : BaseViewModel
     {
         private readonly IWeatherService _weatherService;
+        private readonly IEventAggregator _eventAggregator;
 
         private double _currentLat;
         private double _currentLon;
@@ -23,19 +26,24 @@ namespace WeatherApp.ViewModels
         public string CurrentCountry { get; set; }
         public CurrentWeatherModel CurrentWeather { get; set; }
         public WeatherDetailsModel SelectedHour { get; set; }
+        public bool IsMenuOpen { get; set; }
         public bool IsRefreshing { get; set; }
         public Command RefreshCommand { get; set; }
         public Command TryAgainCommand { get; set; }
+        public Command MenuCommand { get; set; }
         public double MenuSize { get; set; } = DeviceDisplay.MainDisplayInfo.Width / 4;
 
         public WeatherPageViewModel(
             INavigationService navigationService,
-            IWeatherService weatherService): base(navigationService)
+            IWeatherService weatherService,
+            IEventAggregator eventAggregator) : base(navigationService)
         {
             _weatherService = weatherService;
+            _eventAggregator = eventAggregator;
 
             RefreshCommand = new Command(RefreshCommandHandler);
             TryAgainCommand = new Command(TryAgainCommandHandler);
+            MenuCommand = new Command(MenuCommandHandler);
 
             MainState = LayoutState.Loading;
         }
@@ -51,6 +59,19 @@ namespace WeatherApp.ViewModels
         {
             MainState = LayoutState.Loading;
             await GetCurrentWeather();
+        }
+
+        private void MenuCommandHandler()
+        {
+            if(IsMenuOpen)
+            {
+                _eventAggregator.GetEvent<OpenMenuEvent>().Publish();
+            }
+            else
+            {
+                _eventAggregator.GetEvent<CloseMenuEvent>().Publish();
+            }
+            IsMenuOpen = !IsMenuOpen;
         }
 
         private void OnSelectedHourChanged()
