@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using WeatherApp.Events;
 using WeatherApp.Models;
 using WeatherApp.Services.Weather;
+using WeatherApp.Views;
 using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -30,6 +31,8 @@ namespace WeatherApp.ViewModels
         public bool IsRefreshing { get; set; }
         public Command RefreshCommand { get; set; }
         public Command TryAgainCommand { get; set; }
+        public Command YourLocationsCommand { get; set; }
+        public Command SettingsCommand { get; set; }
         public Command MenuCommand { get; set; }
         public double MenuSize { get; set; } = DeviceDisplay.MainDisplayInfo.Width / 4;
 
@@ -43,6 +46,8 @@ namespace WeatherApp.ViewModels
 
             RefreshCommand = new Command(RefreshCommandHandler);
             TryAgainCommand = new Command(TryAgainCommandHandler);
+            YourLocationsCommand = new Command(YourLocationsCommandHandler);
+            SettingsCommand = new Command(SettingsCommandHandler);
             MenuCommand = new Command(MenuCommandHandler);
 
             MainState = LayoutState.Loading;
@@ -59,6 +64,16 @@ namespace WeatherApp.ViewModels
         {
             MainState = LayoutState.Loading;
             await GetCurrentWeather();
+        }
+
+        private async void YourLocationsCommandHandler()
+        {
+            //await _navigationService.NavigateAsync(nameof(YourLocationsPage));
+        }
+
+        private async void SettingsCommandHandler()
+        {
+            await _navigationService.NavigateAsync(nameof(SettingsPage));
         }
 
         private void MenuCommandHandler()

@@ -30,12 +30,12 @@ namespace WeatherApp.Views
             _closeMenuEvent.Unsubscribe(CloseAnimation);
         }
 
-        private async void OpenAnimation()
+        private void OpenAnimation()
         {
             menuView.Open(OpenSwipeItem.LeftItems);
         }
 
-        private async void CloseAnimation()
+        private void CloseAnimation()
         {
             menuView.Close();
         }
