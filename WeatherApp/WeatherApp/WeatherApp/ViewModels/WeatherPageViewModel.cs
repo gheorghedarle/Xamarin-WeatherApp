@@ -85,9 +85,15 @@ namespace WeatherApp.ViewModels
             await _navigationService.NavigateAsync(nameof(SettingsPage));
         }
 
-        private async void DayForecastCommandHandler(WeatherDetailsModel item)
+        private async void DayForecastCommandHandler(WeatherDetailsModel currentDayWeather)
         {
-            await _navigationService.NavigateAsync(nameof(WeatherDetailsPage));
+            var param = new NavigationParameters()
+            {
+                { "currentCity", CurrentCity },
+                { "currentCountry", CurrentCountry },
+                { "currentDayWeather", currentDayWeather }
+            };
+            await _navigationService.NavigateAsync(nameof(WeatherDetailsPage), param);
         }
 
         private void MenuCommandHandler()

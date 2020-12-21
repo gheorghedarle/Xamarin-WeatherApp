@@ -1,13 +1,345 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:fragments="clr-namespace:WeatherApp.Views.Fragments"
              x:Class="WeatherApp.Views.WeatherDetailsPage"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Weather Details Page!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView>
+            <Grid
+                BackgroundColor="{StaticResource BackgroundColor}"
+                xct:StateLayout.CurrentState="{Binding MainState}" 
+                xct:StateLayout.AnimateStateChanges="True"
+                RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto"
+                RowSpacing="0">
+                <xct:StateLayout.StateViews>
+                    <xct:StateView
+                        StateKey="Loading"
+                        VerticalOptions="FillAndExpand">
+                        <fragments:LoadingView/>
+                    </xct:StateView>
+                </xct:StateLayout.StateViews>
+                <StackLayout
+                    Grid.Row="0"
+                    Margin="16, 8, 16, 0"
+                    Padding="0, 8, 8, 8"
+                    HorizontalOptions="Start">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackCommand}"></TapGestureRecognizer>
+                    </StackLayout.GestureRecognizers>
+                    <Label
+                        Text="&#xf060;"
+                        FontSize="{StaticResource Subtitle1FontSize}"
+                        FontFamily="FontAwesome"
+                        TextColor="{StaticResource TextColor}"
+                        HorizontalOptions="Start"></Label>
+                </StackLayout>
+                <Label
+                    Grid.Row="1"
+                    Text="{Binding CurrentCity}"
+                    FontSize="{StaticResource Headline2FontSize}"
+                    FontFamily="FrankRuhle_Medium"
+                    TextColor="{StaticResource TextColor}"
+                    HorizontalOptions="Start"
+                    Margin="16, 0, 0, 0"></Label>
+                <Label
+                    Grid.Row="2"
+                    Text="{Binding CurrentCountry}"
+                    FontSize="{StaticResource Headline4FontSize}"
+                    FontFamily="Rubik_Light"
+                    TextColor="{StaticResource TextColor}"
+                    HorizontalOptions="Start"
+                    Margin="16, -4, 0, 0"></Label>
+                <Label
+                    Grid.Row="3"
+                    Text="{Binding CurrentDayWeather.dt, StringFormat='{0:dddd, d MMMM yyyy}'}"
+                    FontSize="{StaticResource Body1FontSize}"
+                    FontFamily="Rubik_Light"
+                    TextColor="{StaticResource GrayColor}"
+                    HorizontalOptions="Start"
+                    Margin="16, 4, 0, 0"></Label>
+                <Grid
+                    Grid.Row="4"
+                    Margin="16, 36, 16, 24"
+                    ColumnDefinitions="*, *"
+                    VerticalOptions="Start">
+                    <StackLayout
+                        Grid.Column="0">
+                        <Image 
+                            Source="{Binding CurrentDayWeather.weather.icon, StringFormat='icon_{0}.png'}"
+                            WidthRequest="100"
+                            HeightRequest="100"></Image>
+                        <Label
+                            Text="{Binding CurrentDayWeather.weather.description}"
+                            FontSize="{StaticResource Body2FontSize}"
+                            FontFamily="Rubik_Regular"
+                            TextColor="{StaticResource TextColor}"
+                            HorizontalOptions="Center"
+                            Margin="0, 4, 0, 0"></Label>
+                    </StackLayout>
+                    <StackLayout
+                        Grid.Column="1"
+                        Spacing="0"
+                        VerticalOptions="EndAndExpand">
+                        <Label
+                            HorizontalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span
+                                        Text="{Binding CurrentDayWeather.temp, StringFormat='{0:N0}°'}"
+                                        FontFamily="Rubik_Light"
+                                        FontSize="{StaticResource Headline0FontSize}"
+                                        TextColor="{StaticResource TextColor}"></Span>
+                                    <Span
+                                        Text="C"
+                                        FontFamily="Rubik_Regular"
+                                        FontSize="{StaticResource Subtitle1FontSize}"
+                                        TextColor="{StaticResource TextColor}"></Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label
+                            HorizontalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span
+                                        Text="Feels like "
+                                        FontFamily="Rubik_Regular"
+                                        FontSize="{StaticResource Body2FontSize}"
+                                        TextColor="{StaticResource TextColor}"></Span>
+                                    <Span
+                                        Text="{Binding CurrentDayWeather.feels_like, StringFormat='{0:N0}°C'}"
+                                        FontFamily="Rubik_Medium"
+                                        FontSize="{StaticResource Body2FontSize}"
+                                        TextColor="{StaticResource TextColor}"></Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label
+                            HorizontalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span
+                                        Text="Min: "
+                                        FontFamily="Rubik_Regular"
+                                        FontSize="{StaticResource Body2FontSize}"
+                                        TextColor="{StaticResource TextColor}"></Span>
+                                    <Span
+                                        Text="{Binding CurrentDayWeather.minTemp, StringFormat='{0:N0}°C'}"
+                                        FontFamily="Rubik_Medium"
+                                        FontSize="{StaticResource Body2FontSize}"
+                                        TextColor="{StaticResource TextColor}"></Span>
+                                    <Span
+                                        Text=" | Max: "
+                                        FontFamily="Rubik_Regular"
+                                        FontSize="{StaticResource Body2FontSize}"
+                                        TextColor="{StaticResource TextColor}"></Span>
+                                    <Span
+                                        Text="{Binding CurrentDayWeather.maxTemp, StringFormat='{0:N0}°C'}"
+                                        FontFamily="Rubik_Medium"
+                                        FontSize="{StaticResource Body2FontSize}"
+                                        TextColor="{StaticResource TextColor}"></Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+                </Grid>
+                <Grid
+                    Grid.Row="5"
+                    Margin="16, 0, 16, 0"
+                    ColumnDefinitions="*, *"
+                    ColumnSpacing="8"
+                    HorizontalOptions="Fill">
+                    <Frame
+                        Grid.Column="0"
+                        VerticalOptions="CenterAndExpand"
+                        Padding="16"
+                        CornerRadius="24"
+                        HasShadow="False"
+                        BackgroundColor="{StaticResource LightGrayColor}">
+                        <Label
+                            HorizontalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span
+                                        Text="Sunrise: "
+                                        FontFamily="Rubik_Regular"
+                                        FontSize="{StaticResource Body2FontSize}"
+                                        TextColor="{StaticResource GrayColor}"></Span>
+                                    <Span
+                                        Text="{Binding CurrentDayWeather.sunrise, StringFormat='{0:HH:mm}'}"
+                                        FontFamily="Rubik_Medium"
+                                        FontSize="{StaticResource Body2FontSize}"
+                                        TextColor="{StaticResource TextColor}"></Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </Frame>
+                    <Frame
+                        Grid.Column="1"
+                        VerticalOptions="CenterAndExpand"
+                        Padding="16"
+                        CornerRadius="24"
+                        HasShadow="False"
+                        BackgroundColor="{StaticResource LightGrayColor}">
+                        <Label
+                            HorizontalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span
+                                        Text="Sunset: "
+                                        FontFamily="Rubik_Regular"
+                                        FontSize="{StaticResource Body2FontSize}"
+                                        TextColor="{StaticResource GrayColor}"></Span>
+                                    <Span
+                                        Text="{Binding CurrentDayWeather.sunset, StringFormat='{0:HH:mm}'}"
+                                        FontFamily="Rubik_Medium"
+                                        FontSize="{StaticResource Body2FontSize}"
+                                        TextColor="{StaticResource TextColor}"></Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </Frame>
+                </Grid>
+                <StackLayout
+                    Grid.Row="6"
+                    Margin="16, 0, 16, 16"
+                    VerticalOptions="StartAndExpand">
+                    <Frame
+                        Padding="16"
+                        CornerRadius="24"
+                        HasShadow="False"
+                        BackgroundColor="{StaticResource LightGrayColor}">
+                        <StackLayout
+                            Orientation="Horizontal">
+                            <Label
+                                Text="Probability of precipitation: "
+                                FontFamily="Rubik_Regular"
+                                FontSize="{StaticResource Body2FontSize}"
+                                TextColor="{StaticResource GrayColor}"
+                                HorizontalOptions="Start">
+                            </Label>
+                            <Label
+                                Text="{Binding CurrentDayWeather.pop, StringFormat='{0}%'}"
+                                FontFamily="Rubik_Medium"
+                                FontSize="{StaticResource Body2FontSize}"
+                                TextColor="{StaticResource GrayColor}"
+                                HorizontalOptions="EndAndExpand"></Label>
+                        </StackLayout>
+                    </Frame>
+                    <Frame
+                        Padding="16"
+                        CornerRadius="24"
+                        HasShadow="False"
+                        BackgroundColor="{StaticResource LightGrayColor}">
+                        <StackLayout
+                            Orientation="Horizontal">
+                            <Label
+                                Text="Wind speed: "
+                                FontFamily="Rubik_Regular"
+                                FontSize="{StaticResource Body2FontSize}"
+                                TextColor="{StaticResource GrayColor}"
+                                HorizontalOptions="Start">
+                            </Label>
+                            <Label
+                                Text="{Binding CurrentDayWeather.wind_speed, StringFormat='{0} m/s'}"
+                                FontFamily="Rubik_Medium"
+                                FontSize="{StaticResource Body2FontSize}"
+                                TextColor="{StaticResource GrayColor}"
+                                HorizontalOptions="EndAndExpand"></Label>
+                        </StackLayout>
+                    </Frame>
+                    <Frame
+                        Padding="16"
+                        CornerRadius="24"
+                        HasShadow="False"
+                        BackgroundColor="{StaticResource LightGrayColor}">
+                        <StackLayout
+                            Orientation="Horizontal">
+                            <Label
+                                Text="Humidity: "
+                                FontFamily="Rubik_Regular"
+                                FontSize="{StaticResource Body2FontSize}"
+                                TextColor="{StaticResource GrayColor}"
+                                HorizontalOptions="Start">
+                            </Label>
+                            <Label
+                                Text="{Binding CurrentDayWeather.humidity, StringFormat='{0}%'}"
+                                FontFamily="Rubik_Medium"
+                                FontSize="{StaticResource Body2FontSize}"
+                                TextColor="{StaticResource GrayColor}"
+                                HorizontalOptions="EndAndExpand"></Label>
+                        </StackLayout>
+                    </Frame>
+                    <Frame
+                        Padding="16"
+                        CornerRadius="24"
+                        HasShadow="False"
+                        BackgroundColor="{StaticResource LightGrayColor}">
+                        <StackLayout
+                            Orientation="Horizontal">
+                            <Label
+                                Text="Pressure: "
+                                FontFamily="Rubik_Regular"
+                                FontSize="{StaticResource Body2FontSize}"
+                                TextColor="{StaticResource GrayColor}"
+                                HorizontalOptions="Start">
+                            </Label>
+                            <Label
+                                Text="{Binding CurrentDayWeather.pressure, StringFormat='{0} hPa'}"
+                                FontFamily="Rubik_Medium"
+                                FontSize="{StaticResource Body2FontSize}"
+                                TextColor="{StaticResource GrayColor}"
+                                HorizontalOptions="EndAndExpand"></Label>
+                        </StackLayout>
+                    </Frame>
+                    <Frame
+                        Padding="16"
+                        CornerRadius="24"
+                        HasShadow="False"
+                        BackgroundColor="{StaticResource LightGrayColor}">
+                        <StackLayout
+                            Orientation="Horizontal">
+                            <Label
+                                Text="UV index: "
+                                FontFamily="Rubik_Regular"
+                                FontSize="{StaticResource Body2FontSize}"
+                                TextColor="{StaticResource GrayColor}"
+                                HorizontalOptions="Start">
+                            </Label>
+                            <Label
+                                Text="{Binding CurrentDayWeather.uvi}"
+                                FontFamily="Rubik_Medium"
+                                FontSize="{StaticResource Body2FontSize}"
+                                TextColor="{StaticResource GrayColor}"
+                                HorizontalOptions="EndAndExpand"></Label>
+                        </StackLayout>
+                    </Frame>
+                    <Frame
+                        Padding="16"
+                        CornerRadius="24"
+                        HasShadow="False"
+                        BackgroundColor="{StaticResource LightGrayColor}">
+                        <StackLayout
+                            Orientation="Horizontal">
+                            <Label
+                                Text="Dew point: "
+                                FontFamily="Rubik_Regular"
+                                FontSize="{StaticResource Body2FontSize}"
+                                TextColor="{StaticResource GrayColor}"
+                                HorizontalOptions="Start">
+                            </Label>
+                            <Label
+                                Text="{Binding CurrentDayWeather.dew_point, StringFormat='{0}°C'}"
+                                FontFamily="Rubik_Medium"
+                                FontSize="{StaticResource Body2FontSize}"
+                                TextColor="{StaticResource GrayColor}"
+                                HorizontalOptions="EndAndExpand"></Label>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </Grid>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

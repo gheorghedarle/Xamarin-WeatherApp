@@ -41,6 +41,9 @@ namespace WeatherApp.Services.Weather
                         humidity = Convert.ToDouble(json["current"]["humidity"].ToString()),
                         wind_speed = Convert.ToDouble(json["current"]["wind_speed"].ToString()),
                         wind_deg = Convert.ToDouble(json["current"]["wind_deg"].ToString()),
+                        pressure = Convert.ToDouble(json["current"]["pressure"].ToString()),
+                        dew_point = Convert.ToDouble(json["current"]["dew_point"].ToString()),
+                        uvi = Convert.ToDouble(json["current"]["uvi"].ToString()),
                         weather = new WeatherModel()
                         {
                             icon = json["current"]["weather"][0]["icon"].ToString(),
@@ -96,6 +99,10 @@ namespace WeatherApp.Services.Weather
                     humidity = Convert.ToDouble(daily[i]["humidity"].ToString()),
                     wind_speed = Convert.ToDouble(daily[i]["wind_speed"].ToString()),
                     wind_deg = Convert.ToDouble(daily[i]["wind_deg"].ToString()),
+                    pressure = Convert.ToDouble(daily[i]["pressure"].ToString()),
+                    dew_point = Convert.ToDouble(daily[i]["dew_point"].ToString()),
+                    pop = Convert.ToDouble(daily[i]["pop"].ToString()) * 100,
+                    uvi = Convert.ToDouble(daily[i]["uvi"].ToString()),
                     weather = new WeatherModel()
                     {
                         icon = daily[i]["weather"][0]["icon"].ToString(),
