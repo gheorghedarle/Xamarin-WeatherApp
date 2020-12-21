@@ -4,7 +4,8 @@
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              xmlns:fragments="clr-namespace:WeatherApp.Views.Fragments"
              x:Class="WeatherApp.Views.WeatherPage"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="False"
+             x:Name="weatherPage">
     <ContentPage.Content>
         <SwipeView
             x:Name="menuView"
@@ -434,16 +435,15 @@
                         BindableLayout.ItemsSource="{Binding CurrentWeather.dailyWeatherForecast}">
                                 <BindableLayout.ItemTemplate>
                                     <DataTemplate>
-                                        <StackLayout
-                                    Margin="0"
-                                    Spacing="0"
-                                    Padding="0">
                                             <Frame
                                         Padding="16, 8, 16, 8"
                                         CornerRadius="24"
                                         HasShadow="False"
                                         BackgroundColor="{StaticResource LightGrayColor}">
-                                                <Grid 
+                                            <Frame.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding BindingContext.DayForecastCommand, Source={x:Reference weatherPage}}" CommandParameter="{Binding .}" NumberOfTapsRequired="1"></TapGestureRecognizer>
+                                            </Frame.GestureRecognizers>
+                                            <Grid 
                                             ColumnDefinitions="Auto, *, Auto">
                                                     <Image 
                                                 Grid.Column="0"
@@ -475,7 +475,6 @@
                                                     </Label>
                                                 </Grid>
                                             </Frame>
-                                        </StackLayout>
                                     </DataTemplate>
                                 </BindableLayout.ItemTemplate>
                             </StackLayout>

@@ -34,6 +34,7 @@ namespace WeatherApp.ViewModels
         public Command YourLocationsCommand { get; set; }
         public Command SettingsCommand { get; set; }
         public Command MenuCommand { get; set; }
+        public Command DayForecastCommand { get; set; }
         public double MenuSize { get; set; } = DeviceDisplay.MainDisplayInfo.Width / 4;
 
         public WeatherPageViewModel(
@@ -49,6 +50,7 @@ namespace WeatherApp.ViewModels
             YourLocationsCommand = new Command(YourLocationsCommandHandler);
             SettingsCommand = new Command(SettingsCommandHandler);
             MenuCommand = new Command(MenuCommandHandler);
+            DayForecastCommand = new Command<WeatherDetailsModel>(DayForecastCommandHandler);
 
             MainState = LayoutState.Loading;
         }
@@ -75,12 +77,17 @@ namespace WeatherApp.ViewModels
 
         private async void YourLocationsCommandHandler()
         {
-            //await _navigationService.NavigateAsync(nameof(YourLocationsPage));
+            await _navigationService.NavigateAsync(nameof(YourLocationsPage));
         }
 
         private async void SettingsCommandHandler()
         {
             await _navigationService.NavigateAsync(nameof(SettingsPage));
+        }
+
+        private async void DayForecastCommandHandler(WeatherDetailsModel item)
+        {
+            await _navigationService.NavigateAsync(nameof(WeatherDetailsPage));
         }
 
         private void MenuCommandHandler()
