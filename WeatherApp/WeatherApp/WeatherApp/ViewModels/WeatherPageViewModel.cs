@@ -55,6 +55,11 @@ namespace WeatherApp.ViewModels
 
         private async void RefreshCommandHandler()
         {
+            if (HasNoInternetConnection)
+            {
+                IsRefreshing = false;
+                return;
+            }
             IsRefreshing = true;
             await GetCurrentWeather();
             IsRefreshing = false;
@@ -62,6 +67,8 @@ namespace WeatherApp.ViewModels
 
         private async void TryAgainCommandHandler()
         {
+            if (HasNoInternetConnection)
+                return;
             MainState = LayoutState.Loading;
             await GetCurrentWeather();
         }

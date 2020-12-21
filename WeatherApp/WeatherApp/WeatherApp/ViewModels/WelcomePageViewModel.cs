@@ -39,6 +39,8 @@ namespace WeatherApp.ViewModels
 
         private async void UseCurrentLocationCommandHandler()
         {
+            if (HasNoInternetConnection)
+                return;
             MainState = LayoutState.Loading;
             try
             {

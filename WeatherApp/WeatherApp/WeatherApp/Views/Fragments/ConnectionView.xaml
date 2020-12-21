@@ -1,12 +1,32 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<StackLayout xmlns="http://xamarin.com/schemas/2014/forms" 
+<Grid xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WeatherApp.Fragments.ConnectionView"
+             x:Class="WeatherApp.Views.Fragments.ConnectionView"
              IsVisible="{Binding HasNoInternetConnection}" 
-             BackgroundColor="{StaticResource FailColor}">
-    <Label 
+             RowDefinitions="Auto, Auto"
+             ColumnDefinitions="Auto, *"
+             RowSpacing="4"
+             ColumnSpacing="16"
+             Padding="16"
+             BackgroundColor="{StaticResource WhiteColor}">
+    <Label
+        Grid.Column="0"
+        Grid.RowSpan="2"
+        Text="&#xf12a;"
+        FontSize="{StaticResource Headline2FontSize}"
+        FontFamily="FontAwesome"
+        TextColor="{StaticResource FailColor}"
+        HorizontalOptions="Center"></Label>
+    <Label
+        Grid.Column="1"
+        Grid.Row="0"
         Text="No Internet Connection"
+        FontFamily="Rubik_Medium"
+        TextColor="{StaticResource FailColor}"/>
+    <Label
+        Grid.Column="1"
+        Grid.Row="1"
+        Text="It looks like you do not have internet connection"
         FontFamily="Rubik_Regular"
-        TextColor="White"
-        Margin="16, 8, 16, 8"/>
-</StackLayout>
+        TextColor="{StaticResource TextColor}"/>
+</Grid>

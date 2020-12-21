@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-             xmlns:behaviors="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+             xmlns:fragments="clr-namespace:WeatherApp.Views.Fragments"
              x:Class="WeatherApp.Views.WeatherPage"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
@@ -88,7 +88,6 @@
                 </SwipeItemView>
             </SwipeView.LeftItems>
             <RefreshView
-                x:Name="content"
                 IsRefreshing="{Binding IsRefreshing}"
                 RefreshColor="{StaticResource PrimaryColor}"
                 Command="{Binding RefreshCommand}">
@@ -97,19 +96,13 @@
                         BackgroundColor="{StaticResource BackgroundColor}"
                         xct:StateLayout.CurrentState="{Binding MainState}" 
                         xct:StateLayout.AnimateStateChanges="True"
-                        RowDefinitions="Auto, Auto, Auto, Auto, *, Auto, Auto, Auto"
+                        RowDefinitions="Auto, Auto, Auto, Auto, *, Auto, Auto, Auto, Auto"
                         RowSpacing="0">
                         <xct:StateLayout.StateViews>
                             <xct:StateView
                                 StateKey="Loading"
                                 VerticalOptions="FillAndExpand">
-                                <ActivityIndicator
-                                    Color="{StaticResource PrimaryColor}"
-                                    IsRunning="True"
-                                    WidthRequest="48"
-                                    HeightRequest="48"
-                                    HorizontalOptions="CenterAndExpand"
-                                    VerticalOptions="CenterAndExpand"></ActivityIndicator>
+                                <fragments:LoadingView/>
                             </xct:StateView>
                             <xct:StateView
                                 StateKey="Error"
@@ -157,8 +150,10 @@
                                 </Grid>
                             </xct:StateView>
                         </xct:StateLayout.StateViews>
+                        <fragments:ConnectionView
+                            Grid.Row="0"/>
                         <StackLayout
-                            Grid.Row="0"
+                            Grid.Row="1"
                             Margin="16, 8, 16, 0"
                             Padding="0, 8, 8, 8"
                             HorizontalOptions="Start">
@@ -174,7 +169,7 @@
                                 HorizontalOptions="Start"></Label>
                         </StackLayout>
                         <Label
-                            Grid.Row="1"
+                            Grid.Row="2"
                             Text="{Binding CurrentCity}"
                             FontSize="{StaticResource Headline2FontSize}"
                             FontFamily="FrankRuhle_Medium"
@@ -182,7 +177,7 @@
                             HorizontalOptions="Start"
                             Margin="16, 0, 0, 0"></Label>
                         <Label
-                            Grid.Row="2"
+                            Grid.Row="3"
                             Text="{Binding CurrentCountry}"
                             FontSize="{StaticResource Headline4FontSize}"
                             FontFamily="Rubik_Light"
@@ -190,7 +185,7 @@
                             HorizontalOptions="Start"
                             Margin="16, -4, 0, 0"></Label>
                         <Label
-                            Grid.Row="3"
+                            Grid.Row="4"
                             Text="{Binding SelectedHour.dt, StringFormat='{0:dddd, d MMMM yyyy HH:mm}'}"
                             FontSize="{StaticResource Body1FontSize}"
                             FontFamily="Rubik_Light"
@@ -198,7 +193,7 @@
                             HorizontalOptions="Start"
                             Margin="16, 4, 0, 0"></Label>
                         <StackLayout
-                            Grid.Row="4"
+                            Grid.Row="5"
                             VerticalOptions="CenterAndExpand"
                             Margin="0, 32, 0, 16">
                             <Image 
@@ -214,7 +209,7 @@
                                 Margin="0, 4, 0, 0"></Label>
                         </StackLayout>
                         <StackLayout
-                            Grid.Row="5"
+                            Grid.Row="6"
                             Orientation="Horizontal"
                             HorizontalOptions="FillAndExpand"
                             Margin="16, 0, 16, 0">
@@ -313,7 +308,7 @@
                             </StackLayout>
                         </StackLayout>
                         <StackLayout
-                    Grid.Row="6"
+                    Grid.Row="7"
                     Margin="16, 0, 16, 0"
                     Padding="0, 0, 0, 2">
                             <Label
@@ -426,7 +421,7 @@
                             </CollectionView>
                         </StackLayout>
                         <StackLayout
-                    Grid.Row="7"
+                    Grid.Row="8"
                     Margin="16, 0, 16, 8">
                             <Label
                         Text="6 days forecast"
