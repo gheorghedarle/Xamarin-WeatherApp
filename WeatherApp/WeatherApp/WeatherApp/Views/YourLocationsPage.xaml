@@ -1,13 +1,51 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:fragments="clr-namespace:WeatherApp.Views.Fragments"
              x:Class="WeatherApp.Views.YourLocationsPage"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView>
+            <Grid
+                BackgroundColor="{StaticResource BackgroundColor}"
+                xct:StateLayout.CurrentState="{Binding MainState}" 
+                xct:StateLayout.AnimateStateChanges="True"
+                RowDefinitions="Auto, Auto, Auto, Auto, *, Auto"
+                RowSpacing="0"
+                Padding="0, 0, 0, 24">
+                <xct:StateLayout.StateViews>
+                    <xct:StateView
+                        StateKey="Loading"
+                        VerticalOptions="FillAndExpand">
+                        <fragments:LoadingView/>
+                    </xct:StateView>
+                </xct:StateLayout.StateViews>
+                <StackLayout
+                    Grid.Row="0"
+                    Margin="16, 8, 16, 0"
+                    Padding="0, 8, 8, 8"
+                    HorizontalOptions="Start"
+                    Orientation="Horizontal">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackCommand}"></TapGestureRecognizer>
+                    </StackLayout.GestureRecognizers>
+                    <Label
+                        Text="&#xf060;"
+                        FontSize="{StaticResource Subtitle1FontSize}"
+                        FontFamily="FontAwesome"
+                        TextColor="{StaticResource TextColor}"
+                        HorizontalOptions="Start"></Label>
+                    <Label
+                        Text="Your locations"
+                        FontSize="{StaticResource Headline4FontSize}"
+                        FontFamily="FrankRuhle_Medium"
+                        TextColor="{StaticResource TextColor}"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Start"
+                        Margin="8, 0, 0, 0"></Label>
+                </StackLayout>
+            </Grid>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

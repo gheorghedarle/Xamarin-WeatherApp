@@ -13,7 +13,7 @@
         Grid.Column="0"
         Grid.RowSpan="2"
         Text="&#xf12a;"
-        FontSize="{StaticResource Headline2FontSize}"
+        FontSize="{StaticResource Headline3FontSize}"
         FontFamily="FontAwesome"
         TextColor="{StaticResource FailColor}"
         HorizontalOptions="Center"></Label>

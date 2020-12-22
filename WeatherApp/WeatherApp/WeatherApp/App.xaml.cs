@@ -50,7 +50,6 @@ namespace WeatherApp
             containerRegistry.RegisterForNavigation<NavigationPage>("NavigationPage");
             containerRegistry.RegisterForNavigation<WelcomePage, WelcomePageViewModel>("WelcomePage");
             containerRegistry.RegisterForNavigation<WeatherPage, WeatherPageViewModel>("WeatherPage");
-            containerRegistry.RegisterForNavigation<WeatherDetailsPage, WeatherDetailsPageViewModel>("WeatherDetailsPage");
             containerRegistry.RegisterForNavigation<YourLocationsPage, YourLocationsPageViewModel>("YourLocationsPage");
             containerRegistry.RegisterForNavigation<SettingsPage, SettingsPageViewModel>("SettingsPage");
         }

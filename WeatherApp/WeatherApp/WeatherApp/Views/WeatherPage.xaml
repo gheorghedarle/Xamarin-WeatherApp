@@ -434,49 +434,167 @@
                                 BindableLayout.ItemsSource="{Binding CurrentWeather.dailyWeatherForecast}">
                                 <BindableLayout.ItemTemplate>
                                     <DataTemplate>
-                                        <Frame
-                                            Padding="16, 8, 16, 8"
-                                            CornerRadius="24"
-                                            HasShadow="False"
-                                            BackgroundColor="{StaticResource LightGrayColor}">
-                                            <Frame.GestureRecognizers>
-                                                <TapGestureRecognizer 
-                                                    Command="{Binding BindingContext.DayForecastCommand, Source={x:Reference weatherPage}}" 
-                                                    CommandParameter="{Binding .}" 
-                                                    NumberOfTapsRequired="1"></TapGestureRecognizer>
-                                            </Frame.GestureRecognizers>
-                                            <Grid 
-                                                ColumnDefinitions="Auto, *, Auto">
-                                                <Image 
-                                                    Grid.Column="0"
-                                                    Source="{Binding weather.icon, StringFormat='icon_{0}.png'}"
-                                                    WidthRequest="30"
-                                                    VerticalOptions="Center"></Image>
-                                                <Label
-                                                    Grid.Column="1"
-                                                    Margin="8, 0, 0, 0"
-                                                    Text="{Binding dt, StringFormat='{0:dddd}'}"
-                                                    HorizontalOptions="Start"
-                                                    VerticalOptions="Center"
-                                                    FontFamily="Rubik_Regular"
-                                                    FontSize="{StaticResource Body2FontSize}">
-                                                </Label>
-                                                <Label
-                                                    Grid.Column="2"
-                                                    Margin="0, 0, 8, 0"
-                                                    HorizontalOptions="Center"
-                                                    VerticalOptions="Center"
-                                                    FontFamily="Rubik_Regular"
-                                                    FontSize="{StaticResource Body2FontSize}">
-                                                    <Label.Text>
-                                                        <MultiBinding StringFormat="{}{0} / {1}">
-                                                            <Binding Path="minTemp" StringFormat="{}{0:N0}°C"/>
-                                                            <Binding Path="maxTemp" StringFormat="{}{0:N0}°C"/>
-                                                        </MultiBinding>
-                                                    </Label.Text>
-                                                </Label>
+                                        <xct:Expander ExpandAnimationEasing="{x:Static Easing.CubicIn}"
+                                                CollapseAnimationEasing="{x:Static Easing.CubicOut}">
+                                            <xct:Expander.Header>
+                                                <Frame
+                                                    Padding="16, 8, 16, 12"
+                                                    CornerRadius="24"
+                                                    BackgroundColor="{StaticResource WhiteColor}">
+                                                    <Grid 
+                                                        ColumnDefinitions="Auto, *, Auto">
+                                                        <Image 
+                                                            Grid.Column="0"
+                                                            Source="{Binding weather.icon, StringFormat='icon_{0}.png'}"
+                                                            WidthRequest="32"
+                                                            VerticalOptions="Center"></Image>
+                                                        <Label
+                                                            Grid.Column="1"
+                                                            Margin="8, 0, 0, 0"
+                                                            Text="{Binding dt, StringFormat='{0:dddd}'}"
+                                                            TextColor="{StaticResource TextColor}"
+                                                            HorizontalOptions="Start"
+                                                            VerticalOptions="Center"
+                                                            FontFamily="Rubik_Regular"
+                                                            FontSize="{StaticResource Body2FontSize}">
+                                                        </Label>
+                                                        <Label
+                                                            Grid.Column="2"
+                                                            Margin="0, 0, 8, 0"
+                                                            HorizontalOptions="Center"
+                                                            VerticalOptions="Center"
+                                                            FontFamily="Rubik_Regular"
+                                                            FontSize="{StaticResource Body2FontSize}"
+                                                            TextColor="{StaticResource TextColor}">
+                                                            <Label.Text>
+                                                                <MultiBinding StringFormat="{}{0} / {1}">
+                                                                    <Binding Path="minTemp" StringFormat="{}{0:N0}°C"/>
+                                                                    <Binding Path="maxTemp" StringFormat="{}{0:N0}°C"/>
+                                                                </MultiBinding>
+                                                            </Label.Text>
+                                                        </Label>
+                                                    </Grid>
+                                                </Frame>
+                                            </xct:Expander.Header>
+                                            <Grid
+                                                RowDefinitions="Auto, Auto"
+                                                ColumnDefinitions="*, *, *, *"
+                                                RowSpacing="8"
+                                                Margin="8">
+                                                <StackLayout
+                                                    Grid.Row="0"
+                                                    Grid.Column="0">
+                                                    <Image 
+                                                        Source="i8_sunrise.png"
+                                                        WidthRequest="32"
+                                                        VerticalOptions="Center"></Image>
+                                                    <Label
+                                                        Text="{Binding sunrise, StringFormat='{0:HH:mm}'}"
+                                                        FontFamily="Rubik_Medium"
+                                                        FontSize="{StaticResource Body2FontSize}"
+                                                        TextColor="{StaticResource TextColor}"
+                                                        HorizontalOptions="Center"></Label>
+                                                </StackLayout>
+                                                <StackLayout
+                                                    Grid.Row="0"
+                                                    Grid.Column="1">
+                                                    <Image 
+                                                        Source="i8_sunset.png"
+                                                        WidthRequest="32"
+                                                        VerticalOptions="Center"></Image>
+                                                    <Label
+                                                        Text="{Binding sunset, StringFormat='{0:HH:mm}'}"
+                                                        FontFamily="Rubik_Medium"
+                                                        FontSize="{StaticResource Body2FontSize}"
+                                                        TextColor="{StaticResource TextColor}"
+                                                        HorizontalOptions="Center"></Label>
+                                                </StackLayout>
+                                                <StackLayout
+                                                    Grid.Row="0"
+                                                    Grid.Column="2">
+                                                    <Image
+                                                        Source="i8_uvi.png"
+                                                        WidthRequest="32"
+                                                        VerticalOptions="Center"></Image>
+                                                    <Label
+                                                        Text="{Binding uvi, StringFormat='{0:N1}'}"
+                                                        FontFamily="Rubik_Medium"
+                                                        FontSize="{StaticResource Body2FontSize}"
+                                                        TextColor="{StaticResource TextColor}"
+                                                        HorizontalOptions="Center"></Label>
+                                                </StackLayout>
+                                                <StackLayout
+                                                    Grid.Row="0"
+                                                    Grid.Column="3">
+                                                    <Image
+                                                        Source="i8_pop.png"
+                                                        WidthRequest="32"
+                                                        VerticalOptions="Center"></Image>
+                                                    <Label
+                                                        Text="{Binding pop, StringFormat='{0}%'}"
+                                                        FontFamily="Rubik_Medium"
+                                                        FontSize="{StaticResource Body2FontSize}"
+                                                        TextColor="{StaticResource TextColor}"
+                                                        HorizontalOptions="Center"></Label>
+                                                </StackLayout>
+                                                <StackLayout
+                                                    Grid.Row="1"
+                                                    Grid.Column="0">
+                                                    <Image 
+                                                        Source="i8_humidity.png"
+                                                        WidthRequest="32"
+                                                        VerticalOptions="Center"></Image>
+                                                    <Label
+                                                        Text="{Binding humidity, StringFormat='{0}%'}"
+                                                        FontFamily="Rubik_Medium"
+                                                        FontSize="{StaticResource Body2FontSize}"
+                                                        TextColor="{StaticResource TextColor}"
+                                                        HorizontalOptions="Center"></Label>
+                                                </StackLayout>
+                                                <StackLayout
+                                                    Grid.Row="1"
+                                                    Grid.Column="1">
+                                                    <Image 
+                                                        Source="i8_dew_point.png"
+                                                        WidthRequest="32"
+                                                        VerticalOptions="Center"></Image>
+                                                    <Label
+                                                        Text="{Binding dew_point, StringFormat='{0:N1}°C'}"
+                                                        FontFamily="Rubik_Medium"
+                                                        FontSize="{StaticResource Body2FontSize}"
+                                                        TextColor="{StaticResource TextColor}"
+                                                        HorizontalOptions="Center"></Label>
+                                                </StackLayout>
+                                                <StackLayout
+                                                    Grid.Row="1"
+                                                    Grid.Column="2">
+                                                    <Image 
+                                                        Source="i8_pressure.png"
+                                                        WidthRequest="32"
+                                                        VerticalOptions="Center"></Image>
+                                                    <Label
+                                                        Text="{Binding pressure, StringFormat='{0} hPa'}"
+                                                        FontFamily="Rubik_Medium"
+                                                        FontSize="{StaticResource Body2FontSize}"
+                                                        TextColor="{StaticResource TextColor}"
+                                                        HorizontalOptions="Center"></Label>
+                                                </StackLayout>
+                                                <StackLayout
+                                                    Grid.Row="1"
+                                                    Grid.Column="3">
+                                                    <Image 
+                                                        Source="i8_wind_speed.png"
+                                                        WidthRequest="32"
+                                                        VerticalOptions="Center"></Image>
+                                                    <Label
+                                                        Text="{Binding wind_speed, StringFormat='{0:N1} m/s'}"
+                                                        FontFamily="Rubik_Medium"
+                                                        FontSize="{StaticResource Body2FontSize}"
+                                                        TextColor="{StaticResource TextColor}"
+                                                        HorizontalOptions="Center"></Label>
+                                                </StackLayout>
                                             </Grid>
-                                        </Frame>
+                                        </xct:Expander>
                                     </DataTemplate>
                                 </BindableLayout.ItemTemplate>
                             </StackLayout>
