@@ -61,5 +61,24 @@ namespace WeatherApp.Services.Location
             }
             return null;
         }
+
+        public async Task<Xamarin.Essentials.Location> GetLocation(string locationName)
+        {
+            try
+            {
+                var locations = await Geocoding.GetLocationsAsync(locationName);
+
+                var location = locations.FirstOrDefault();
+                if (location != null)
+                {
+                    return location;
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+            return null;
+        }
     }
 }

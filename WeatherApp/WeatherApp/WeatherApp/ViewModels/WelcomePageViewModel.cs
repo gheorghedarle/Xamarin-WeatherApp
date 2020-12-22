@@ -1,8 +1,12 @@
-﻿using Prism.Commands;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Prism.Commands;
 using Prism.Navigation;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using WeatherApp.Models;
 using WeatherApp.Services.LocalSettings;
 using WeatherApp.Services.Location;
 using WeatherApp.Views;
@@ -64,10 +68,17 @@ namespace WeatherApp.ViewModels
 
         private async Task SaveLocationAndPlacemark(Location location, Placemark placemark)
         {
-            await SecureStorage.SetAsync("currentLatitude", location.Latitude.ToString());
-            await SecureStorage.SetAsync("currentLongitude", location.Longitude.ToString());
-            await SecureStorage.SetAsync("currentCity", placemark.Locality);
-            await SecureStorage.SetAsync("currentCountry", placemark.CountryName);
+            var loc = new LocationModel()
+            {
+                Latitude = location.Latitude,
+                Longitude = location.Longitude,
+                Locality = placemark.Locality,
+                CountryName = placemark.CountryName,
+            };
+            var listLoc = new List<LocationModel>();
+            listLoc.Add(loc);
+            await SecureStorage.SetAsync("locations", JsonConvert.SerializeObject(listLoc));
+            await SecureStorage.SetAsync("selectedLocation", "0");
         }
 
         private async Task LoadAndSaveLocalSettings()

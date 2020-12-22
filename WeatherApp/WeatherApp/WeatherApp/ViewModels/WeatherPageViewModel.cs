@@ -1,7 +1,9 @@
-﻿using Prism.Commands;
+﻿using Newtonsoft.Json;
+using Prism.Commands;
 using Prism.Events;
 using Prism.Navigation;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
@@ -34,7 +36,6 @@ namespace WeatherApp.ViewModels
         public Command YourLocationsCommand { get; set; }
         public Command SettingsCommand { get; set; }
         public Command MenuCommand { get; set; }
-        public Command DayForecastCommand { get; set; }
         public double MenuSize { get; set; } = DeviceDisplay.MainDisplayInfo.Width / 4;
 
         public WeatherPageViewModel(
@@ -50,7 +51,6 @@ namespace WeatherApp.ViewModels
             YourLocationsCommand = new Command(YourLocationsCommandHandler);
             SettingsCommand = new Command(SettingsCommandHandler);
             MenuCommand = new Command(MenuCommandHandler);
-            DayForecastCommand = new Command<WeatherDetailsModel>(DayForecastCommandHandler);
 
             MainState = LayoutState.Loading;
         }
@@ -85,17 +85,6 @@ namespace WeatherApp.ViewModels
             await _navigationService.NavigateAsync(nameof(SettingsPage));
         }
 
-        private async void DayForecastCommandHandler(WeatherDetailsModel currentDayWeather)
-        {
-            var param = new NavigationParameters()
-            {
-                { "currentCity", CurrentCity },
-                { "currentCountry", CurrentCountry },
-                { "currentDayWeather", currentDayWeather }
-            };
-            await _navigationService.NavigateAsync(nameof(WeatherDetailsPage), param);
-        }
-
         private void MenuCommandHandler()
         {
             if(IsMenuOpen)
@@ -117,34 +106,26 @@ namespace WeatherApp.ViewModels
 
         public override async void OnNavigatedTo(INavigationParameters parameters)
         {
-            await GetCurrentLocalityAndCountry();
-            await GetCurrentLatLon();
+            await GetSelectedPlacemarkAndLocation();
             await GetCurrentWeather();
         }
 
-        private async Task GetCurrentLocalityAndCountry()
+        private async Task GetSelectedPlacemarkAndLocation()
         {
             try
             {
-                CurrentCity = await SecureStorage.GetAsync("currentCity");
-                CurrentCountry = await SecureStorage.GetAsync("currentCountry");
+                var listLocJson = await SecureStorage.GetAsync("locations");
+                var selectedLocationIndexString = await SecureStorage.GetAsync("selectedLocationIndex");
+
+                var listLoc = JsonConvert.DeserializeObject<List<LocationModel>>(listLocJson);
+                var selectedLocationIndex = Convert.ToInt32(selectedLocationIndexString);
+
+                CurrentCity = listLoc[selectedLocationIndex].Locality;
+                CurrentCountry = listLoc[selectedLocationIndex].CountryName;
+                _currentLat = listLoc[selectedLocationIndex].Latitude;
+                _currentLon = listLoc[selectedLocationIndex].Longitude;
             }
             catch(Exception ex)
-            {
-                Debug.WriteLine(ex);
-            }
-        }
-
-        private async Task GetCurrentLatLon()
-        {
-            try
-            {
-                var currentLat = await SecureStorage.GetAsync("currentLatitude");
-                var currentLon = await SecureStorage.GetAsync("currentLongitude");
-                _currentLat = Convert.ToDouble(currentLat);
-                _currentLon = Convert.ToDouble(currentLon);
-            }
-            catch (Exception ex)
             {
                 Debug.WriteLine(ex);
             }

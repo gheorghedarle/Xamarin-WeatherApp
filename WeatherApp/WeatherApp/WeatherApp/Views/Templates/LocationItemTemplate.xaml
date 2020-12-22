@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Frame xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WeatherApp.Views.Templates.LocationItemTemplate"
+             Padding="16"
+             CornerRadius="24"
+             HeightRequest="96"
+             FlexLayout.Basis="50%"
+             FlexLayout.AlignSelf="Start"
+             Margin="4, 0, 4, 0">
+    <StackLayout>
+        <Label
+            Text="{Binding Locality}"
+            FontSize="{StaticResource Headline4FontSize}"
+            FontFamily="FrankRuhle_Medium"
+            TextColor="{StaticResource TextColor}"
+            HorizontalOptions="Start"></Label>
+        <Label
+            Text="{Binding CountryName}"
+            FontSize="{StaticResource Subtitle2FontSize}"
+            FontFamily="Rubik_Light"
+            TextColor="{StaticResource TextColor}"
+            HorizontalOptions="Start"
+            Margin="0, -4, 0, 0"></Label>
+        <Label
+            FontSize="{StaticResource Body2FontSize}"
+            FontFamily="Rubik_Regular"
+            TextColor="{StaticResource TextColor}"
+            HorizontalOptions="Start"
+            VerticalOptions="EndAndExpand">
+            <Label.Text>
+                <MultiBinding StringFormat="{}{0}, {1}">
+                    <Binding Path="Latitude" StringFormat="{}{0:N2}"/>
+                    <Binding Path="Longitude" StringFormat="{}{0:N2}"/>
+                </MultiBinding>
+            </Label.Text>
+        </Label>
+    </StackLayout>
+</Frame>

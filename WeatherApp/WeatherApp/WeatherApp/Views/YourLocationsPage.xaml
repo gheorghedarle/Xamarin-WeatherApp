@@ -3,17 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              xmlns:fragments="clr-namespace:WeatherApp.Views.Fragments"
+             xmlns:templateSelector="clr-namespace:WeatherApp.Helpers.TemplateSelector"
              x:Class="WeatherApp.Views.YourLocationsPage"
              NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <templateSelector:LocationTemplateSelector x:Key="LocationTemplateSelector" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView>
             <Grid
                 BackgroundColor="{StaticResource BackgroundColor}"
                 xct:StateLayout.CurrentState="{Binding MainState}" 
                 xct:StateLayout.AnimateStateChanges="True"
-                RowDefinitions="Auto, Auto, Auto, Auto, *, Auto"
-                RowSpacing="0"
-                Padding="0, 0, 0, 24">
+                RowDefinitions="Auto, Auto, Auto, *"
+                RowSpacing="0">
                 <xct:StateLayout.StateViews>
                     <xct:StateView
                         StateKey="Loading"
@@ -36,15 +41,27 @@
                         FontFamily="FontAwesome"
                         TextColor="{StaticResource TextColor}"
                         HorizontalOptions="Start"></Label>
-                    <Label
-                        Text="Your locations"
-                        FontSize="{StaticResource Headline4FontSize}"
-                        FontFamily="FrankRuhle_Medium"
-                        TextColor="{StaticResource TextColor}"
-                        HorizontalOptions="Start"
-                        VerticalOptions="Start"
-                        Margin="8, 0, 0, 0"></Label>
                 </StackLayout>
+                <Label
+                    Grid.Row="1"
+                    Text="Your locations"
+                    FontSize="{StaticResource Headline2FontSize}"
+                    FontFamily="FrankRuhle_Medium"
+                    TextColor="{StaticResource TextColor}"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Start"
+                    Margin="16, 0, 0, 0"></Label>
+                <FlexLayout 
+                    Grid.Row="3"
+                    BindableLayout.ItemsSource="{Binding Locations}"
+                    BindableLayout.ItemTemplateSelector="{StaticResource LocationTemplateSelector}"
+                    Wrap="Wrap"
+                    Direction="Row"
+                    JustifyContent="SpaceEvenly"
+                    AlignItems="Start"
+                    AlignContent="Start"
+                    Margin="16, 8, 16, 0">
+                </FlexLayout>
             </Grid>
         </ScrollView>
     </ContentPage.Content>
