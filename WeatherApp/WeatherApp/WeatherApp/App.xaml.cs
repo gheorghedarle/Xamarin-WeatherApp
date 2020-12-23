@@ -6,7 +6,9 @@ using WeatherApp.Services.LocalSettings;
 using WeatherApp.Services.Location;
 using WeatherApp.Services.Weather;
 using WeatherApp.ViewModels;
+using WeatherApp.ViewModels.Dialogs;
 using WeatherApp.Views;
+using WeatherApp.Views.Dialogs;
 using Xamarin.Forms;
 
 [assembly: ExportFont("FontAwesome.ttf", Alias = "FontAwesome")]
@@ -52,6 +54,8 @@ namespace WeatherApp
             containerRegistry.RegisterForNavigation<WeatherPage, WeatherPageViewModel>("WeatherPage");
             containerRegistry.RegisterForNavigation<YourLocationsPage, YourLocationsPageViewModel>("YourLocationsPage");
             containerRegistry.RegisterForNavigation<SettingsPage, SettingsPageViewModel>("SettingsPage");
+
+            containerRegistry.RegisterDialog<AddLocationDialog, AddLocationDialogViewModel>();
         }
 
         protected override void OnStart()

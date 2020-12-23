@@ -16,5 +16,6 @@
     <Color x:Key="SuccessColor">#00AF49</Color>
 
     <Color x:Key="BackgroundColor">#F8F8F8</Color>
+    <Color x:Key="TransparentBackgroundColor">#55222222</Color>
     
 </ResourceDictionary>

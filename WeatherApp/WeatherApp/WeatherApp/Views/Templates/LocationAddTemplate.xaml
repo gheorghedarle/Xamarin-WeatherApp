@@ -8,13 +8,14 @@
              FlexLayout.Basis="50%"
              FlexLayout.AlignSelf="Start"
              BackgroundColor="{StaticResource LightGrayColor}"
-             Margin="4, 0, 4, 0"
-             HasShadow="False">
-    <Frame.GestureRecognizers>
-        <TapGestureRecognizer Command="{Binding AddLocationCommand}" NumberOfTapsRequired="1"></TapGestureRecognizer>
-    </Frame.GestureRecognizers>
+             Margin="4"
+             HasShadow="False"
+       x:Name="template">
     <StackLayout
         VerticalOptions="Center">
+        <StackLayout.GestureRecognizers>
+            <TapGestureRecognizer Command="{Binding Parent.BindingContext.AddLocationCommand, Source={x:Reference template}}" NumberOfTapsRequired="1"></TapGestureRecognizer>
+        </StackLayout.GestureRecognizers>
         <Label
             Text="&#xf067;"
             FontSize="{StaticResource Headline2FontSize}"

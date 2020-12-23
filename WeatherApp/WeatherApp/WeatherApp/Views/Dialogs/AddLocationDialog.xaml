@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Frame xmlns="http://xamarin.com/schemas/2014/forms" 
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+        x:Class="WeatherApp.Views.Dialogs.AddLocationDialog"
+        xmlns:prism="http://prismlibrary.com"
+        prism:ViewModelLocator.AutowireViewModel="True"
+        prism:DialogLayout.CloseOnBackgroundTapped="True"
+        prism:DialogLayout.RelativeWidthRequest=".75"
+        CornerRadius="24"
+        BackgroundColor="{StaticResource BackgroundColor}">
+    <prism:DialogLayout.Mask>
+        <StackLayout BackgroundColor="{StaticResource TransparentBackgroundColor}"
+                     HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"></StackLayout>
+    </prism:DialogLayout.Mask>
+    <StackLayout>
+        <Label Text="Add location"
+               TextColor="{StaticResource TextColor}"
+               FontSize="{StaticResource Headline4FontSize}"
+               FontFamily="FrankRuhle_Medium"
+               HorizontalOptions="StartAndExpand"/>
+        <Frame
+            HasShadow="False"
+            Padding="4"
+            CornerRadius="24"
+            Margin="0, 8, 0, 8">
+            <Entry
+                Margin="8, 0, 8, 0"
+                Placeholder="Add new location name"
+                TextColor="{StaticResource TextColor}">
+                <Entry.Effects>
+                    <xct:RemoveBorderEffect></xct:RemoveBorderEffect>
+                </Entry.Effects>
+            </Entry>
+        </Frame>
+        <Button 
+                Text="ADD LOCATION"
+                FontFamily="Rubik_Medium"
+                FontSize="{StaticResource ButtonFontSize}"
+                BackgroundColor="{StaticResource AccentColor}"
+                TextColor="{StaticResource TextColor}"
+                Padding="8, 0, 8, 0"
+                Command="{Binding UseCurrentLocationCommand}"
+                CornerRadius="36"/>
+    </StackLayout>
+</Frame>

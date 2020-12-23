@@ -52,6 +52,7 @@
                     VerticalOptions="Start"
                     Margin="16, 0, 0, 0"></Label>
                 <FlexLayout 
+                    x:Name="layout"
                     Grid.Row="3"
                     BindableLayout.ItemsSource="{Binding Locations}"
                     BindableLayout.ItemTemplateSelector="{StaticResource LocationTemplateSelector}"
