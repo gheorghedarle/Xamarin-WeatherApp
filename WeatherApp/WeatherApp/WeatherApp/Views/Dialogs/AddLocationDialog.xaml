@@ -26,22 +26,30 @@
             CornerRadius="24"
             Margin="0, 8, 0, 8">
             <Entry
+                x:Name="locationName"
                 Margin="8, 0, 8, 0"
                 Placeholder="Add new location name"
                 TextColor="{StaticResource TextColor}">
                 <Entry.Effects>
                     <xct:RemoveBorderEffect></xct:RemoveBorderEffect>
                 </Entry.Effects>
+                <Entry.Behaviors>
+                    <prism:EventToCommandBehavior
+                        EventName="Completed"
+                        Command="{Binding UseCurrentLocationCommand}"
+                        CommandParameter="{Binding Text, Source={x:Reference locationName}}"></prism:EventToCommandBehavior>
+                </Entry.Behaviors>
             </Entry>
         </Frame>
         <Button 
-                Text="ADD LOCATION"
-                FontFamily="Rubik_Medium"
-                FontSize="{StaticResource ButtonFontSize}"
-                BackgroundColor="{StaticResource AccentColor}"
-                TextColor="{StaticResource TextColor}"
-                Padding="8, 0, 8, 0"
-                Command="{Binding UseCurrentLocationCommand}"
-                CornerRadius="36"/>
+            Text="ADD LOCATION"
+            FontFamily="Rubik_Medium"
+            FontSize="{StaticResource ButtonFontSize}"
+            BackgroundColor="{StaticResource AccentColor}"
+            TextColor="{StaticResource TextColor}"
+            Padding="8, 0, 8, 0"
+            Command="{Binding UseCurrentLocationCommand}"
+            CommandParameter="{Binding Text, Source={x:Reference locationName}}"
+            CornerRadius="36"/>
     </StackLayout>
 </Frame>

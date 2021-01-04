@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using Prism.Commands;
 using Prism.Navigation;
 using System;
@@ -74,11 +73,11 @@ namespace WeatherApp.ViewModels
                 Longitude = location.Longitude,
                 Locality = placemark.Locality,
                 CountryName = placemark.CountryName,
+                Selected = true
             };
             var listLoc = new List<LocationModel>();
             listLoc.Add(loc);
             await SecureStorage.SetAsync("locations", JsonConvert.SerializeObject(listLoc));
-            await SecureStorage.SetAsync("selectedLocation", "0");
         }
 
         private async Task LoadAndSaveLocalSettings()

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -14,6 +15,7 @@ using WeatherApp.Views.Dialogs;
 using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace WeatherApp.ViewModels
 {
@@ -26,6 +28,7 @@ namespace WeatherApp.ViewModels
 
         public Command BackCommand { get; set; }
         public Command AddLocationCommand { get; set; }
+        public Command SelectLocationCommand { get; set; }
 
         public YourLocationsPageViewModel(
             INavigationService navigationService,
@@ -37,6 +40,7 @@ namespace WeatherApp.ViewModels
 
             BackCommand = new Command(BackCommandHandler);
             AddLocationCommand = new Command(AddLocationCommandHandler);
+            SelectLocationCommand = new Command<string>(SelectLocationCommandHandler);
 
             Locations = new ObservableCollection<LocationModel>();
 
@@ -53,6 +57,21 @@ namespace WeatherApp.ViewModels
             await _dialogService.ShowDialogAsync(nameof(AddLocationDialog));
         }
 
+        private async void SelectLocationCommandHandler(string selectedLocality)
+        {
+            MainState = LayoutState.Loading;
+
+            Locations.ForEach(l => l.Selected = false);
+            Locations.First(l => l.Locality == selectedLocality).Selected = true;
+            Locations.RemoveAt(Locations.Count - 1);
+
+            await SecureStorage.SetAsync("locations", JsonConvert.SerializeObject(Locations));
+
+            await GetPlacemarkAndLocation();
+
+            MainState = LayoutState.None;
+        }
+
         public override async void OnNavigatedTo(INavigationParameters parameters)
         {
             await GetPlacemarkAndLocation();
@@ -67,12 +86,9 @@ namespace WeatherApp.ViewModels
                 Locations.Clear();
 
                 var listLocJson = await SecureStorage.GetAsync("locations");
-                var selectedLocationIndexString = await SecureStorage.GetAsync("selectedLocationIndex");
+                var locations = JsonConvert.DeserializeObject<List<LocationModel>>(listLocJson);
 
-                var listLoc = JsonConvert.DeserializeObject<List<LocationModel>>(listLocJson);
-                var selectedLocationIndex = Convert.ToInt32(selectedLocationIndexString);
-
-                listLoc.ForEach(l => Locations.Add(l));
+                locations.ForEach(l => Locations.Add(l));
                 Locations.Add(new LocationModel());
             }
             catch (Exception ex)

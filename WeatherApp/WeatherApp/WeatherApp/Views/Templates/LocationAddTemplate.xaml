@@ -10,9 +10,8 @@
              BackgroundColor="{StaticResource LightGrayColor}"
              Margin="4"
              HasShadow="False"
-       x:Name="template">
-    <StackLayout
-        VerticalOptions="Center">
+             x:Name="template">
+    <StackLayout>
         <StackLayout.GestureRecognizers>
             <TapGestureRecognizer Command="{Binding Parent.BindingContext.AddLocationCommand, Source={x:Reference template}}" NumberOfTapsRequired="1"></TapGestureRecognizer>
         </StackLayout.GestureRecognizers>

@@ -115,15 +115,16 @@ namespace WeatherApp.ViewModels
             try
             {
                 var listLocJson = await SecureStorage.GetAsync("locations");
-                var selectedLocationIndexString = await SecureStorage.GetAsync("selectedLocationIndex");
-
                 var listLoc = JsonConvert.DeserializeObject<List<LocationModel>>(listLocJson);
-                var selectedLocationIndex = Convert.ToInt32(selectedLocationIndexString);
+                var selectedLocation = listLoc.FirstOrDefault<LocationModel>(l => l.Selected);
 
-                CurrentCity = listLoc[selectedLocationIndex].Locality;
-                CurrentCountry = listLoc[selectedLocationIndex].CountryName;
-                _currentLat = listLoc[selectedLocationIndex].Latitude;
-                _currentLon = listLoc[selectedLocationIndex].Longitude;
+                if (selectedLocation != null)
+                {
+                    CurrentCity = selectedLocation.Locality;
+                    CurrentCountry = selectedLocation.CountryName;
+                    _currentLat = selectedLocation.Latitude;
+                    _currentLon = selectedLocation.Longitude;
+                }
             }
             catch(Exception ex)
             {

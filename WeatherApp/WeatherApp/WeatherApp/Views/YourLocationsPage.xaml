@@ -58,7 +58,7 @@
                     BindableLayout.ItemTemplateSelector="{StaticResource LocationTemplateSelector}"
                     Wrap="Wrap"
                     Direction="Row"
-                    JustifyContent="SpaceEvenly"
+                    JustifyContent="Start"
                     AlignItems="Start"
                     AlignContent="Start"
                     Margin="16, 8, 16, 0">
