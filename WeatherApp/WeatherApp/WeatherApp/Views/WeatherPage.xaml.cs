@@ -2,6 +2,7 @@
 using Prism.Navigation;
 using System;
 using WeatherApp.Events;
+using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,34 +11,24 @@ namespace WeatherApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class WeatherPage : ContentPage, IDestructible
     {
-        private OpenMenuEvent _openMenuEvent;
-        private CloseMenuEvent _closeMenuEvent;
+        private MenuEvent _menuEvent;
 
         public WeatherPage(IEventAggregator eventAggregator)
         {
             InitializeComponent();
 
-            _openMenuEvent = eventAggregator.GetEvent<OpenMenuEvent>();
-            _openMenuEvent.Subscribe(OpenAnimation);
-
-            _closeMenuEvent = eventAggregator.GetEvent<CloseMenuEvent>();
-            _closeMenuEvent.Subscribe(CloseAnimation);
+            _menuEvent = eventAggregator.GetEvent<MenuEvent>();
+            _menuEvent.Subscribe(OpenCloseMenu);
         }
 
         public void Destroy()
         {
-            _openMenuEvent.Unsubscribe(OpenAnimation);
-            _closeMenuEvent.Unsubscribe(CloseAnimation);
+            _menuEvent.Unsubscribe(OpenCloseMenu);
         }
 
-        private void OpenAnimation()
+        private void OpenCloseMenu()
         {
-            menuView.Open(OpenSwipeItem.LeftItems);
-        }
-
-        private void CloseAnimation()
-        {
-            menuView.Close();
+            menuView.State = SideMenuState.LeftMenuShown;
         }
     }
 }

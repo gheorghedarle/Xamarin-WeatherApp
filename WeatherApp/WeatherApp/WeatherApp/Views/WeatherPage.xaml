@@ -7,87 +7,87 @@
              NavigationPage.HasNavigationBar="False"
              x:Name="weatherPage">
     <ContentPage.Content>
-        <SwipeView
+        <xct:SideMenuView
             x:Name="menuView"
+            AllowInterceptGesture="False"
             HorizontalOptions="FillAndExpand"
-            VerticalOptions="FillAndExpand"
-            IsEnabled="False">
-            <SwipeView.LeftItems>
-                <SwipeItemView>
-                    <StackLayout 
-                        Padding="0, 36, 0, 0"
-                        WidthRequest="{Binding MenuSize}"
-                        VerticalOptions="FillAndExpand">
-                        <StackLayout.Background>
-                            <LinearGradientBrush 
-                                        StartPoint="0, 0" 
-                                        EndPoint="0, 1">
-                                <GradientStop Color="{StaticResource PrimaryColor}" Offset="0.1"></GradientStop>
-                                <GradientStop Color="{StaticResource PrimaryDarkColor}" Offset="1.0"></GradientStop>
-                            </LinearGradientBrush>
-                        </StackLayout.Background>
-                        <Image 
-                            Source="{Binding SelectedHour.weather.icon, StringFormat='icon_{0}_n.png'}"
-                            HorizontalOptions="Start"
-                            WidthRequest="64"
-                            HeightRequest="64"
-                            Margin="16, 0, 0, 0"></Image>
-                        <Label 
-                            Text="Weather App"
-                            TextColor="{StaticResource WhiteColor}"
-                            FontFamily="FrankRuhle_Medium"
-                            FontSize="{StaticResource Headline4FontSize}"
-                            Margin="16, 16, 0, 16"></Label>
-                        <Grid
-                            Margin="16, 8, 0, 4"
-                            ColumnDefinitions="24, Auto">
-                            <Grid.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding YourLocationsCommand}" NumberOfTapsRequired="1"></TapGestureRecognizer>
-                            </Grid.GestureRecognizers>
-                            <Label
-                                Grid.Column="0"
-                                Text="&#xf3c5;"
-                                FontSize="{StaticResource Body1FontSize}"
-                                FontFamily="FontAwesome"
-                                TextColor="{StaticResource WhiteColor}"
-                                HorizontalOptions="CenterAndExpand"></Label>
-                            <Label 
-                                Grid.Column="1"
-                                Text="Your locations"
-                                TextColor="{StaticResource WhiteColor}"
-                                FontFamily="Rubik_Regular"
-                                FontSize="{StaticResource Body1FontSize}"></Label>
-                        </Grid>
-                        <Grid
-                            Margin="16, 8, 0, 4"
-                            ColumnDefinitions="24, Auto">
-                            <Grid.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding SettingsCommand}" NumberOfTapsRequired="1"></TapGestureRecognizer>
-                            </Grid.GestureRecognizers>
-                            <Label
-                                Grid.Column="0"
-                                Text="&#xf013;"
-                                FontSize="{StaticResource Body1FontSize}"
-                                FontFamily="FontAwesome"
-                                TextColor="{StaticResource WhiteColor}"
-                                HorizontalOptions="CenterAndExpand"></Label>
-                            <Label 
-                                Grid.Column="1"
-                                Text="Settings"
-                                TextColor="{StaticResource WhiteColor}"
-                                FontFamily="Rubik_Regular"
-                                FontSize="{StaticResource Body1FontSize}"></Label>
-                        </Grid>
-                        <Label 
-                            Text="Log out"
-                            TextColor="{StaticResource WhiteColor}"
-                            FontFamily="Rubik_Regular"
-                            VerticalOptions="EndAndExpand"
-                            FontSize="{StaticResource Body1FontSize}"
-                            Margin="16, 0, 0, 36"></Label>
-                    </StackLayout>
-                </SwipeItemView>
-            </SwipeView.LeftItems>
+            VerticalOptions="FillAndExpand">
+            <StackLayout
+                xct:SideMenuView.Position="LeftMenu"
+                xct:SideMenuView.MenuWidthPercentage=".75"
+                Padding="0, 36, 0, 0"
+                WidthRequest="{Binding MenuSize}"
+                VerticalOptions="FillAndExpand">
+                <StackLayout.Background>
+                    <LinearGradientBrush 
+                                StartPoint="0, 0" 
+                                EndPoint="0, 1">
+                        <GradientStop Color="{StaticResource PrimaryColor}" Offset="0.1"></GradientStop>
+                        <GradientStop Color="{StaticResource PrimaryDarkColor}" Offset="1.0"></GradientStop>
+                    </LinearGradientBrush>
+                </StackLayout.Background>
+                <Image 
+                    Source="{Binding SelectedHour.weather.icon, StringFormat='icon_{0}_n.png'}"
+                    HorizontalOptions="Start"
+                    WidthRequest="64"
+                    HeightRequest="64"
+                    Margin="16, 0, 0, 0"></Image>
+                <Label 
+                    Text="Weather App"
+                    TextColor="{StaticResource WhiteColor}"
+                    FontFamily="FrankRuhle_Medium"
+                    FontSize="{StaticResource Headline4FontSize}"
+                    Margin="16, 16, 0, 16"></Label>
+                <Grid
+                    Margin="16, 0, 0, 0"
+                    Padding="0, 8, 0, 8"
+                    ColumnDefinitions="24, Auto">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding YourLocationsCommand}" NumberOfTapsRequired="1"></TapGestureRecognizer>
+                    </Grid.GestureRecognizers>
+                    <Label
+                        Grid.Column="0"
+                        Text="&#xf3c5;"
+                        FontSize="{StaticResource Body1FontSize}"
+                        FontFamily="FontAwesome"
+                        TextColor="{StaticResource WhiteColor}"
+                        HorizontalOptions="CenterAndExpand"></Label>
+                    <Label 
+                        Grid.Column="1"
+                        Text="Your locations"
+                        TextColor="{StaticResource WhiteColor}"
+                        FontFamily="Rubik_Regular"
+                        FontSize="{StaticResource Body1FontSize}"></Label>
+                </Grid>
+                <Grid
+                    Margin="16, 0, 0, 0"
+                    Padding="0, 8, 0, 8"
+                    ColumnDefinitions="24, Auto">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SettingsCommand}" NumberOfTapsRequired="1"></TapGestureRecognizer>
+                    </Grid.GestureRecognizers>
+                    <Label
+                        Grid.Column="0"
+                        Text="&#xf013;"
+                        FontSize="{StaticResource Body1FontSize}"
+                        FontFamily="FontAwesome"
+                        TextColor="{StaticResource WhiteColor}"
+                        HorizontalOptions="CenterAndExpand"></Label>
+                    <Label 
+                        Grid.Column="1"
+                        Text="Settings"
+                        TextColor="{StaticResource WhiteColor}"
+                        FontFamily="Rubik_Regular"
+                        FontSize="{StaticResource Body1FontSize}"></Label>
+                </Grid>
+                <Label 
+                    Text="Log out"
+                    TextColor="{StaticResource WhiteColor}"
+                    FontFamily="Rubik_Regular"
+                    VerticalOptions="EndAndExpand"
+                    FontSize="{StaticResource Body1FontSize}"
+                    Margin="16, 0, 0, 36"></Label>
+            </StackLayout>
             <RefreshView
                 IsRefreshing="{Binding IsRefreshing}"
                 RefreshColor="{StaticResource PrimaryColor}"
@@ -156,7 +156,7 @@
                         <StackLayout
                             Grid.Row="1"
                             Margin="16, 8, 16, 0"
-                            Padding="0, 8, 8, 8"
+                            Padding="0, 8, 16, 8"
                             HorizontalOptions="Start">
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding MenuCommand}"></TapGestureRecognizer>
@@ -602,6 +602,6 @@
                     </Grid>
                 </ScrollView>
             </RefreshView>
-        </SwipeView>
+        </xct:SideMenuView>
     </ContentPage.Content>
 </ContentPage>

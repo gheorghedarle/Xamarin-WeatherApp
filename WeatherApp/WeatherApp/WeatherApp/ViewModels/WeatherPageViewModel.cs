@@ -29,14 +29,12 @@ namespace WeatherApp.ViewModels
         public string CurrentCountry { get; set; }
         public CurrentWeatherModel CurrentWeather { get; set; }
         public WeatherDetailsModel SelectedHour { get; set; }
-        public bool IsMenuOpen { get; set; }
         public bool IsRefreshing { get; set; }
         public Command RefreshCommand { get; set; }
         public Command TryAgainCommand { get; set; }
         public Command YourLocationsCommand { get; set; }
         public Command SettingsCommand { get; set; }
         public Command MenuCommand { get; set; }
-        public double MenuSize { get; set; } = DeviceDisplay.MainDisplayInfo.Width / 4;
 
         public WeatherPageViewModel(
             INavigationService navigationService,
@@ -87,15 +85,7 @@ namespace WeatherApp.ViewModels
 
         private void MenuCommandHandler()
         {
-            if(IsMenuOpen)
-            {
-                _eventAggregator.GetEvent<OpenMenuEvent>().Publish();
-            }
-            else
-            {
-                _eventAggregator.GetEvent<CloseMenuEvent>().Publish();
-            }
-            IsMenuOpen = !IsMenuOpen;
+            _eventAggregator.GetEvent<MenuEvent>().Publish();
         }
 
         private void OnSelectedHourChanged()

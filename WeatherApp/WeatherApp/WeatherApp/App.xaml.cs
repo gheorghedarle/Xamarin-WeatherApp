@@ -9,6 +9,7 @@ using WeatherApp.ViewModels;
 using WeatherApp.ViewModels.Dialogs;
 using WeatherApp.Views;
 using WeatherApp.Views.Dialogs;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 [assembly: ExportFont("FontAwesome.ttf", Alias = "FontAwesome")]
@@ -39,7 +40,15 @@ namespace WeatherApp
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync($"/{nameof(NavigationPage)}/{nameof(WelcomePage)}");
+            var locations = await SecureStorage.GetAsync("locations");
+            if(locations != null)
+            {
+                await NavigationService.NavigateAsync($"/{nameof(NavigationPage)}/{nameof(WeatherPage)}");
+            }
+            else
+            {
+                await NavigationService.NavigateAsync($"/{nameof(NavigationPage)}/{nameof(WelcomePage)}");
+            }
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
