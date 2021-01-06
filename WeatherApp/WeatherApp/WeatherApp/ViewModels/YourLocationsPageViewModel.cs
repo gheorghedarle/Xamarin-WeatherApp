@@ -29,6 +29,7 @@ namespace WeatherApp.ViewModels
         public Command BackCommand { get; set; }
         public Command AddLocationCommand { get; set; }
         public Command SelectLocationCommand { get; set; }
+        public Command DeleteLocationCommand { get; set; }
 
         public YourLocationsPageViewModel(
             INavigationService navigationService,
@@ -41,6 +42,7 @@ namespace WeatherApp.ViewModels
             BackCommand = new Command(BackCommandHandler);
             AddLocationCommand = new Command(AddLocationCommandHandler);
             SelectLocationCommand = new Command<string>(SelectLocationCommandHandler);
+            DeleteLocationCommand = new Command<string>(DeleteLocationCommandHandler);
 
             Locations = new ObservableCollection<LocationModel>();
 
@@ -66,8 +68,36 @@ namespace WeatherApp.ViewModels
             Locations.RemoveAt(Locations.Count - 1);
 
             await SecureStorage.SetAsync("locations", JsonConvert.SerializeObject(Locations));
-
             await GetPlacemarkAndLocation();
+
+            MainState = LayoutState.None;
+        }
+
+        private async void DeleteLocationCommandHandler(string selectedLocality)
+        {
+            MainState = LayoutState.Loading;
+
+            if (Locations.Count > 2)
+            {
+                var item = Locations.First(l => l.Locality == selectedLocality);
+                if (item.Selected)
+                {
+                    var index = Locations.IndexOf(item);
+                    if (index < Locations.Count)
+                    {
+                        Locations[index + 1].Selected = true;
+                    }
+                    else
+                    {
+                        Locations[0].Selected = true;
+                    }
+                }
+                Locations.Remove(item);
+                Locations.RemoveAt(Locations.Count - 1);
+
+                await SecureStorage.SetAsync("locations", JsonConvert.SerializeObject(Locations));
+                await GetPlacemarkAndLocation();
+            }
 
             MainState = LayoutState.None;
         }

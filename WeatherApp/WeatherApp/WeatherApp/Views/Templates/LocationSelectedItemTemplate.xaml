@@ -1,14 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Frame xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              x:Class="WeatherApp.Views.Templates.LocationSelectedItemTemplate"
              Padding="16"
              CornerRadius="24"
              HeightRequest="96"
              FlexLayout.Basis="50%"
              FlexLayout.AlignSelf="Start"
-             Margin="4">
-    <StackLayout>
+             Margin="4"
+             x:Name="template">
+    <StackLayout
+        xct:TouchEffect.LongPressCommand="{Binding Parent.BindingContext.DeleteLocationCommand, Source={x:Reference template}}"
+        xct:TouchEffect.LongPressCommandParameter="{Binding BindingContext.Locality, Source={x:Reference template}}">
         <Label
             Text="{Binding Locality}"
             FontSize="{StaticResource Headline4FontSize}"
