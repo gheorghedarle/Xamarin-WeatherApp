@@ -30,13 +30,13 @@
         <Label
             Text="{Binding CountryName}"
             FontSize="{StaticResource Subtitle2FontSize}"
-            FontFamily="Rubik_Light"
+            FontFamily="Barlow_Light"
             TextColor="{StaticResource TextColor}"
             HorizontalOptions="Start"
             Margin="0, -4, 0, 0"></Label>
         <Label
             FontSize="{StaticResource Body2FontSize}"
-            FontFamily="Rubik_Regular"
+            FontFamily="Barlow_Regular"
             TextColor="{StaticResource TextColor}"
             HorizontalOptions="Start"
             VerticalOptions="EndAndExpand">

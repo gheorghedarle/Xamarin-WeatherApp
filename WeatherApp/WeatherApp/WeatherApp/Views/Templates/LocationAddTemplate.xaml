@@ -26,7 +26,7 @@
         <Label
             Text="Add location"
             FontSize="{StaticResource Body1FontSize}"
-            FontFamily="Rubik_Regular"
+            FontFamily="Barlow_Regular"
             TextColor="{StaticResource GrayColor}"
             HorizontalOptions="Center"></Label>
     </StackLayout>

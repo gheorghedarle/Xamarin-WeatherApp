@@ -56,7 +56,7 @@
                         Grid.Column="1"
                         Text="Your locations"
                         TextColor="{StaticResource WhiteColor}"
-                        FontFamily="Rubik_Regular"
+                        FontFamily="Barlow_Regular"
                         FontSize="{StaticResource Body1FontSize}"></Label>
                 </Grid>
                 <Grid
@@ -77,13 +77,13 @@
                         Grid.Column="1"
                         Text="Settings"
                         TextColor="{StaticResource WhiteColor}"
-                        FontFamily="Rubik_Regular"
+                        FontFamily="Barlow_Regular"
                         FontSize="{StaticResource Body1FontSize}"></Label>
                 </Grid>
                 <Label 
                     Text="Log out"
                     TextColor="{StaticResource WhiteColor}"
-                    FontFamily="Rubik_Regular"
+                    FontFamily="Barlow_Regular"
                     VerticalOptions="EndAndExpand"
                     FontSize="{StaticResource Body1FontSize}"
                     Margin="16, 0, 0, 36"></Label>
@@ -133,14 +133,14 @@
                                         <Label
                                             Text="Oops, something went wrong! Please wait few moments and try again."
                                             FontSize="{StaticResource Body1FontSize}"
-                                            FontFamily="Rubik_Light"
+                                            FontFamily="Barlow_Light"
                                             TextColor="{StaticResource WhiteColor}"
                                             Margin="0, 4, 0, 0"></Label>
                                     </StackLayout>
                                     <Button
                                         Grid.Row="3"
                                         Text="TRY AGAIN"
-                                        FontFamily="Rubik_Medium"
+                                        FontFamily="Barlow_Medium"
                                         FontSize="{StaticResource ButtonFontSize}"
                                         BackgroundColor="{StaticResource AccentColor}"
                                         TextColor="{StaticResource TextColor}"
@@ -180,7 +180,7 @@
                             Grid.Row="3"
                             Text="{Binding CurrentCountry}"
                             FontSize="{StaticResource Headline4FontSize}"
-                            FontFamily="Rubik_Light"
+                            FontFamily="Barlow_Light"
                             TextColor="{StaticResource TextColor}"
                             HorizontalOptions="Start"
                             Margin="16, -4, 0, 0"></Label>
@@ -188,7 +188,7 @@
                             Grid.Row="4"
                             Text="{Binding SelectedHour.dt, StringFormat='{0:dddd, d MMMM yyyy HH:mm}'}"
                             FontSize="{StaticResource Body1FontSize}"
-                            FontFamily="Rubik_Light"
+                            FontFamily="Barlow_Light"
                             TextColor="{StaticResource GrayColor}"
                             HorizontalOptions="Start"
                             Margin="16, 4, 0, 0"></Label>
@@ -203,7 +203,7 @@
                             <Label
                                 Text="{Binding SelectedHour.weather.description}"
                                 FontSize="{StaticResource Body2FontSize}"
-                                FontFamily="Rubik_Regular"
+                                FontFamily="Barlow_Regular"
                                 TextColor="{StaticResource TextColor}"
                                 HorizontalOptions="Center"
                                 Margin="0, 4, 0, 0"></Label>
@@ -221,12 +221,12 @@
                                         <FormattedString>
                                             <Span
                                                 Text="Wind speed: "
-                                                FontFamily="Rubik_Regular"
+                                                FontFamily="Barlow_Regular"
                                                 FontSize="{StaticResource Body2FontSize}"
                                                 TextColor="{StaticResource GrayColor}"></Span>
                                             <Span
                                                 Text="{Binding SelectedHour.wind_speed, StringFormat='{0:N1} m/s'}"
-                                                FontFamily="Rubik_Medium"
+                                                FontFamily="Barlow_Medium"
                                                 FontSize="{StaticResource Body2FontSize}"
                                                 TextColor="{StaticResource TextColor}"></Span>
                                         </FormattedString>
@@ -238,12 +238,12 @@
                                         <FormattedString>
                                             <Span
                                                 Text="Humidity: "
-                                                FontFamily="Rubik_Regular"
+                                                FontFamily="Barlow_Regular"
                                                 FontSize="{StaticResource Body2FontSize}"
                                                 TextColor="{StaticResource GrayColor}"></Span>
                                             <Span
                                                 Text="{Binding SelectedHour.humidity, StringFormat='{0}%'}"
-                                                FontFamily="Rubik_Medium"
+                                                FontFamily="Barlow_Medium"
                                                 FontSize="{StaticResource Body2FontSize}"
                                                 TextColor="{StaticResource TextColor}"></Span>
                                         </FormattedString>
@@ -255,12 +255,12 @@
                                         <FormattedString>
                                             <Span
                                                 Text="Precipitation volume: "
-                                                FontFamily="Rubik_Regular"
+                                                FontFamily="Barlow_Regular"
                                                 FontSize="{StaticResource Body2FontSize}"
                                                 TextColor="{StaticResource GrayColor}"></Span>
                                             <Span
                                                 Text="{Binding SelectedHour.rain, StringFormat='{0} mm'}"
-                                                FontFamily="Rubik_Medium"
+                                                FontFamily="Barlow_Medium"
                                                 FontSize="{StaticResource Body2FontSize}"
                                                 TextColor="{StaticResource TextColor}"></Span>
                                         </FormattedString>
@@ -277,12 +277,12 @@
                                         <FormattedString>
                                             <Span
                                                 Text="{Binding SelectedHour.temp, StringFormat='{0:N0}°'}"
-                                                FontFamily="Rubik_Light"
+                                                FontFamily="Barlow_Light"
                                                 FontSize="{StaticResource Headline0FontSize}"
                                                 TextColor="{StaticResource TextColor}"></Span>
                                             <Span
                                                 Text="C"
-                                                FontFamily="Rubik_Regular"
+                                                FontFamily="Barlow_Regular"
                                                 FontSize="{StaticResource Subtitle1FontSize}"
                                                 TextColor="{StaticResource TextColor}"></Span>
                                         </FormattedString>
@@ -294,12 +294,12 @@
                                         <FormattedString>
                                             <Span
                                                 Text="Feels like "
-                                                FontFamily="Rubik_Regular"
+                                                FontFamily="Barlow_Regular"
                                                 FontSize="{StaticResource Body2FontSize}"
                                                 TextColor="{StaticResource TextColor}"></Span>
                                             <Span
                                                 Text="{Binding SelectedHour.feels_like, StringFormat='{0:N0}°C'}"
-                                                FontFamily="Rubik_Medium"
+                                                FontFamily="Barlow_Medium"
                                                 FontSize="{StaticResource Body2FontSize}"
                                                 TextColor="{StaticResource TextColor}"></Span>
                                         </FormattedString>
@@ -373,14 +373,14 @@
                                                                 <MultiTrigger.Conditions>
                                                                     <BindingCondition Binding="{Binding isActive}" Value="True"/>
                                                                 </MultiTrigger.Conditions>
-                                                                <Setter Property="FontFamily" Value="Rubik_Regular"/>
+                                                                <Setter Property="FontFamily" Value="Barlow_Regular"/>
                                                                 <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
                                                             </MultiTrigger>
                                                             <MultiTrigger TargetType="Label">
                                                                 <MultiTrigger.Conditions>
                                                                     <BindingCondition Binding="{Binding isActive}" Value="False"/>
                                                                 </MultiTrigger.Conditions>
-                                                                <Setter Property="FontFamily" Value="Rubik_Light"/>
+                                                                <Setter Property="FontFamily" Value="Barlow_Light"/>
                                                                 <Setter Property="TextColor" Value="{StaticResource GrayColor}"/>
                                                             </MultiTrigger>
                                                         </Label.Triggers>
@@ -401,14 +401,14 @@
                                                                 <MultiTrigger.Conditions>
                                                                     <BindingCondition Binding="{Binding isActive}" Value="True"/>
                                                                 </MultiTrigger.Conditions>
-                                                                <Setter Property="FontFamily" Value="Rubik_Regular"/>
+                                                                <Setter Property="FontFamily" Value="Barlow_Regular"/>
                                                                 <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
                                                             </MultiTrigger>
                                                             <MultiTrigger TargetType="Label">
                                                                 <MultiTrigger.Conditions>
                                                                     <BindingCondition Binding="{Binding isActive}" Value="False"/>
                                                                 </MultiTrigger.Conditions>
-                                                                <Setter Property="FontFamily" Value="Rubik_Light"/>
+                                                                <Setter Property="FontFamily" Value="Barlow_Light"/>
                                                                 <Setter Property="TextColor" Value="{StaticResource GrayColor}"/>
                                                             </MultiTrigger>
                                                         </Label.Triggers>
@@ -455,7 +455,7 @@
                                                             TextColor="{StaticResource TextColor}"
                                                             HorizontalOptions="Start"
                                                             VerticalOptions="Center"
-                                                            FontFamily="Rubik_Regular"
+                                                            FontFamily="Barlow_Regular"
                                                             FontSize="{StaticResource Body2FontSize}">
                                                         </Label>
                                                         <Label
@@ -463,7 +463,7 @@
                                                             Margin="0, 0, 8, 0"
                                                             HorizontalOptions="Center"
                                                             VerticalOptions="Center"
-                                                            FontFamily="Rubik_Regular"
+                                                            FontFamily="Barlow_Regular"
                                                             FontSize="{StaticResource Body2FontSize}"
                                                             TextColor="{StaticResource TextColor}">
                                                             <Label.Text>
@@ -490,7 +490,7 @@
                                                         VerticalOptions="Center"></Image>
                                                     <Label
                                                         Text="{Binding sunrise, StringFormat='{0:HH:mm}'}"
-                                                        FontFamily="Rubik_Medium"
+                                                        FontFamily="Barlow_Medium"
                                                         FontSize="{StaticResource Body2FontSize}"
                                                         TextColor="{StaticResource TextColor}"
                                                         HorizontalOptions="Center"></Label>
@@ -504,7 +504,7 @@
                                                         VerticalOptions="Center"></Image>
                                                     <Label
                                                         Text="{Binding sunset, StringFormat='{0:HH:mm}'}"
-                                                        FontFamily="Rubik_Medium"
+                                                        FontFamily="Barlow_Medium"
                                                         FontSize="{StaticResource Body2FontSize}"
                                                         TextColor="{StaticResource TextColor}"
                                                         HorizontalOptions="Center"></Label>
@@ -518,7 +518,7 @@
                                                         VerticalOptions="Center"></Image>
                                                     <Label
                                                         Text="{Binding uvi, StringFormat='{0:N1}'}"
-                                                        FontFamily="Rubik_Medium"
+                                                        FontFamily="Barlow_Medium"
                                                         FontSize="{StaticResource Body2FontSize}"
                                                         TextColor="{StaticResource TextColor}"
                                                         HorizontalOptions="Center"></Label>
@@ -532,7 +532,7 @@
                                                         VerticalOptions="Center"></Image>
                                                     <Label
                                                         Text="{Binding pop, StringFormat='{0}%'}"
-                                                        FontFamily="Rubik_Medium"
+                                                        FontFamily="Barlow_Medium"
                                                         FontSize="{StaticResource Body2FontSize}"
                                                         TextColor="{StaticResource TextColor}"
                                                         HorizontalOptions="Center"></Label>
@@ -546,7 +546,7 @@
                                                         VerticalOptions="Center"></Image>
                                                     <Label
                                                         Text="{Binding humidity, StringFormat='{0}%'}"
-                                                        FontFamily="Rubik_Medium"
+                                                        FontFamily="Barlow_Medium"
                                                         FontSize="{StaticResource Body2FontSize}"
                                                         TextColor="{StaticResource TextColor}"
                                                         HorizontalOptions="Center"></Label>
@@ -560,7 +560,7 @@
                                                         VerticalOptions="Center"></Image>
                                                     <Label
                                                         Text="{Binding dew_point, StringFormat='{0:N1}°C'}"
-                                                        FontFamily="Rubik_Medium"
+                                                        FontFamily="Barlow_Medium"
                                                         FontSize="{StaticResource Body2FontSize}"
                                                         TextColor="{StaticResource TextColor}"
                                                         HorizontalOptions="Center"></Label>
@@ -574,7 +574,7 @@
                                                         VerticalOptions="Center"></Image>
                                                     <Label
                                                         Text="{Binding pressure, StringFormat='{0} hPa'}"
-                                                        FontFamily="Rubik_Medium"
+                                                        FontFamily="Barlow_Medium"
                                                         FontSize="{StaticResource Body2FontSize}"
                                                         TextColor="{StaticResource TextColor}"
                                                         HorizontalOptions="Center"></Label>
@@ -588,7 +588,7 @@
                                                         VerticalOptions="Center"></Image>
                                                     <Label
                                                         Text="{Binding wind_speed, StringFormat='{0:N1} m/s'}"
-                                                        FontFamily="Rubik_Medium"
+                                                        FontFamily="Barlow_Medium"
                                                         FontSize="{StaticResource Body2FontSize}"
                                                         TextColor="{StaticResource TextColor}"
                                                         HorizontalOptions="Center"></Label>

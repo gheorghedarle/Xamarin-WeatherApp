@@ -20,11 +20,10 @@ using Xamarin.Forms;
 [assembly: ExportFont("FrankRuhlLibre-Bold.ttf", Alias = "FrankRuhle_Bold")]
 [assembly: ExportFont("FrankRuhlLibre-Black.ttf", Alias = "FrankRuhle_Black")]
 
-[assembly: ExportFont("Rubik-Light.ttf", Alias = "Rubik_Light")]
-[assembly: ExportFont("Rubik-Regular.ttf", Alias = "Rubik_Regular")]
-[assembly: ExportFont("Rubik-Medium.ttf", Alias = "Rubik_Medium")]
-[assembly: ExportFont("Rubik-SemiBold.ttf", Alias = "Rubik_SemiBold")]
-[assembly: ExportFont("Rubik-Bold.ttf", Alias = "Rubik_Bold")]
+[assembly: ExportFont("Barlow-Light.ttf", Alias = "Barlow_Light")]
+[assembly: ExportFont("Barlow-Regular.ttf", Alias = "Barlow_Regular")]
+[assembly: ExportFont("Barlow-Medium.ttf", Alias = "Barlow_Medium")]
+[assembly: ExportFont("Barlow-SemiBold.ttf", Alias = "Barlow_SemiBold")]
 
 namespace WeatherApp
 {

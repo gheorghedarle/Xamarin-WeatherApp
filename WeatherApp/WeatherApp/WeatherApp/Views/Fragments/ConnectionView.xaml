@@ -21,12 +21,12 @@
         Grid.Column="1"
         Grid.Row="0"
         Text="No Internet Connection"
-        FontFamily="Rubik_Medium"
+        FontFamily="Barlow_Medium"
         TextColor="{StaticResource FailColor}"/>
     <Label
         Grid.Column="1"
         Grid.Row="1"
         Text="It looks like you do not have internet connection"
-        FontFamily="Rubik_Regular"
+        FontFamily="Barlow_Regular"
         TextColor="{StaticResource TextColor}"/>
 </Grid>

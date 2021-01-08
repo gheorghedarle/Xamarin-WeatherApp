@@ -43,7 +43,7 @@
         </Frame>
         <Button 
             Text="ADD LOCATION"
-            FontFamily="Rubik_Medium"
+            FontFamily="Barlow_Medium"
             FontSize="{StaticResource ButtonFontSize}"
             BackgroundColor="{StaticResource AccentColor}"
             TextColor="{StaticResource TextColor}"

@@ -43,7 +43,7 @@
                 <Button
                     Grid.Row="3"
                     Text="USE YOUR CURRENT LOCATION"
-                    FontFamily="Rubik_Medium"
+                    FontFamily="Barlow_Medium"
                     FontSize="{StaticResource ButtonFontSize}"
                     BackgroundColor="{StaticResource AccentColor}"
                     TextColor="{StaticResource TextColor}"
@@ -55,7 +55,7 @@
                     Grid.Row="4"
                     Text="Or enter your place name"
                     HorizontalOptions="Center"
-                    FontFamily="Rubik_Regular"
+                    FontFamily="Barlow_Regular"
                     FontSize="{StaticResource ButtonFontSize}"
                     Margin="0, 8, 0, 24"
                     TextColor="{StaticResource WhiteColor}"/>
