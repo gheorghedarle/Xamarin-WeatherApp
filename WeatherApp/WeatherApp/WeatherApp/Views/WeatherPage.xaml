@@ -373,7 +373,6 @@
                                             Padding="0">
                                             <VisualStateManager.VisualStateGroups>
                                                 <VisualStateGroup Name="CommonStates">
-                                                    <VisualState Name="Normal" />
                                                     <VisualState Name="Selected">
                                                         <VisualState.Setters>
                                                             <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}" />
@@ -382,7 +381,7 @@
                                                 </VisualStateGroup>
                                             </VisualStateManager.VisualStateGroups>
                                             <Frame
-                                                Padding="16, 6, 16, 6"
+                                                Padding="16, 8, 16, 8"
                                                 CornerRadius="24">
                                                 <Frame.Triggers>
                                                     <MultiTrigger TargetType="Frame">
@@ -405,23 +404,9 @@
                                                         Grid.Row="0"
                                                         Text="{Binding dt, StringFormat='{0:HH:mm}'}"
                                                         HorizontalOptions="Center"
-                                                        FontSize="{StaticResource Body2FontSize}">
-                                                        <Label.Triggers>
-                                                            <MultiTrigger TargetType="Label">
-                                                                <MultiTrigger.Conditions>
-                                                                    <BindingCondition Binding="{Binding isActive}" Value="True"/>
-                                                                </MultiTrigger.Conditions>
-                                                                <Setter Property="FontFamily" Value="Barlow_Regular"/>
-                                                                <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
-                                                            </MultiTrigger>
-                                                            <MultiTrigger TargetType="Label">
-                                                                <MultiTrigger.Conditions>
-                                                                    <BindingCondition Binding="{Binding isActive}" Value="False"/>
-                                                                </MultiTrigger.Conditions>
-                                                                <Setter Property="FontFamily" Value="Barlow_Light"/>
-                                                                <Setter Property="TextColor" Value="{StaticResource GrayColor}"/>
-                                                            </MultiTrigger>
-                                                        </Label.Triggers>
+                                                        FontSize="{StaticResource Body2FontSize}"
+                                                        TextColor="{StaticResource TextColor}"
+                                                        FontFamily="Barlow_Regular">
                                                     </Label>
                                                     <Image 
                                                         Grid.Row="1"
@@ -433,23 +418,9 @@
                                                         Grid.Row="2"
                                                         Text="{Binding temp, StringFormat='{0:N0}°C'}"
                                                         HorizontalOptions="Center"
-                                                        FontSize="{StaticResource Body2FontSize}">
-                                                        <Label.Triggers>
-                                                            <MultiTrigger TargetType="Label">
-                                                                <MultiTrigger.Conditions>
-                                                                    <BindingCondition Binding="{Binding isActive}" Value="True"/>
-                                                                </MultiTrigger.Conditions>
-                                                                <Setter Property="FontFamily" Value="Barlow_Regular"/>
-                                                                <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
-                                                            </MultiTrigger>
-                                                            <MultiTrigger TargetType="Label">
-                                                                <MultiTrigger.Conditions>
-                                                                    <BindingCondition Binding="{Binding isActive}" Value="False"/>
-                                                                </MultiTrigger.Conditions>
-                                                                <Setter Property="FontFamily" Value="Barlow_Light"/>
-                                                                <Setter Property="TextColor" Value="{StaticResource GrayColor}"/>
-                                                            </MultiTrigger>
-                                                        </Label.Triggers>
+                                                        FontSize="{StaticResource Body2FontSize}"
+                                                        TextColor="{StaticResource TextColor}"
+                                                        FontFamily="Barlow_Regular">
                                                     </Label>
                                                 </Grid>
                                             </Frame>
@@ -472,7 +443,8 @@
                                 BindableLayout.ItemsSource="{Binding CurrentWeather.dailyWeatherForecast}">
                                 <BindableLayout.ItemTemplate>
                                     <DataTemplate>
-                                        <xct:Expander ExpandAnimationEasing="{x:Static Easing.CubicIn}"
+                                        <xct:Expander 
+                                                ExpandAnimationEasing="{x:Static Easing.CubicIn}"
                                                 CollapseAnimationEasing="{x:Static Easing.CubicOut}">
                                             <xct:Expander.Header>
                                                 <Frame

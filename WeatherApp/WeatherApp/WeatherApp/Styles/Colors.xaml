@@ -3,19 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WeatherApp.Styles.Colors">
 
-    <Color x:Key="TextColor">#222</Color>
-    <Color x:Key="GrayColor">#555</Color>
-    <Color x:Key="LightGrayColor">#ECECEC</Color>
+    <Color x:Key="TextColor">#001532</Color>
+    <Color x:Key="GrayColor">#667284</Color>
+    <Color x:Key="LightGrayColor">#E0E0E0</Color>
     <Color x:Key="WhiteColor">#FFF</Color>
 
     <Color x:Key="PrimaryColor">#007CD1</Color>
-    <Color x:Key="PrimaryDarkColor">#00357E</Color>
+    <Color x:Key="PrimaryDarkColor">#001532</Color>
     <Color x:Key="AccentColor">#F3C623</Color>
 
     <Color x:Key="FailColor">#D04C41</Color>
     <Color x:Key="SuccessColor">#00AF49</Color>
 
-    <Color x:Key="BackgroundColor">#F8F8F8</Color>
+    <Color x:Key="BackgroundColor">#F5F5F5</Color>
     <Color x:Key="TransparentBackgroundColor">#55222222</Color>
     
 </ResourceDictionary>
