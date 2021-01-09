@@ -71,6 +71,8 @@ namespace WeatherApp.Services.Weather
                     humidity = Convert.ToDouble(hourly[i]["humidity"].ToString()),
                     wind_speed = Convert.ToDouble(hourly[i]["wind_speed"].ToString()),
                     wind_deg = Convert.ToDouble(hourly[i]["wind_deg"].ToString()),
+                    visibility = Convert.ToDouble(hourly[i]["visibility"].ToString()) / 1000,
+                    pressure = Convert.ToDouble(hourly[i]["pressure"].ToString()),
                     weather = new WeatherModel()
                     {
                         icon = hourly[i]["weather"][0]["icon"].ToString(),

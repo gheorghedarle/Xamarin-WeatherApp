@@ -26,6 +26,7 @@ namespace WeatherApp.Models
         public double pop { get; set; }
         public double uvi { get; set; }
         public double rain { get; set; }
+        public double visibility { get; set; }
         public WeatherModel weather { get; set; }
         public bool isActive { get; set; }
     }

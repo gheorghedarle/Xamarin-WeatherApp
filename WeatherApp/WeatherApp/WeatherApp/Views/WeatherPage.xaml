@@ -155,7 +155,7 @@
                             Grid.Row="0"/>
                         <StackLayout
                             Grid.Row="1"
-                            Margin="16, 8, 16, 0"
+                            Margin="24, 8, 16, 0"
                             Padding="0, 8, 16, 8"
                             HorizontalOptions="Start">
                             <StackLayout.GestureRecognizers>
@@ -175,109 +175,45 @@
                             FontFamily="FrankRuhle_Medium"
                             TextColor="{StaticResource TextColor}"
                             HorizontalOptions="Start"
-                            Margin="16, 0, 0, 0"></Label>
+                            Margin="24, 0, 0, 0"></Label>
                         <Label
                             Grid.Row="3"
                             Text="{Binding CurrentCountry}"
                             FontSize="{StaticResource Headline4FontSize}"
-                            FontFamily="Barlow_Light"
+                            FontFamily="Barlow_Regular"
                             TextColor="{StaticResource TextColor}"
                             HorizontalOptions="Start"
-                            Margin="16, -4, 0, 0"></Label>
+                            Margin="24, -8, 0, 0"></Label>
                         <Label
                             Grid.Row="4"
                             Text="{Binding SelectedHour.dt, StringFormat='{0:dddd, d MMMM yyyy HH:mm}'}"
                             FontSize="{StaticResource Body1FontSize}"
-                            FontFamily="Barlow_Light"
+                            FontFamily="Barlow_Regular"
                             TextColor="{StaticResource GrayColor}"
                             HorizontalOptions="Start"
-                            Margin="16, 4, 0, 0"></Label>
-                        <StackLayout
+                            Margin="24, 0, 0, 0"></Label>
+                        <Grid
+                            ColumnDefinitions="*, *"
                             Grid.Row="5"
                             VerticalOptions="CenterAndExpand"
-                            Margin="0, 32, 0, 16">
+                            Margin="24, 16, 24, 16">
                             <Image 
+                                Grid.Column="0"
                                 Source="{Binding SelectedHour.weather.icon, StringFormat='icon_{0}.png'}"
-                                WidthRequest="100"
-                                HeightRequest="100"></Image>
-                            <Label
-                                Text="{Binding SelectedHour.weather.description}"
-                                FontSize="{StaticResource Body2FontSize}"
-                                FontFamily="Barlow_Regular"
-                                TextColor="{StaticResource TextColor}"
-                                HorizontalOptions="Center"
-                                Margin="0, 4, 0, 0"></Label>
-                        </StackLayout>
-                        <StackLayout
-                            Grid.Row="6"
-                            Orientation="Horizontal"
-                            HorizontalOptions="FillAndExpand"
-                            Margin="16, 0, 16, 0">
+                                WidthRequest="120"
+                                HeightRequest="120"></Image>
                             <StackLayout
-                                VerticalOptions="End">
-                                <Label
-                                    HorizontalOptions="Start">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span
-                                                Text="Wind speed: "
-                                                FontFamily="Barlow_Regular"
-                                                FontSize="{StaticResource Body2FontSize}"
-                                                TextColor="{StaticResource GrayColor}"></Span>
-                                            <Span
-                                                Text="{Binding SelectedHour.wind_speed, StringFormat='{0:N1} m/s'}"
-                                                FontFamily="Barlow_Medium"
-                                                FontSize="{StaticResource Body2FontSize}"
-                                                TextColor="{StaticResource TextColor}"></Span>
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label
-                                    HorizontalOptions="Start">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span
-                                                Text="Humidity: "
-                                                FontFamily="Barlow_Regular"
-                                                FontSize="{StaticResource Body2FontSize}"
-                                                TextColor="{StaticResource GrayColor}"></Span>
-                                            <Span
-                                                Text="{Binding SelectedHour.humidity, StringFormat='{0}%'}"
-                                                FontFamily="Barlow_Medium"
-                                                FontSize="{StaticResource Body2FontSize}"
-                                                TextColor="{StaticResource TextColor}"></Span>
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label
-                                    HorizontalOptions="Start">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span
-                                                Text="Precipitation volume: "
-                                                FontFamily="Barlow_Regular"
-                                                FontSize="{StaticResource Body2FontSize}"
-                                                TextColor="{StaticResource GrayColor}"></Span>
-                                            <Span
-                                                Text="{Binding SelectedHour.rain, StringFormat='{0} mm'}"
-                                                FontFamily="Barlow_Medium"
-                                                FontSize="{StaticResource Body2FontSize}"
-                                                TextColor="{StaticResource TextColor}"></Span>
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                            </StackLayout>
-                            <StackLayout
+                                Grid.Column="1"
                                 Spacing="0"
                                 HorizontalOptions="EndAndExpand"
-                                VerticalOptions="EndAndExpand">
+                                VerticalOptions="CenterAndExpand">
                                 <Label
                                     HorizontalOptions="End">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span
                                                 Text="{Binding SelectedHour.temp, StringFormat='{0:N0}°'}"
-                                                FontFamily="Barlow_Light"
+                                                FontFamily="FrankRuhle_Bold"
                                                 FontSize="{StaticResource Headline0FontSize}"
                                                 TextColor="{StaticResource TextColor}"></Span>
                                             <Span
@@ -289,6 +225,7 @@
                                     </Label.FormattedText>
                                 </Label>
                                 <Label
+                                    Margin="0, -12, 0, 0"
                                     HorizontalOptions="End">
                                     <Label.FormattedText>
                                         <FormattedString>
@@ -305,14 +242,115 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
+                                <Label
+                                    Text="{Binding SelectedHour.weather.description}"
+                                    FontSize="{StaticResource Body2FontSize}"
+                                    FontFamily="Barlow_Medium"
+                                    TextColor="{StaticResource TextColor}"
+                                    HorizontalOptions="Center"></Label>
                             </StackLayout>
-                        </StackLayout>
+                        </Grid>
+                        <Frame
+                            Grid.Row="6"
+                            HorizontalOptions="FillAndExpand"
+                            Margin="16, 0, 16, 0"
+                            CornerRadius="24">
+                            <Grid
+                                RowDefinitions="Auto, Auto, Auto"
+                                ColumnDefinitions="2*, *, 2*, *">
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Text="Rain: "
+                                    FontFamily="Barlow_Regular"
+                                    FontSize="{StaticResource Body2FontSize}"
+                                    TextColor="{StaticResource GrayColor}">
+                                </Label>
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Text="{Binding SelectedHour.rain, StringFormat='{0} mm/s'}"
+                                    FontFamily="Barlow_Medium"
+                                    FontSize="{StaticResource Body2FontSize}"
+                                    TextColor="{StaticResource TextColor}"
+                                    HorizontalOptions="End"
+                                    Margin="0, 0, 4, 0"></Label>
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Text="Humidity: "
+                                    FontFamily="Barlow_Regular"
+                                    FontSize="{StaticResource Body2FontSize}"
+                                    TextColor="{StaticResource GrayColor}">
+                                </Label>
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Text="{Binding SelectedHour.humidity, StringFormat='{0}%'}"
+                                    FontFamily="Barlow_Medium"
+                                    FontSize="{StaticResource Body2FontSize}"
+                                    TextColor="{StaticResource TextColor}"
+                                    HorizontalOptions="End"
+                                    Margin="0, 0, 4, 0"></Label>
+                                <Label
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    Text="Wind speed: "
+                                    FontFamily="Barlow_Regular"
+                                    FontSize="{StaticResource Body2FontSize}"
+                                    TextColor="{StaticResource GrayColor}">
+                                </Label>
+                                <Label
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    Text="{Binding SelectedHour.wind_speed, StringFormat='{0:N1} m/s'}"
+                                    FontFamily="Barlow_Medium"
+                                    FontSize="{StaticResource Body2FontSize}"
+                                    TextColor="{StaticResource TextColor}"
+                                    HorizontalOptions="End"
+                                    Margin="0, 0, 4, 0"></Label>
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="2"
+                                    Text="Pressure: "
+                                    FontFamily="Barlow_Regular"
+                                    FontSize="{StaticResource Body2FontSize}"
+                                    TextColor="{StaticResource GrayColor}"
+                                    Margin="4, 0, 0, 0">
+                                </Label>
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="3"
+                                    Text="{Binding SelectedHour.pressure, StringFormat='{0} hPa'}"
+                                    FontFamily="Barlow_Medium"
+                                    FontSize="{StaticResource Body2FontSize}"
+                                    TextColor="{StaticResource TextColor}"
+                                    HorizontalOptions="End"></Label>
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="2"
+                                    Text="Visibility: "
+                                    FontFamily="Barlow_Regular"
+                                    FontSize="{StaticResource Body2FontSize}"
+                                    TextColor="{StaticResource GrayColor}"
+                                    Margin="4, 0, 0, 0">
+                                </Label>
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="3"
+                                    Text="{Binding SelectedHour.visibility, StringFormat='{0} km'}"
+                                    FontFamily="Barlow_Medium"
+                                    FontSize="{StaticResource Body2FontSize}"
+                                    TextColor="{StaticResource TextColor}"
+                                    HorizontalOptions="End"></Label>
+                            </Grid>
+                        </Frame>
                         <StackLayout
                             Grid.Row="7"
-                            Margin="16, 0, 16, 0"
+                            Margin="24, 0, 24, 0"
                             Padding="0, 0, 0, 2">
                             <Label
-                                Text="24 hours forecast"
+                                Text="Hourly"
                                 FontSize="{StaticResource Headline4FontSize}"
                                 FontFamily="FrankRuhle_Medium"
                                 TextColor="{StaticResource TextColor}"
@@ -422,9 +460,9 @@
                         </StackLayout>
                         <StackLayout
                             Grid.Row="8"
-                            Margin="16, 0, 16, 8">
+                            Margin="24, 0, 24, 8">
                             <Label
-                                Text="6 days forecast"
+                                Text="Daily"
                                 FontSize="{StaticResource Headline4FontSize}"
                                 FontFamily="FrankRuhle_Medium"
                                 TextColor="{StaticResource TextColor}"
