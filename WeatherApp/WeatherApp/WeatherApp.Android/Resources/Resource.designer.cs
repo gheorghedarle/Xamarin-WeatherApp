@@ -14035,6 +14035,9 @@ namespace WeatherApp.Droid
 			// aapt resource value: 0x7F0700BB
 			public const int tooltip_frame_light = 2131165371;
 			
+			// aapt resource value: 0x7F0700BC
+			public const int welcome = 2131165372;
+			
 			static Drawable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
