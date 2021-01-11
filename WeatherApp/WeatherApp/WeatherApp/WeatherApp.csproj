@@ -47,7 +47,7 @@
     <PackageReference Include="Prism.DryIoc.Forms" Version="8.0.0.1909" />
     <PackageReference Include="Prism.Forms" Version="8.0.0.1909" />
     <PackageReference Include="PropertyChanged.Fody" Version="3.3.1" />
-    <PackageReference Include="Xamarin.CommunityToolkit" Version="1.0.0-pre6" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="1.0.0" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.1874" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1-preview1" />
   </ItemGroup>
