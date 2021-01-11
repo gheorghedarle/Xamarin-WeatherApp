@@ -26,39 +26,42 @@
                 Grid.Row="0"/>
             <Grid
                 Grid.Row="1"
-                RowDefinitions=".25*, *, .25*, Auto, Auto"
-                RowSpacing="0"
-                Margin="24, 0, 24, 0">
-                <StackLayout
+                RowDefinitions="*, Auto, Auto"
+                RowSpacing="0">>
+                <Image
+                    Grid.Row="0"
+                    Aspect="AspectFit"
+                    Source="welcome.png"
+                    VerticalOptions="End"></Image>
+                <StackLayout 
                     Grid.Row="1"
-                    Spacing="0"
                     VerticalOptions="End">
                     <Label
+                        Margin="24, 8, 0, 8"
                         Text="Welcome to your weather app"
                         HorizontalOptions="Start"
                         FontFamily="FrankRuhle_Medium"
                         FontSize="{StaticResource Headline2FontSize}"
                         TextColor="{StaticResource WhiteColor}"/>
+                    <Button
+                        Text="USE YOUR CURRENT LOCATION"
+                        FontFamily="Barlow_Medium"
+                        FontSize="{StaticResource ButtonFontSize}"
+                        BackgroundColor="{StaticResource AccentColor}"
+                        TextColor="{StaticResource TextColor}"
+                        Padding="16, 22, 16, 22"
+                        Margin="16, 8, 16, 8"
+                        Command="{Binding UseCurrentLocationCommand}"
+                        CornerRadius="36"></Button>
+                    <Label
+                        Text="Or enter your place name"
+                        HorizontalOptions="Center"
+                        FontFamily="Barlow_Medium"
+                        TextDecorations="Underline"
+                        FontSize="{StaticResource ButtonFontSize}"
+                        Margin="0, 8, 0, 24"
+                        TextColor="{StaticResource WhiteColor}"/>
                 </StackLayout>
-                <Button
-                    Grid.Row="3"
-                    Text="USE YOUR CURRENT LOCATION"
-                    FontFamily="Barlow_Medium"
-                    FontSize="{StaticResource ButtonFontSize}"
-                    BackgroundColor="{StaticResource AccentColor}"
-                    TextColor="{StaticResource TextColor}"
-                    Padding="16, 22, 16, 22"
-                    Margin="16, 8, 16, 8"
-                    Command="{Binding UseCurrentLocationCommand}"
-                    CornerRadius="36"></Button>
-                <Label
-                    Grid.Row="4"
-                    Text="Or enter your place name"
-                    HorizontalOptions="Center"
-                    FontFamily="Barlow_Regular"
-                    FontSize="{StaticResource ButtonFontSize}"
-                    Margin="0, 8, 0, 24"
-                    TextColor="{StaticResource WhiteColor}"/>
             </Grid>
         </Grid>
     </ContentPage.Content>
