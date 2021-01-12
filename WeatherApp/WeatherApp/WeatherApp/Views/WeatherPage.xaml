@@ -257,7 +257,7 @@
                             CornerRadius="24">
                             <Grid
                                 RowDefinitions="Auto, Auto, Auto"
-                                ColumnDefinitions="2*, *, 2*, *">
+                                ColumnDefinitions="*, Auto, *, Auto">
                                 <Label
                                     Grid.Row="0"
                                     Grid.Column="0"
@@ -487,122 +487,145 @@
                                                 </Frame>
                                             </xct:Expander.Header>
                                             <Grid
-                                                RowDefinitions="Auto, Auto"
-                                                ColumnDefinitions="*, *, *, *"
-                                                RowSpacing="8"
-                                                Margin="8">
-                                                <StackLayout
+                                                RowDefinitions="Auto, Auto, Auto, Auto"
+                                                ColumnDefinitions="*, Auto, *, Auto"
+                                                Padding="16, 12, 16, 12">
+                                                <Label
                                                     Grid.Row="0"
-                                                    Grid.Column="0">
-                                                    <Image 
-                                                        Source="i8_sunrise.png"
-                                                        WidthRequest="32"
-                                                        VerticalOptions="Center"></Image>
-                                                    <Label
-                                                        Text="{Binding sunrise, StringFormat='{0:HH:mm}'}"
-                                                        FontFamily="Barlow_Medium"
-                                                        FontSize="{StaticResource Body2FontSize}"
-                                                        TextColor="{StaticResource TextColor}"
-                                                        HorizontalOptions="Center"></Label>
-                                                </StackLayout>
-                                                <StackLayout
+                                                    Grid.Column="0"
+                                                    Text="Rain: "
+                                                    FontFamily="Barlow_Regular"
+                                                    FontSize="{StaticResource Body2FontSize}"
+                                                    TextColor="{StaticResource GrayColor}">
+                                                </Label>
+                                                <Label
                                                     Grid.Row="0"
-                                                    Grid.Column="1">
-                                                    <Image 
-                                                        Source="i8_sunset.png"
-                                                        WidthRequest="32"
-                                                        VerticalOptions="Center"></Image>
-                                                    <Label
-                                                        Text="{Binding sunset, StringFormat='{0:HH:mm}'}"
-                                                        FontFamily="Barlow_Medium"
-                                                        FontSize="{StaticResource Body2FontSize}"
-                                                        TextColor="{StaticResource TextColor}"
-                                                        HorizontalOptions="Center"></Label>
-                                                </StackLayout>
-                                                <StackLayout
+                                                    Grid.Column="1"
+                                                    Text="{Binding pop, StringFormat='{0}%'}"
+                                                    FontFamily="Barlow_Medium"
+                                                    FontSize="{StaticResource Body2FontSize}"
+                                                    TextColor="{StaticResource TextColor}"
+                                                    HorizontalOptions="End"
+                                                    Margin="0, 0, 4, 0"></Label>
+                                                <Label
+                                                    Grid.Row="1"
+                                                    Grid.Column="0"
+                                                    Text="Humidity: "
+                                                    FontFamily="Barlow_Regular"
+                                                    FontSize="{StaticResource Body2FontSize}"
+                                                    TextColor="{StaticResource GrayColor}">
+                                                </Label>
+                                                <Label
+                                                    Grid.Row="1"
+                                                    Grid.Column="1"
+                                                    Text="{Binding humidity, StringFormat='{0}%'}"
+                                                    FontFamily="Barlow_Medium"
+                                                    FontSize="{StaticResource Body2FontSize}"
+                                                    TextColor="{StaticResource TextColor}"
+                                                    HorizontalOptions="End"
+                                                    Margin="0, 0, 4, 0"></Label>
+                                                <Label
+                                                    Grid.Row="2"
+                                                    Grid.Column="0"
+                                                    Text="Wind speed: "
+                                                    FontFamily="Barlow_Regular"
+                                                    FontSize="{StaticResource Body2FontSize}"
+                                                    TextColor="{StaticResource GrayColor}">
+                                                </Label>
+                                                <Label
+                                                    Grid.Row="2"
+                                                    Grid.Column="1"
+                                                    Text="{Binding wind_speed, StringFormat='{0:N1} m/s'}"
+                                                    FontFamily="Barlow_Medium"
+                                                    FontSize="{StaticResource Body2FontSize}"
+                                                    TextColor="{StaticResource TextColor}"
+                                                    HorizontalOptions="End"
+                                                    Margin="0, 0, 4, 0"></Label>
+                                                <Label
+                                                    Grid.Row="3"
+                                                    Grid.Column="0"
+                                                    Text="Sunrise: "
+                                                    FontFamily="Barlow_Regular"
+                                                    FontSize="{StaticResource Body2FontSize}"
+                                                    TextColor="{StaticResource GrayColor}">
+                                                </Label>
+                                                <Label
+                                                    Grid.Row="3"
+                                                    Grid.Column="1"
+                                                    Text="{Binding sunrise, StringFormat='{0:HH:mm}'}"
+                                                    FontFamily="Barlow_Medium"
+                                                    FontSize="{StaticResource Body2FontSize}"
+                                                    TextColor="{StaticResource TextColor}"
+                                                    HorizontalOptions="End"
+                                                    Margin="0, 0, 4, 0"></Label>
+                                                <Label
                                                     Grid.Row="0"
-                                                    Grid.Column="2">
-                                                    <Image
-                                                        Source="i8_uvi.png"
-                                                        WidthRequest="32"
-                                                        VerticalOptions="Center"></Image>
-                                                    <Label
-                                                        Text="{Binding uvi, StringFormat='{0:N1}'}"
-                                                        FontFamily="Barlow_Medium"
-                                                        FontSize="{StaticResource Body2FontSize}"
-                                                        TextColor="{StaticResource TextColor}"
-                                                        HorizontalOptions="Center"></Label>
-                                                </StackLayout>
-                                                <StackLayout
+                                                    Grid.Column="2"
+                                                    Text="Pressure: "
+                                                    FontFamily="Barlow_Regular"
+                                                    FontSize="{StaticResource Body2FontSize}"
+                                                    TextColor="{StaticResource GrayColor}"
+                                                    Margin="4, 0, 0, 0">
+                                                </Label>
+                                                <Label
                                                     Grid.Row="0"
-                                                    Grid.Column="3">
-                                                    <Image
-                                                        Source="i8_pop.png"
-                                                        WidthRequest="32"
-                                                        VerticalOptions="Center"></Image>
-                                                    <Label
-                                                        Text="{Binding pop, StringFormat='{0}%'}"
-                                                        FontFamily="Barlow_Medium"
-                                                        FontSize="{StaticResource Body2FontSize}"
-                                                        TextColor="{StaticResource TextColor}"
-                                                        HorizontalOptions="Center"></Label>
-                                                </StackLayout>
-                                                <StackLayout
+                                                    Grid.Column="3"
+                                                    Text="{Binding pressure, StringFormat='{0} hPa'}"
+                                                    FontFamily="Barlow_Medium"
+                                                    FontSize="{StaticResource Body2FontSize}"
+                                                    TextColor="{StaticResource TextColor}"
+                                                    HorizontalOptions="End"></Label>
+                                                <Label
                                                     Grid.Row="1"
-                                                    Grid.Column="0">
-                                                    <Image 
-                                                        Source="i8_humidity.png"
-                                                        WidthRequest="32"
-                                                        VerticalOptions="Center"></Image>
-                                                    <Label
-                                                        Text="{Binding humidity, StringFormat='{0}%'}"
-                                                        FontFamily="Barlow_Medium"
-                                                        FontSize="{StaticResource Body2FontSize}"
-                                                        TextColor="{StaticResource TextColor}"
-                                                        HorizontalOptions="Center"></Label>
-                                                </StackLayout>
-                                                <StackLayout
+                                                    Grid.Column="2"
+                                                    Text="Visibility: "
+                                                    FontFamily="Barlow_Regular"
+                                                    FontSize="{StaticResource Body2FontSize}"
+                                                    TextColor="{StaticResource GrayColor}"
+                                                    Margin="4, 0, 0, 0">
+                                                </Label>
+                                                <Label
                                                     Grid.Row="1"
-                                                    Grid.Column="1">
-                                                    <Image 
-                                                        Source="i8_dew_point.png"
-                                                        WidthRequest="32"
-                                                        VerticalOptions="Center"></Image>
-                                                    <Label
-                                                        Text="{Binding dew_point, StringFormat='{0:N1}°C'}"
-                                                        FontFamily="Barlow_Medium"
-                                                        FontSize="{StaticResource Body2FontSize}"
-                                                        TextColor="{StaticResource TextColor}"
-                                                        HorizontalOptions="Center"></Label>
-                                                </StackLayout>
-                                                <StackLayout
-                                                    Grid.Row="1"
-                                                    Grid.Column="2">
-                                                    <Image 
-                                                        Source="i8_pressure.png"
-                                                        WidthRequest="32"
-                                                        VerticalOptions="Center"></Image>
-                                                    <Label
-                                                        Text="{Binding pressure, StringFormat='{0} hPa'}"
-                                                        FontFamily="Barlow_Medium"
-                                                        FontSize="{StaticResource Body2FontSize}"
-                                                        TextColor="{StaticResource TextColor}"
-                                                        HorizontalOptions="Center"></Label>
-                                                </StackLayout>
-                                                <StackLayout
-                                                    Grid.Row="1"
-                                                    Grid.Column="3">
-                                                    <Image 
-                                                        Source="i8_wind_speed.png"
-                                                        WidthRequest="32"
-                                                        VerticalOptions="Center"></Image>
-                                                    <Label
-                                                        Text="{Binding wind_speed, StringFormat='{0:N1} m/s'}"
-                                                        FontFamily="Barlow_Medium"
-                                                        FontSize="{StaticResource Body2FontSize}"
-                                                        TextColor="{StaticResource TextColor}"
-                                                        HorizontalOptions="Center"></Label>
-                                                </StackLayout>
+                                                    Grid.Column="3"
+                                                    Text="{Binding visibility, StringFormat='{0} km'}"
+                                                    FontFamily="Barlow_Medium"
+                                                    FontSize="{StaticResource Body2FontSize}"
+                                                    TextColor="{StaticResource TextColor}"
+                                                    HorizontalOptions="End"></Label>
+                                                <Label
+                                                    Grid.Row="2"
+                                                    Grid.Column="2"
+                                                    Text="UV Index: "
+                                                    FontFamily="Barlow_Regular"
+                                                    FontSize="{StaticResource Body2FontSize}"
+                                                    TextColor="{StaticResource GrayColor}"
+                                                    Margin="4, 0, 0, 0">
+                                                </Label>
+                                                <Label
+                                                    Grid.Row="2"
+                                                    Grid.Column="3"
+                                                    Text="{Binding uvi, StringFormat='{0:N2}'}"
+                                                    FontFamily="Barlow_Medium"
+                                                    FontSize="{StaticResource Body2FontSize}"
+                                                    TextColor="{StaticResource TextColor}"
+                                                    HorizontalOptions="End"></Label>
+                                                <Label
+                                                    Grid.Row="3"
+                                                    Grid.Column="2"
+                                                    Text="Sunset: "
+                                                    FontFamily="Barlow_Regular"
+                                                    FontSize="{StaticResource Body2FontSize}"
+                                                    TextColor="{StaticResource GrayColor}"
+                                                    Margin="4, 0, 0, 0">
+                                                </Label>
+                                                <Label
+                                                    Grid.Row="3"
+                                                    Grid.Column="3"
+                                                    Text="{Binding sunset, StringFormat='{0:HH:mm}'}"
+                                                    FontFamily="Barlow_Medium"
+                                                    FontSize="{StaticResource Body2FontSize}"
+                                                    TextColor="{StaticResource TextColor}"
+                                                    HorizontalOptions="End"></Label>
                                             </Grid>
                                         </xct:Expander>
                                     </DataTemplate>
