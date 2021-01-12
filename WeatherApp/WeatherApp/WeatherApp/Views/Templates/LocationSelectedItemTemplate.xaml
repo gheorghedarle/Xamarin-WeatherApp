@@ -22,10 +22,10 @@
         <Label
             Text="{Binding CountryName}"
             FontSize="{StaticResource Subtitle2FontSize}"
-            FontFamily="Barlow_Light"
+            FontFamily="Barlow_Regular"
             TextColor="{StaticResource TextColor}"
             HorizontalOptions="Start"
-            Margin="0, -4, 0, 0"></Label>
+            Margin="0, -8, 0, 0"></Label>
         <Label
             FontSize="{StaticResource Body2FontSize}"
             FontFamily="Barlow_Regular"

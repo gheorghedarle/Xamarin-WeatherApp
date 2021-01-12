@@ -75,6 +75,7 @@ namespace WeatherApp.ViewModels
 
         private async void YourLocationsCommandHandler()
         {
+            _eventAggregator.GetEvent<MenuEvent>().Publish();
             await _navigationService.NavigateAsync(nameof(YourLocationsPage));
         }
 

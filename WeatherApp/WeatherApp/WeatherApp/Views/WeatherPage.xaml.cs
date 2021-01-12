@@ -28,7 +28,14 @@ namespace WeatherApp.Views
 
         private void OpenCloseMenu()
         {
-            menuView.State = SideMenuState.LeftMenuShown;
+            if (menuView.State.Equals(SideMenuState.LeftMenuShown))
+            {
+                menuView.State = SideMenuState.MainViewShown;
+            }
+            else
+            {
+                menuView.State = SideMenuState.LeftMenuShown;
+            }
         }
     }
 }

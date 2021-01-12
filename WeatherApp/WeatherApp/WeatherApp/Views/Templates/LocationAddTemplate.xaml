@@ -20,14 +20,14 @@
             Text="&#xf067;"
             FontSize="{StaticResource Headline2FontSize}"
             FontFamily="FontAwesome"
-            TextColor="{StaticResource GrayColor}"
+            TextColor="{StaticResource TextColor}"
             HorizontalOptions="Center"
             Margin="4"></Label>
         <Label
             Text="Add location"
             FontSize="{StaticResource Body1FontSize}"
             FontFamily="Barlow_Regular"
-            TextColor="{StaticResource GrayColor}"
+            TextColor="{StaticResource TextColor}"
             HorizontalOptions="Center"></Label>
     </StackLayout>
 </Frame>

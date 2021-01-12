@@ -15,7 +15,7 @@
                      VerticalOptions="FillAndExpand"></StackLayout>
     </prism:DialogLayout.Mask>
     <StackLayout>
-        <Label Text="Add location"
+        <Label Text="Add new location"
                TextColor="{StaticResource TextColor}"
                FontSize="{StaticResource Headline4FontSize}"
                FontFamily="FrankRuhle_Medium"

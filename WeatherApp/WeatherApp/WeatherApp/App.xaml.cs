@@ -39,15 +39,15 @@ namespace WeatherApp
         {
             InitializeComponent();
 
-            //var locations = await SecureStorage.GetAsync("locations");
-            //if(locations != null)
-            //{
-            //    await NavigationService.NavigateAsync($"/{nameof(NavigationPage)}/{nameof(WeatherPage)}");
-            //}
-            //else
-            //{
+            var locations = await SecureStorage.GetAsync("locations");
+            if (locations != null)
+            {
+                await NavigationService.NavigateAsync($"/{nameof(NavigationPage)}/{nameof(WeatherPage)}");
+            }
+            else
+            {
                 await NavigationService.NavigateAsync($"/{nameof(NavigationPage)}/{nameof(WelcomePage)}");
-            //}
+            }
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)

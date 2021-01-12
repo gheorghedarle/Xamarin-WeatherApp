@@ -44,7 +44,7 @@
                 </StackLayout>
                 <Label
                     Grid.Row="1"
-                    Text="Your locations"
+                    Text="Locations"
                     FontSize="{StaticResource Headline2FontSize}"
                     FontFamily="FrankRuhle_Medium"
                     TextColor="{StaticResource TextColor}"

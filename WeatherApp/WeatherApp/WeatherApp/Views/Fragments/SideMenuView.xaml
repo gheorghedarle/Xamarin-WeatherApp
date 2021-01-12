@@ -14,7 +14,7 @@
         Margin="16, 16, 0, 24"></Label>
     <Grid
         Margin="16, 24, 0, 0"
-        Padding="0, 8, 0, 8"
+        Padding="0, 8, 0, 6"
         ColumnDefinitions="24, Auto">
         <Grid.GestureRecognizers>
             <TapGestureRecognizer Command="{Binding YourLocationsCommand}" NumberOfTapsRequired="1"></TapGestureRecognizer>
@@ -28,7 +28,7 @@
             HorizontalOptions="CenterAndExpand"></Label>
         <Label 
             Grid.Column="1"
-            Text="Your locations"
+            Text="Locations"
             TextColor="{StaticResource TextColor}"
             FontFamily="Barlow_Medium"
             FontSize="{StaticResource Body1FontSize}"
@@ -36,7 +36,7 @@
     </Grid>
     <Grid
         Margin="16, 0, 0, 0"
-        Padding="0, 8, 0, 8"
+        Padding="0, 6, 0, 8"
         ColumnDefinitions="24, Auto">
         <Grid.GestureRecognizers>
             <TapGestureRecognizer Command="{Binding SettingsCommand}" NumberOfTapsRequired="1"></TapGestureRecognizer>
