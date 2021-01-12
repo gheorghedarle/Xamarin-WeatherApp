@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<StackLayout
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="WeatherApp.Views.Fragments.SideMenuView"
+    Padding="0, 36, 0, 0"
+    VerticalOptions="FillAndExpand"
+    BackgroundColor="{StaticResource WhiteColor}">
+    <Label 
+        Text="Weather App"
+        TextColor="{StaticResource TextColor}"
+        FontFamily="FrankRuhle_Medium"
+        FontSize="{StaticResource Headline4FontSize}"
+        Margin="16, 16, 0, 24"></Label>
+    <Grid
+        Margin="16, 24, 0, 0"
+        Padding="0, 8, 0, 8"
+        ColumnDefinitions="24, Auto">
+        <Grid.GestureRecognizers>
+            <TapGestureRecognizer Command="{Binding YourLocationsCommand}" NumberOfTapsRequired="1"></TapGestureRecognizer>
+        </Grid.GestureRecognizers>
+        <Label
+            Grid.Column="0"
+            Text="&#xf3c5;"
+            FontSize="{StaticResource Headline4FontSize}"
+            FontFamily="FontAwesome"
+            TextColor="{StaticResource AccentColor}"
+            HorizontalOptions="CenterAndExpand"></Label>
+        <Label 
+            Grid.Column="1"
+            Text="Your locations"
+            TextColor="{StaticResource TextColor}"
+            FontFamily="Barlow_Medium"
+            FontSize="{StaticResource Body1FontSize}"
+            VerticalOptions="Center"></Label>
+    </Grid>
+    <Grid
+        Margin="16, 0, 0, 0"
+        Padding="0, 8, 0, 8"
+        ColumnDefinitions="24, Auto">
+        <Grid.GestureRecognizers>
+            <TapGestureRecognizer Command="{Binding SettingsCommand}" NumberOfTapsRequired="1"></TapGestureRecognizer>
+        </Grid.GestureRecognizers>
+        <Label
+            Grid.Column="0"
+            Text="&#xf013;"
+            FontSize="{StaticResource Headline4FontSize}"
+            FontFamily="FontAwesome"
+            TextColor="{StaticResource AccentColor}"
+            HorizontalOptions="CenterAndExpand"></Label>
+        <Label 
+            Grid.Column="1"
+            Text="Settings"
+            TextColor="{StaticResource TextColor}"
+            FontFamily="Barlow_Medium"
+            FontSize="{StaticResource Body1FontSize}"
+            VerticalOptions="Center"></Label>
+    </Grid>
+    <StackLayout
+        VerticalOptions="EndAndExpand">
+        <Label 
+            Text="Log out"
+            TextColor="{StaticResource TextColor}"
+            FontFamily="Barlow_Medium"
+            FontSize="{StaticResource Body1FontSize}"
+            Margin="16, 0, 0, 8"></Label>
+        <Label 
+            Text="Version 1.0.0"
+            TextColor="{StaticResource GrayColor}"
+            FontFamily="Barlow_Regular"
+            FontSize="{StaticResource Body1FontSize}"
+            Margin="16, 0, 0, 36"></Label>
+    </StackLayout>
+</StackLayout>
