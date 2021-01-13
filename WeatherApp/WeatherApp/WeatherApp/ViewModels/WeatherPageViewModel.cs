@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using Prism.Commands;
 using Prism.Events;
 using Prism.Navigation;
 using System;
@@ -81,6 +80,7 @@ namespace WeatherApp.ViewModels
 
         private async void SettingsCommandHandler()
         {
+            _eventAggregator.GetEvent<MenuEvent>().Publish();
             await _navigationService.NavigateAsync(nameof(SettingsPage));
         }
 

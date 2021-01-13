@@ -38,6 +38,7 @@ namespace WeatherApp
         protected override async void OnInitialized()
         {
             InitializeComponent();
+            SetAppTheme();
 
             var locations = await SecureStorage.GetAsync("locations");
             if (locations != null)
@@ -76,6 +77,19 @@ namespace WeatherApp
 
         protected override void OnResume()
         {
+        }
+
+        private void SetAppTheme()
+        {
+            var theme = Preferences.Get("theme", string.Empty);
+            if(string.IsNullOrEmpty(theme) || theme == "light")
+            {
+                Application.Current.UserAppTheme = OSAppTheme.Light;
+            }
+            else
+            {
+                Application.Current.UserAppTheme = OSAppTheme.Dark;
+            }
         }
     }
 }

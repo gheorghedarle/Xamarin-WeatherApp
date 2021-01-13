@@ -126,7 +126,7 @@
                             Margin="24, 16, 24, 16">
                             <Image 
                                 Grid.Column="0"
-                                Source="{Binding SelectedHour.weather.icon, StringFormat='icon_{0}.png'}"
+                                Source="{Binding SelectedHour.weather.icon, Converter={StaticResource AppThemeIconConverter}}"
                                 WidthRequest="120"
                                 HeightRequest="120"></Image>
                             <StackLayout
