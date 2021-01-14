@@ -21,7 +21,7 @@
                 Command="{Binding RefreshCommand}">
                 <ScrollView>
                     <Grid
-                        BackgroundColor="{StaticResource BackgroundColor}"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}"
                         xct:StateLayout.CurrentState="{Binding MainState}" 
                         xct:StateLayout.AnimateStateChanges="True"
                         RowDefinitions="Auto, Auto, Auto, Auto, *, Auto, Auto, Auto, Auto"
@@ -56,12 +56,12 @@
                                             HorizontalOptions="Start"
                                             FontFamily="FrankRuhle_Medium"
                                             FontSize="{StaticResource Headline2FontSize}"
-                                            TextColor="{StaticResource WhiteColor}"/>
+                                            TextColor="{StaticResource LightPrimaryTextColor}"/>
                                         <Label
                                             Text="Oops, something went wrong! Please wait few moments and try again."
                                             FontSize="{StaticResource Body1FontSize}"
                                             FontFamily="Barlow_Light"
-                                            TextColor="{StaticResource WhiteColor}"
+                                            TextColor="{StaticResource LightPrimaryTextColor}"
                                             Margin="0, 4, 0, 0"></Label>
                                     </StackLayout>
                                     <Button
@@ -70,7 +70,7 @@
                                         FontFamily="Barlow_Medium"
                                         FontSize="{StaticResource ButtonFontSize}"
                                         BackgroundColor="{StaticResource AccentColor}"
-                                        TextColor="{StaticResource TextColor}"
+                                        TextColor="{StaticResource LightPrimaryTextColor}"
                                         Padding="16, 22, 16, 22"
                                         Margin="16, 8, 16, 24"
                                         Command="{Binding TryAgainCommand}"
@@ -92,7 +92,7 @@
                                 Text="&#xf0c9;"
                                 FontSize="{StaticResource Subtitle1FontSize}"
                                 FontFamily="FontAwesome"
-                                TextColor="{StaticResource TextColor}"
+                                TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
                                 HorizontalOptions="Start"></Label>
                         </StackLayout>
                         <Label
@@ -100,7 +100,7 @@
                             Text="{Binding CurrentCity}"
                             FontSize="{StaticResource Headline2FontSize}"
                             FontFamily="FrankRuhle_Medium"
-                            TextColor="{StaticResource TextColor}"
+                            TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
                             HorizontalOptions="Start"
                             Margin="24, 0, 0, 0"></Label>
                         <Label
@@ -108,7 +108,7 @@
                             Text="{Binding CurrentCountry}"
                             FontSize="{StaticResource Headline4FontSize}"
                             FontFamily="Barlow_Regular"
-                            TextColor="{StaticResource TextColor}"
+                            TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
                             HorizontalOptions="Start"
                             Margin="24, -8, 0, 0"></Label>
                         <Label
@@ -116,7 +116,7 @@
                             Text="{Binding SelectedHour.dt, StringFormat='{0:dddd, d MMMM yyyy HH:mm}'}"
                             FontSize="{StaticResource Body1FontSize}"
                             FontFamily="Barlow_Regular"
-                            TextColor="{StaticResource GrayColor}"
+                            TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
                             HorizontalOptions="Start"
                             Margin="24, 0, 0, 0"></Label>
                         <Grid
@@ -142,12 +142,12 @@
                                                 Text="{Binding SelectedHour.temp, StringFormat='{0:N0}°'}"
                                                 FontFamily="FrankRuhle_Bold"
                                                 FontSize="{StaticResource Headline0FontSize}"
-                                                TextColor="{StaticResource TextColor}"></Span>
+                                                TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"></Span>
                                             <Span
                                                 Text="C"
                                                 FontFamily="Barlow_Regular"
                                                 FontSize="{StaticResource Subtitle1FontSize}"
-                                                TextColor="{StaticResource TextColor}"></Span>
+                                                TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"></Span>
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
@@ -160,12 +160,12 @@
                                                 Text="Feels like "
                                                 FontFamily="Barlow_Regular"
                                                 FontSize="{StaticResource Body2FontSize}"
-                                                TextColor="{StaticResource TextColor}"></Span>
+                                                TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"></Span>
                                             <Span
                                                 Text="{Binding SelectedHour.feels_like, StringFormat='{0:N0}°C'}"
                                                 FontFamily="Barlow_Medium"
                                                 FontSize="{StaticResource Body2FontSize}"
-                                                TextColor="{StaticResource TextColor}"></Span>
+                                                TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"></Span>
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
@@ -173,15 +173,16 @@
                                     Text="{Binding SelectedHour.weather.description}"
                                     FontSize="{StaticResource Body2FontSize}"
                                     FontFamily="Barlow_Medium"
-                                    TextColor="{StaticResource TextColor}"
-                                    HorizontalOptions="Center"></Label>
+                                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
+                                    HorizontalOptions="EndAndExpand"></Label>
                             </StackLayout>
                         </Grid>
                         <Frame
                             Grid.Row="6"
                             HorizontalOptions="FillAndExpand"
                             Margin="16, 0, 16, 0"
-                            CornerRadius="24">
+                            CornerRadius="24"
+                            BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}">
                             <Grid
                                 RowDefinitions="Auto, Auto, Auto"
                                 ColumnDefinitions="*, Auto, *, Auto">
@@ -191,7 +192,7 @@
                                     Text="Rain: "
                                     FontFamily="Barlow_Regular"
                                     FontSize="{StaticResource Body2FontSize}"
-                                    TextColor="{StaticResource GrayColor}">
+                                    TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}">
                                 </Label>
                                 <Label
                                     Grid.Row="0"
@@ -199,7 +200,7 @@
                                     Text="{Binding SelectedHour.rain, StringFormat='{0} mm/s'}"
                                     FontFamily="Barlow_Medium"
                                     FontSize="{StaticResource Body2FontSize}"
-                                    TextColor="{StaticResource TextColor}"
+                                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
                                     HorizontalOptions="End"
                                     Margin="0, 0, 4, 0"></Label>
                                 <Label
@@ -208,7 +209,7 @@
                                     Text="Humidity: "
                                     FontFamily="Barlow_Regular"
                                     FontSize="{StaticResource Body2FontSize}"
-                                    TextColor="{StaticResource GrayColor}">
+                                    TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}">
                                 </Label>
                                 <Label
                                     Grid.Row="1"
@@ -216,7 +217,7 @@
                                     Text="{Binding SelectedHour.humidity, StringFormat='{0}%'}"
                                     FontFamily="Barlow_Medium"
                                     FontSize="{StaticResource Body2FontSize}"
-                                    TextColor="{StaticResource TextColor}"
+                                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
                                     HorizontalOptions="End"
                                     Margin="0, 0, 4, 0"></Label>
                                 <Label
@@ -225,7 +226,7 @@
                                     Text="Wind speed: "
                                     FontFamily="Barlow_Regular"
                                     FontSize="{StaticResource Body2FontSize}"
-                                    TextColor="{StaticResource GrayColor}">
+                                    TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}">
                                 </Label>
                                 <Label
                                     Grid.Row="2"
@@ -233,7 +234,7 @@
                                     Text="{Binding SelectedHour.wind_speed, StringFormat='{0:N1} m/s'}"
                                     FontFamily="Barlow_Medium"
                                     FontSize="{StaticResource Body2FontSize}"
-                                    TextColor="{StaticResource TextColor}"
+                                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
                                     HorizontalOptions="End"
                                     Margin="0, 0, 4, 0"></Label>
                                 <Label
@@ -242,7 +243,7 @@
                                     Text="Pressure: "
                                     FontFamily="Barlow_Regular"
                                     FontSize="{StaticResource Body2FontSize}"
-                                    TextColor="{StaticResource GrayColor}"
+                                    TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"
                                     Margin="4, 0, 0, 0">
                                 </Label>
                                 <Label
@@ -251,7 +252,7 @@
                                     Text="{Binding SelectedHour.pressure, StringFormat='{0} hPa'}"
                                     FontFamily="Barlow_Medium"
                                     FontSize="{StaticResource Body2FontSize}"
-                                    TextColor="{StaticResource TextColor}"
+                                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
                                     HorizontalOptions="End"></Label>
                                 <Label
                                     Grid.Row="1"
@@ -259,7 +260,7 @@
                                     Text="Visibility: "
                                     FontFamily="Barlow_Regular"
                                     FontSize="{StaticResource Body2FontSize}"
-                                    TextColor="{StaticResource GrayColor}"
+                                    TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"
                                     Margin="4, 0, 0, 0">
                                 </Label>
                                 <Label
@@ -268,7 +269,7 @@
                                     Text="{Binding SelectedHour.visibility, StringFormat='{0} km'}"
                                     FontFamily="Barlow_Medium"
                                     FontSize="{StaticResource Body2FontSize}"
-                                    TextColor="{StaticResource TextColor}"
+                                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
                                     HorizontalOptions="End"></Label>
                             </Grid>
                         </Frame>
@@ -280,7 +281,7 @@
                                 Text="Hourly"
                                 FontSize="{StaticResource Headline4FontSize}"
                                 FontFamily="FrankRuhle_Medium"
-                                TextColor="{StaticResource TextColor}"
+                                TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
                                 HorizontalOptions="Start"
                                 Margin="0, 12, 0, 0"></Label>
                             <CollectionView
@@ -290,7 +291,7 @@
                                 ItemsSource="{Binding CurrentWeather.hourlyWeatherForecast}"
                                 HeightRequest="90">
                                 <CollectionView.ItemsLayout>
-                                    <LinearItemsLayout Orientation="Horizontal" ItemSpacing="8" SnapPointsType="Mandatory" SnapPointsAlignment="Start"/>
+                                    <LinearItemsLayout Orientation="Horizontal" ItemSpacing="6" SnapPointsType="Mandatory" SnapPointsAlignment="Start"/>
                                 </CollectionView.ItemsLayout>
                                 <CollectionView.ItemTemplate>
                                     <DataTemplate>
@@ -302,7 +303,7 @@
                                                 <VisualStateGroup Name="CommonStates">
                                                     <VisualState Name="Selected">
                                                         <VisualState.Setters>
-                                                            <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}" />
+                                                            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}" />
                                                         </VisualState.Setters>
                                                     </VisualState>
                                                 </VisualStateGroup>
@@ -315,13 +316,13 @@
                                                         <MultiTrigger.Conditions>
                                                             <BindingCondition Binding="{Binding isActive, Mode=TwoWay}" Value="True"/>
                                                         </MultiTrigger.Conditions>
-                                                        <Setter Property="BackgroundColor" Value="{StaticResource WhiteColor}"/>
+                                                        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}"/>
                                                     </MultiTrigger>
                                                     <MultiTrigger TargetType="Frame">
                                                         <MultiTrigger.Conditions>
                                                             <BindingCondition Binding="{Binding isActive, Mode=TwoWay}" Value="False"/>
                                                         </MultiTrigger.Conditions>
-                                                        <Setter Property="BackgroundColor" Value="{StaticResource LightGrayColor}"/>
+                                                        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightCardUnselectedBackgroundColor}, Dark={StaticResource DarkCardUnselectedBackgroundColor}}"/>
                                                         <Setter Property="HasShadow" Value="False"/>
                                                     </MultiTrigger>
                                                 </Frame.Triggers>
@@ -332,7 +333,7 @@
                                                         Text="{Binding dt, StringFormat='{0:HH:mm}'}"
                                                         HorizontalOptions="Center"
                                                         FontSize="{StaticResource Body2FontSize}"
-                                                        TextColor="{StaticResource TextColor}"
+                                                        TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
                                                         FontFamily="Barlow_Regular">
                                                     </Label>
                                                     <Image 
@@ -346,7 +347,7 @@
                                                         Text="{Binding temp, StringFormat='{0:N0}°C'}"
                                                         HorizontalOptions="Center"
                                                         FontSize="{StaticResource Body2FontSize}"
-                                                        TextColor="{StaticResource TextColor}"
+                                                        TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
                                                         FontFamily="Barlow_Regular">
                                                     </Label>
                                                 </Grid>
@@ -363,7 +364,7 @@
                                 Text="Daily"
                                 FontSize="{StaticResource Headline4FontSize}"
                                 FontFamily="FrankRuhle_Medium"
-                                TextColor="{StaticResource TextColor}"
+                                TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
                                 HorizontalOptions="Start"
                                 Margin="0, 12, 0, 0"></Label>
                             <StackLayout
@@ -371,13 +372,13 @@
                                 <BindableLayout.ItemTemplate>
                                     <DataTemplate>
                                         <xct:Expander 
-                                                ExpandAnimationEasing="{x:Static Easing.CubicIn}"
-                                                CollapseAnimationEasing="{x:Static Easing.CubicOut}">
+                                            ExpandAnimationEasing="{x:Static Easing.CubicIn}"
+                                            CollapseAnimationEasing="{x:Static Easing.CubicOut}">
                                             <xct:Expander.Header>
                                                 <Frame
                                                     Padding="16, 8, 16, 12"
                                                     CornerRadius="24"
-                                                    BackgroundColor="{StaticResource WhiteColor}">
+                                                    BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}">
                                                     <Grid 
                                                         ColumnDefinitions="Auto, *, Auto">
                                                         <Image 
@@ -389,7 +390,7 @@
                                                             Grid.Column="1"
                                                             Margin="8, 0, 0, 0"
                                                             Text="{Binding dt, StringFormat='{0:dddd}'}"
-                                                            TextColor="{StaticResource TextColor}"
+                                                            TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
                                                             HorizontalOptions="Start"
                                                             VerticalOptions="Center"
                                                             FontFamily="Barlow_Regular"
@@ -402,7 +403,7 @@
                                                             VerticalOptions="Center"
                                                             FontFamily="Barlow_Regular"
                                                             FontSize="{StaticResource Body2FontSize}"
-                                                            TextColor="{StaticResource TextColor}">
+                                                            TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}">
                                                             <Label.Text>
                                                                 <MultiBinding StringFormat="{}{0} / {1}">
                                                                     <Binding Path="minTemp" StringFormat="{}{0:N0}°C"/>
@@ -423,7 +424,7 @@
                                                     Text="Rain: "
                                                     FontFamily="Barlow_Regular"
                                                     FontSize="{StaticResource Body2FontSize}"
-                                                    TextColor="{StaticResource GrayColor}">
+                                                    TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}">
                                                 </Label>
                                                 <Label
                                                     Grid.Row="0"
@@ -431,7 +432,7 @@
                                                     Text="{Binding pop, StringFormat='{0}%'}"
                                                     FontFamily="Barlow_Medium"
                                                     FontSize="{StaticResource Body2FontSize}"
-                                                    TextColor="{StaticResource TextColor}"
+                                                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
                                                     HorizontalOptions="End"
                                                     Margin="0, 0, 4, 0"></Label>
                                                 <Label
@@ -440,7 +441,7 @@
                                                     Text="Humidity: "
                                                     FontFamily="Barlow_Regular"
                                                     FontSize="{StaticResource Body2FontSize}"
-                                                    TextColor="{StaticResource GrayColor}">
+                                                    TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}">
                                                 </Label>
                                                 <Label
                                                     Grid.Row="1"
@@ -448,7 +449,7 @@
                                                     Text="{Binding humidity, StringFormat='{0}%'}"
                                                     FontFamily="Barlow_Medium"
                                                     FontSize="{StaticResource Body2FontSize}"
-                                                    TextColor="{StaticResource TextColor}"
+                                                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
                                                     HorizontalOptions="End"
                                                     Margin="0, 0, 4, 0"></Label>
                                                 <Label
@@ -457,7 +458,7 @@
                                                     Text="Wind speed: "
                                                     FontFamily="Barlow_Regular"
                                                     FontSize="{StaticResource Body2FontSize}"
-                                                    TextColor="{StaticResource GrayColor}">
+                                                    TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}">
                                                 </Label>
                                                 <Label
                                                     Grid.Row="2"
@@ -465,7 +466,7 @@
                                                     Text="{Binding wind_speed, StringFormat='{0:N1} m/s'}"
                                                     FontFamily="Barlow_Medium"
                                                     FontSize="{StaticResource Body2FontSize}"
-                                                    TextColor="{StaticResource TextColor}"
+                                                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
                                                     HorizontalOptions="End"
                                                     Margin="0, 0, 4, 0"></Label>
                                                 <Label
@@ -474,7 +475,7 @@
                                                     Text="Sunrise: "
                                                     FontFamily="Barlow_Regular"
                                                     FontSize="{StaticResource Body2FontSize}"
-                                                    TextColor="{StaticResource GrayColor}">
+                                                    TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}">
                                                 </Label>
                                                 <Label
                                                     Grid.Row="3"
@@ -482,7 +483,7 @@
                                                     Text="{Binding sunrise, StringFormat='{0:HH:mm}'}"
                                                     FontFamily="Barlow_Medium"
                                                     FontSize="{StaticResource Body2FontSize}"
-                                                    TextColor="{StaticResource TextColor}"
+                                                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
                                                     HorizontalOptions="End"
                                                     Margin="0, 0, 4, 0"></Label>
                                                 <Label
@@ -491,7 +492,7 @@
                                                     Text="Pressure: "
                                                     FontFamily="Barlow_Regular"
                                                     FontSize="{StaticResource Body2FontSize}"
-                                                    TextColor="{StaticResource GrayColor}"
+                                                    TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"
                                                     Margin="4, 0, 0, 0">
                                                 </Label>
                                                 <Label
@@ -500,7 +501,7 @@
                                                     Text="{Binding pressure, StringFormat='{0} hPa'}"
                                                     FontFamily="Barlow_Medium"
                                                     FontSize="{StaticResource Body2FontSize}"
-                                                    TextColor="{StaticResource TextColor}"
+                                                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
                                                     HorizontalOptions="End"></Label>
                                                 <Label
                                                     Grid.Row="1"
@@ -508,7 +509,7 @@
                                                     Text="Visibility: "
                                                     FontFamily="Barlow_Regular"
                                                     FontSize="{StaticResource Body2FontSize}"
-                                                    TextColor="{StaticResource GrayColor}"
+                                                    TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"
                                                     Margin="4, 0, 0, 0">
                                                 </Label>
                                                 <Label
@@ -517,7 +518,7 @@
                                                     Text="{Binding visibility, StringFormat='{0} km'}"
                                                     FontFamily="Barlow_Medium"
                                                     FontSize="{StaticResource Body2FontSize}"
-                                                    TextColor="{StaticResource TextColor}"
+                                                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
                                                     HorizontalOptions="End"></Label>
                                                 <Label
                                                     Grid.Row="2"
@@ -525,7 +526,7 @@
                                                     Text="UV Index: "
                                                     FontFamily="Barlow_Regular"
                                                     FontSize="{StaticResource Body2FontSize}"
-                                                    TextColor="{StaticResource GrayColor}"
+                                                    TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"
                                                     Margin="4, 0, 0, 0">
                                                 </Label>
                                                 <Label
@@ -534,7 +535,7 @@
                                                     Text="{Binding uvi, StringFormat='{0:N2}'}"
                                                     FontFamily="Barlow_Medium"
                                                     FontSize="{StaticResource Body2FontSize}"
-                                                    TextColor="{StaticResource TextColor}"
+                                                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
                                                     HorizontalOptions="End"></Label>
                                                 <Label
                                                     Grid.Row="3"
@@ -542,7 +543,7 @@
                                                     Text="Sunset: "
                                                     FontFamily="Barlow_Regular"
                                                     FontSize="{StaticResource Body2FontSize}"
-                                                    TextColor="{StaticResource GrayColor}"
+                                                    TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"
                                                     Margin="4, 0, 0, 0">
                                                 </Label>
                                                 <Label
@@ -551,7 +552,7 @@
                                                     Text="{Binding sunset, StringFormat='{0:HH:mm}'}"
                                                     FontFamily="Barlow_Medium"
                                                     FontSize="{StaticResource Body2FontSize}"
-                                                    TextColor="{StaticResource TextColor}"
+                                                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
                                                     HorizontalOptions="End"></Label>
                                             </Grid>
                                         </xct:Expander>

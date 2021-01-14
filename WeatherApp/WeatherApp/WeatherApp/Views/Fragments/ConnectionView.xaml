@@ -8,7 +8,7 @@
              RowSpacing="4"
              ColumnSpacing="16"
              Padding="16"
-             BackgroundColor="{StaticResource WhiteColor}">
+             BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}">
     <Label
         Grid.Column="0"
         Grid.RowSpan="2"
@@ -28,5 +28,5 @@
         Grid.Row="1"
         Text="It looks like you do not have internet connection"
         FontFamily="Barlow_Regular"
-        TextColor="{StaticResource TextColor}"/>
+        TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"/>
 </Grid>

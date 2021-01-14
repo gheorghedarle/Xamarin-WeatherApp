@@ -14,7 +14,7 @@
     <ContentPage.Content>
         <ScrollView>
             <Grid
-                BackgroundColor="{StaticResource BackgroundColor}"
+                BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}"
                 xct:StateLayout.CurrentState="{Binding MainState}" 
                 xct:StateLayout.AnimateStateChanges="True"
                 RowDefinitions="Auto, Auto, Auto, *"
@@ -39,7 +39,7 @@
                         Text="&#xf060;"
                         FontSize="{StaticResource Subtitle1FontSize}"
                         FontFamily="FontAwesome"
-                        TextColor="{StaticResource TextColor}"
+                        TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
                         HorizontalOptions="Start"></Label>
                 </StackLayout>
                 <Label
@@ -47,7 +47,7 @@
                     Text="Locations"
                     FontSize="{StaticResource Headline2FontSize}"
                     FontFamily="FrankRuhle_Medium"
-                    TextColor="{StaticResource TextColor}"
+                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
                     HorizontalOptions="Start"
                     VerticalOptions="Start"
                     Margin="16, 0, 0, 0"></Label>

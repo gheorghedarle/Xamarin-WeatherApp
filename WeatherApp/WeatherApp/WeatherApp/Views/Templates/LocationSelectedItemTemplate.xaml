@@ -9,6 +9,7 @@
              FlexLayout.Basis="50%"
              FlexLayout.AlignSelf="Start"
              Margin="4"
+             BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}"
              x:Name="template">
     <StackLayout
         xct:TouchEffect.LongPressCommand="{Binding Parent.BindingContext.DeleteLocationCommand, Source={x:Reference template}}"
@@ -17,19 +18,19 @@
             Text="{Binding Locality}"
             FontSize="{StaticResource Headline4FontSize}"
             FontFamily="FrankRuhle_Medium"
-            TextColor="{StaticResource TextColor}"
+            TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
             HorizontalOptions="Start"></Label>
         <Label
             Text="{Binding CountryName}"
             FontSize="{StaticResource Subtitle2FontSize}"
             FontFamily="Barlow_Regular"
-            TextColor="{StaticResource TextColor}"
+            TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
             HorizontalOptions="Start"
             Margin="0, -8, 0, 0"></Label>
         <Label
             FontSize="{StaticResource Body2FontSize}"
             FontFamily="Barlow_Regular"
-            TextColor="{StaticResource TextColor}"
+            TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
             HorizontalOptions="Start"
             VerticalOptions="EndAndExpand">
             <Label.Text>

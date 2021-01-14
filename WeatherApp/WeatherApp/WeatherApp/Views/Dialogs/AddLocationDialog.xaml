@@ -8,7 +8,7 @@
         prism:DialogLayout.CloseOnBackgroundTapped="True"
         prism:DialogLayout.RelativeWidthRequest=".75"
         CornerRadius="24"
-        BackgroundColor="{StaticResource BackgroundColor}">
+        BackgroundColor="{AppThemeBinding Light={StaticResource LightCardUnselectedBackgroundColor}, Dark={StaticResource DarkCardUnselectedBackgroundColor}}">
     <prism:DialogLayout.Mask>
         <StackLayout BackgroundColor="{StaticResource TransparentBackgroundColor}"
                      HorizontalOptions="FillAndExpand"
@@ -16,7 +16,7 @@
     </prism:DialogLayout.Mask>
     <StackLayout>
         <Label Text="Add new location"
-               TextColor="{StaticResource TextColor}"
+               TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
                FontSize="{StaticResource Headline4FontSize}"
                FontFamily="FrankRuhle_Medium"
                HorizontalOptions="StartAndExpand"/>
@@ -29,7 +29,7 @@
                 x:Name="locationName"
                 Margin="8, 0, 8, 0"
                 Placeholder="Add new location name"
-                TextColor="{StaticResource TextColor}">
+                TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}">
                 <Entry.Effects>
                     <xct:RemoveBorderEffect></xct:RemoveBorderEffect>
                 </Entry.Effects>
@@ -46,7 +46,7 @@
             FontFamily="Barlow_Medium"
             FontSize="{StaticResource ButtonFontSize}"
             BackgroundColor="{StaticResource AccentColor}"
-            TextColor="{StaticResource TextColor}"
+            TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
             Padding="8, 0, 8, 0"
             Command="{Binding UseCurrentLocationCommand}"
             CommandParameter="{Binding Text, Source={x:Reference locationName}}"

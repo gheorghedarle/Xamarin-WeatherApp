@@ -8,7 +8,7 @@
              HeightRequest="96"
              FlexLayout.Basis="50%"
              FlexLayout.AlignSelf="Start"
-             BackgroundColor="{StaticResource LightGrayColor}"
+             BackgroundColor="{AppThemeBinding Light={StaticResource LightCardUnselectedBackgroundColor}, Dark={StaticResource DarkCardUnselectedBackgroundColor}}"
              Margin="4"
              HasShadow="False"
              x:Name="template">
@@ -25,19 +25,19 @@
             Text="{Binding Locality}"
             FontSize="{StaticResource Headline4FontSize}"
             FontFamily="FrankRuhle_Medium"
-            TextColor="{StaticResource TextColor}"
+            TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
             HorizontalOptions="Start"></Label>
         <Label
             Text="{Binding CountryName}"
             FontSize="{StaticResource Subtitle2FontSize}"
             FontFamily="Barlow_Regular"
-            TextColor="{StaticResource TextColor}"
+            TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
             HorizontalOptions="Start"
             Margin="0, -8, 0, 0"></Label>
         <Label
             FontSize="{StaticResource Body2FontSize}"
             FontFamily="Barlow_Regular"
-            TextColor="{StaticResource TextColor}"
+            TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
             HorizontalOptions="Start"
             VerticalOptions="EndAndExpand">
             <Label.Text>

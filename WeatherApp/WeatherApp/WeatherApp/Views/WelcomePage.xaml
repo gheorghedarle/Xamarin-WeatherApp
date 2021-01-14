@@ -42,13 +42,13 @@
                         HorizontalOptions="Start"
                         FontFamily="FrankRuhle_Medium"
                         FontSize="{StaticResource Headline2FontSize}"
-                        TextColor="{StaticResource WhiteColor}"/>
+                        TextColor="{StaticResource DarkPrimaryTextColor}"/>
                     <Button
                         Text="USE YOUR CURRENT LOCATION"
                         FontFamily="Barlow_Medium"
                         FontSize="{StaticResource ButtonFontSize}"
                         BackgroundColor="{StaticResource AccentColor}"
-                        TextColor="{StaticResource TextColor}"
+                        TextColor="{StaticResource LightPrimaryTextColor}"
                         Padding="16, 22, 16, 22"
                         Margin="16, 8, 16, 8"
                         Command="{Binding UseCurrentLocationCommand}"
@@ -60,7 +60,7 @@
                         TextDecorations="Underline"
                         FontSize="{StaticResource ButtonFontSize}"
                         Margin="0, 8, 0, 24"
-                        TextColor="{StaticResource WhiteColor}"/>
+                        TextColor="{StaticResource DarkPrimaryTextColor}"/>
                 </StackLayout>
             </Grid>
         </Grid>

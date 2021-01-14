@@ -8,7 +8,7 @@
     <ContentPage.Content>
         <ScrollView>
             <Grid
-                BackgroundColor="{StaticResource BackgroundColor}"
+                BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}"
                 xct:StateLayout.CurrentState="{Binding MainState}" 
                 xct:StateLayout.AnimateStateChanges="True"
                 RowDefinitions="Auto, Auto, Auto, Auto"
@@ -33,7 +33,7 @@
                         Text="&#xf060;"
                         FontSize="{StaticResource Subtitle1FontSize}"
                         FontFamily="FontAwesome"
-                        TextColor="{StaticResource TextColor}"
+                        TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
                         HorizontalOptions="Start"></Label>
                 </StackLayout>
                 <Label
@@ -41,7 +41,7 @@
                     Text="Settings"
                     FontSize="{StaticResource Headline2FontSize}"
                     FontFamily="FrankRuhle_Medium"
-                    TextColor="{StaticResource TextColor}"
+                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
                     HorizontalOptions="Start"
                     VerticalOptions="Start"
                     Margin="16, 0, 0, 8"></Label>
@@ -52,7 +52,7 @@
                     <Label
                         Grid.Row="2"
                         Text="Units"
-                        TextColor="{StaticResource TextColor}"
+                        TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
                         FontFamily="Barlow_Medium"
                         FontSize="{StaticResource Body1FontSize}"
                         VerticalOptions="Center"></Label>
@@ -60,22 +60,23 @@
                         Orientation="Horizontal"
                         HorizontalOptions="EndAndExpand">
                         <Frame
+                            BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}"
                             Padding="12, 6, 12, 6"
                             CornerRadius="16">
                             <Label
                                 Text="Celsius"
-                                TextColor="{StaticResource TextColor}"
+                                TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
                                 FontFamily="Barlow_Medium"
                                 FontSize="{StaticResource Body1FontSize}"></Label>
                         </Frame>
                         <Frame
                             HasShadow="False"
-                            BackgroundColor="{StaticResource LightGrayColor}"
+                            BackgroundColor="{AppThemeBinding Light={StaticResource LightCardUnselectedBackgroundColor}, Dark={StaticResource DarkCardUnselectedBackgroundColor}}"
                             Padding="12, 6, 12, 6"
                             CornerRadius="16">
                             <Label
                                 Text="Fahrenheit"
-                                TextColor="{StaticResource TextColor}"
+                                TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
                                 FontFamily="Barlow_Medium"
                                 FontSize="{StaticResource Body1FontSize}"></Label>
                         </Frame>
@@ -88,15 +89,15 @@
                     <Label
                         Grid.Row="2"
                         Text="Dark mode"
-                        TextColor="{StaticResource TextColor}"
+                        TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
                         FontFamily="Barlow_Medium"
                         FontSize="{StaticResource Body1FontSize}"></Label>
                     <Switch
                         IsToggled="{Binding IsDarkMode}"
                         HorizontalOptions="EndAndExpand"
-                        BackgroundColor="{StaticResource BackgroundColor}"
-                        ThumbColor="{StaticResource TextColor}"
-                        OnColor="{StaticResource GrayColor}">
+                        BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}"
+                        ThumbColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
+                        OnColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}">
                         <Switch.Behaviors>
                             <xct:EventToCommandBehavior EventName="Toggled" Command="{Binding DarkModeToggleCommand}"></xct:EventToCommandBehavior>
                         </Switch.Behaviors>

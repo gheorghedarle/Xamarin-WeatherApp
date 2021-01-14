@@ -5,10 +5,10 @@
     x:Class="WeatherApp.Views.Fragments.SideMenuView"
     Padding="0, 36, 0, 0"
     VerticalOptions="FillAndExpand"
-    BackgroundColor="{StaticResource WhiteColor}">
+    BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}">
     <Label 
         Text="Weather App"
-        TextColor="{StaticResource TextColor}"
+        TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
         FontFamily="FrankRuhle_Medium"
         FontSize="{StaticResource Headline4FontSize}"
         Margin="16, 16, 0, 24"></Label>
@@ -29,7 +29,7 @@
         <Label 
             Grid.Column="1"
             Text="Locations"
-            TextColor="{StaticResource TextColor}"
+            TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
             FontFamily="Barlow_Medium"
             FontSize="{StaticResource Body1FontSize}"
             VerticalOptions="Center"></Label>
@@ -51,7 +51,7 @@
         <Label 
             Grid.Column="1"
             Text="Settings"
-            TextColor="{StaticResource TextColor}"
+            TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
             FontFamily="Barlow_Medium"
             FontSize="{StaticResource Body1FontSize}"
             VerticalOptions="Center"></Label>
@@ -60,13 +60,13 @@
         VerticalOptions="EndAndExpand">
         <Label 
             Text="Log out"
-            TextColor="{StaticResource TextColor}"
+            TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
             FontFamily="Barlow_Medium"
             FontSize="{StaticResource Body1FontSize}"
             Margin="16, 0, 0, 8"></Label>
         <Label 
             Text="Version 1.0.0"
-            TextColor="{StaticResource GrayColor}"
+            TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"
             FontFamily="Barlow_Regular"
             FontSize="{StaticResource Body1FontSize}"
             Margin="16, 0, 0, 36"></Label>
