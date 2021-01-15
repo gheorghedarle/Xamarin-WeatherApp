@@ -17,12 +17,12 @@ namespace WeatherApp.Services.Weather
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task<CurrentWeatherModel> GetCurrentWeatherAndHourlyForecastByLatLon(double lat, double lon)
+        public async Task<CurrentWeatherModel> GetCurrentWeatherAndHourlyForecastByLatLon(double lat, double lon, string units)
         {
             var baseUrl = await SecureStorage.GetAsync("weatherApiBaseUrl");
             var apiKey = await SecureStorage.GetAsync("weatherApiKey");
             var path = "onecall";
-            var response = await _httpClientFactory.GetHttpClient().GetAsync($"{baseUrl}/{path}?lat={lat}&lon={lon}&units=metric&exclude=minutely,alerts&appid={apiKey}");
+            var response = await _httpClientFactory.GetHttpClient().GetAsync($"{baseUrl}/{path}?lat={lat}&lon={lon}&units={units}&exclude=minutely,alerts&appid={apiKey}");
             if (response.IsSuccessStatusCode)
             {
                 var result = await response.Content.ReadAsStringAsync();

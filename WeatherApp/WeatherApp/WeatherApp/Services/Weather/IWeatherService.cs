@@ -5,6 +5,6 @@ namespace WeatherApp.Services.Weather
 {
     public interface IWeatherService
     {
-        Task<CurrentWeatherModel> GetCurrentWeatherAndHourlyForecastByLatLon(double lat, double lon);
+        Task<CurrentWeatherModel> GetCurrentWeatherAndHourlyForecastByLatLon(double lat, double lon, string units);
     }
 }

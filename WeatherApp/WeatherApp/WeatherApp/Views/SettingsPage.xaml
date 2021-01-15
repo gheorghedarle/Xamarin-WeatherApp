@@ -63,8 +63,11 @@
                             BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}"
                             Padding="12, 6, 12, 6"
                             CornerRadius="16">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding MetricCommand}"></TapGestureRecognizer>
+                            </Frame.GestureRecognizers>
                             <Label
-                                Text="Celsius"
+                                Text="Metric"
                                 TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
                                 FontFamily="Barlow_Medium"
                                 FontSize="{StaticResource Body1FontSize}"></Label>
@@ -74,8 +77,11 @@
                             BackgroundColor="{AppThemeBinding Light={StaticResource LightCardUnselectedBackgroundColor}, Dark={StaticResource DarkCardUnselectedBackgroundColor}}"
                             Padding="12, 6, 12, 6"
                             CornerRadius="16">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ImperialCommand}"></TapGestureRecognizer>
+                            </Frame.GestureRecognizers>
                             <Label
-                                Text="Fahrenheit"
+                                Text="Imperial"
                                 TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
                                 FontFamily="Barlow_Medium"
                                 FontSize="{StaticResource Body1FontSize}"></Label>

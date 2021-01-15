@@ -127,7 +127,8 @@ namespace WeatherApp.ViewModels
         {
             try
             {
-                CurrentWeather = await _weatherService.GetCurrentWeatherAndHourlyForecastByLatLon(_currentLat, _currentLon);
+                var units = Preferences.Get("units", "metric");
+                CurrentWeather = await _weatherService.GetCurrentWeatherAndHourlyForecastByLatLon(_currentLat, _currentLon, units);
                 if(CurrentWeather != null)
                 {
                     SelectedHour = CurrentWeather.hourlyWeatherForecast[0];
