@@ -6,9 +6,9 @@
         xmlns:prism="http://prismlibrary.com"
         prism:ViewModelLocator.AutowireViewModel="True"
         prism:DialogLayout.CloseOnBackgroundTapped="True"
-        prism:DialogLayout.RelativeWidthRequest=".75"
+        prism:DialogLayout.RelativeWidthRequest=".85"
         CornerRadius="24"
-        BackgroundColor="{AppThemeBinding Light={StaticResource LightCardUnselectedBackgroundColor}, Dark={StaticResource DarkCardUnselectedBackgroundColor}}">
+        BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
     <prism:DialogLayout.Mask>
         <StackLayout BackgroundColor="{StaticResource TransparentBackgroundColor}"
                      HorizontalOptions="FillAndExpand"

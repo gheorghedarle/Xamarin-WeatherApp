@@ -2,6 +2,6 @@
 <resources>
     <color name="launcher_background">#FFFFFF</color>
     <color name="colorPrimary">#007CD1</color>
-    <color name="colorPrimaryDark">#00357E</color>
+    <color name="colorPrimaryDark">#001532</color>
     <color name="colorAccent">#F3C623</color>
 </resources>
