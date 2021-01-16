@@ -31,12 +31,14 @@ namespace WeatherApp.ViewModels
 
         private void MetricCommandHandler()
         {
-            Preferences.Set("units", "metric");
+            Units = "metric";
+            Preferences.Set("units", Units);
         }
 
         private void ImperialCommandHandler()
         {
-            Preferences.Set("units", "imperial");
+            Units = "imperial";
+            Preferences.Set("units", Units);
         }
 
         private void DarkModeToggleCommandHandler()

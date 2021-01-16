@@ -315,13 +315,13 @@
                                                 <Frame.Triggers>
                                                     <MultiTrigger TargetType="Frame">
                                                         <MultiTrigger.Conditions>
-                                                            <BindingCondition Binding="{Binding isActive, Mode=TwoWay}" Value="True"/>
+                                                            <BindingCondition Binding="{Binding isActive}" Value="True"/>
                                                         </MultiTrigger.Conditions>
                                                         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}"/>
                                                     </MultiTrigger>
                                                     <MultiTrigger TargetType="Frame">
                                                         <MultiTrigger.Conditions>
-                                                            <BindingCondition Binding="{Binding isActive, Mode=TwoWay}" Value="False"/>
+                                                            <BindingCondition Binding="{Binding isActive}" Value="False"/>
                                                         </MultiTrigger.Conditions>
                                                         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightCardUnselectedBackgroundColor}, Dark={StaticResource DarkCardUnselectedBackgroundColor}}"/>
                                                         <Setter Property="HasShadow" Value="False"/>

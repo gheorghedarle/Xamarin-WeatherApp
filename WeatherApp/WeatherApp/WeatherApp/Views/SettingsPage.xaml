@@ -66,6 +66,21 @@
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding MetricCommand}"></TapGestureRecognizer>
                             </Frame.GestureRecognizers>
+                            <Frame.Triggers>
+                                <MultiTrigger TargetType="Frame">
+                                    <MultiTrigger.Conditions>
+                                        <BindingCondition Binding="{Binding Units}" Value="metric"/>
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}"/>
+                                </MultiTrigger>
+                                <MultiTrigger TargetType="Frame">
+                                    <MultiTrigger.Conditions>
+                                        <BindingCondition Binding="{Binding Units}" Value="imperial"/>
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightCardUnselectedBackgroundColor}, Dark={StaticResource DarkCardUnselectedBackgroundColor}}"/>
+                                    <Setter Property="HasShadow" Value="False"/>
+                                </MultiTrigger>
+                            </Frame.Triggers>
                             <Label
                                 Text="Metric"
                                 TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
@@ -73,13 +88,26 @@
                                 FontSize="{StaticResource Body1FontSize}"></Label>
                         </Frame>
                         <Frame
-                            HasShadow="False"
-                            BackgroundColor="{AppThemeBinding Light={StaticResource LightCardUnselectedBackgroundColor}, Dark={StaticResource DarkCardUnselectedBackgroundColor}}"
                             Padding="12, 6, 12, 6"
                             CornerRadius="16">
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding ImperialCommand}"></TapGestureRecognizer>
                             </Frame.GestureRecognizers>
+                            <Frame.Triggers>
+                                <MultiTrigger TargetType="Frame">
+                                    <MultiTrigger.Conditions>
+                                        <BindingCondition Binding="{Binding Units}" Value="imperial"/>
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}"/>
+                                </MultiTrigger>
+                                <MultiTrigger TargetType="Frame">
+                                    <MultiTrigger.Conditions>
+                                        <BindingCondition Binding="{Binding Units}" Value="metric"/>
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightCardUnselectedBackgroundColor}, Dark={StaticResource DarkCardUnselectedBackgroundColor}}"/>
+                                    <Setter Property="HasShadow" Value="False"/>
+                                </MultiTrigger>
+                            </Frame.Triggers>
                             <Label
                                 Text="Imperial"
                                 TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
