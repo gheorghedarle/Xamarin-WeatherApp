@@ -9,9 +9,10 @@
     <ContentPage.Content>
         <xct:SideMenuView
             x:Name="menuView"
-            AllowInterceptGesture="False"
             HorizontalOptions="FillAndExpand"
-            VerticalOptions="FillAndExpand">
+            VerticalOptions="FillAndExpand"
+            xct:SideMenuView.MenuGestureEnabled="False"
+            GestureThreshold="10000">
             <fragments:SideMenuView
                 xct:SideMenuView.Position="LeftMenu"
                 xct:SideMenuView.MenuWidthPercentage=".6"></fragments:SideMenuView>
