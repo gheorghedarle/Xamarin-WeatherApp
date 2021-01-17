@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using WeatherApp.Core;
@@ -38,18 +39,18 @@ namespace WeatherApp.Services.Weather
                         sunset = DateTimeOffset.FromUnixTimeSeconds(Convert.ToInt32(json["current"]["sunset"])).LocalDateTime,
                         temp = Convert.ToDouble(json["current"]["temp"].ToString()),
                         feels_like = Convert.ToDouble(json["current"]["feels_like"].ToString()),
-                        humidity = Convert.ToDouble(json["current"]["humidity"].ToString()),
-                        wind_speed = Convert.ToDouble(json["current"]["wind_speed"].ToString()),
-                        wind_deg = Convert.ToDouble(json["current"]["wind_deg"].ToString()),
-                        pressure = Convert.ToDouble(json["current"]["pressure"].ToString()),
-                        dew_point = Convert.ToDouble(json["current"]["dew_point"].ToString()),
-                        uvi = Convert.ToDouble(json["current"]["uvi"].ToString()),
+                        //humidity = Convert.ToDouble(json["current"]["humidity"].ToString()),
+                        //wind_speed = Convert.ToDouble(json["current"]["wind_speed"].ToString()),
+                        //wind_deg = Convert.ToDouble(json["current"]["wind_deg"].ToString()),
+                        //pressure = Convert.ToDouble(json["current"]["pressure"].ToString()),
+                        //dew_point = Convert.ToDouble(json["current"]["dew_point"].ToString()),
+                        //uvi = Convert.ToDouble(json["current"]["uvi"].ToString()),
                         weather = new WeatherModel()
                         {
                             icon = json["current"]["weather"][0]["icon"].ToString(),
                             description = json["current"]["weather"][0]["description"].ToString()
                         },
-                        rain = json["current"]["rain"] != null ? Convert.ToDouble(json["current"]["rain"]["1h"].ToString()) : 0,
+                        //rain = json["current"]["rain"] != null ? Convert.ToDouble(json["current"]["rain"]["1h"].ToString()) : 0,
                     },
                     hourlyWeatherForecast = hourlyWeatherForecast,
                     dailyWeatherForecast = dailyWeatherForecast
@@ -68,17 +69,19 @@ namespace WeatherApp.Services.Weather
                     dt = DateTimeOffset.FromUnixTimeSeconds(Convert.ToInt32(hourly[i]["dt"])).LocalDateTime,
                     temp = Convert.ToDouble(hourly[i]["temp"].ToString()),
                     feels_like = Convert.ToDouble(hourly[i]["feels_like"].ToString()),
-                    humidity = Convert.ToDouble(hourly[i]["humidity"].ToString()),
-                    wind_speed = Convert.ToDouble(hourly[i]["wind_speed"].ToString()),
-                    wind_deg = Convert.ToDouble(hourly[i]["wind_deg"].ToString()),
-                    visibility = Convert.ToDouble(hourly[i]["visibility"].ToString()) / 1000,
-                    pressure = Convert.ToDouble(hourly[i]["pressure"].ToString()),
+                    detailsList = new List<WeatherDetailsListModel>()
+                    {
+                        new WeatherDetailsListModel() { row = 0, col = 0, label = "Rain:", value = hourly[i]["rain"] != null ? $"{Math.Round(Convert.ToDouble(hourly[i]["rain"]["1h"].ToString()), 1)} mm/s" : "0 mm/s"},
+                        new WeatherDetailsListModel() { row = 0, col = 1, label = "Pressure", value = $"{Math.Round(Convert.ToDouble(hourly[i]["pressure"].ToString()), 1)}hPa"},
+                        new WeatherDetailsListModel() { row = 1, col = 0, label = "Humidity:", value = $"{Math.Round(Convert.ToDouble(hourly[i]["humidity"].ToString()), 1)}%"},
+                        new WeatherDetailsListModel() { row = 1, col = 1, label = "Visibility", value = $"{Math.Round(Convert.ToDouble(hourly[i]["visibility"].ToString()) / 1000, 1)} km"},
+                        new WeatherDetailsListModel() { row = 2, col = 0, label = "Wind speed:", value = $"{Math.Round(Convert.ToDouble(hourly[i]["wind_speed"].ToString()), 1)} m/s"}
+                    },
                     weather = new WeatherModel()
                     {
                         icon = hourly[i]["weather"][0]["icon"].ToString(),
                         description = hourly[i]["weather"][0]["description"].ToString()
                     },
-                    rain = hourly[i]["rain"] != null ? Convert.ToDouble(hourly[i]["rain"]["1h"].ToString()) : 0,
                 });
             }
             return hourlyForecast;
@@ -86,10 +89,10 @@ namespace WeatherApp.Services.Weather
 
         private ObservableCollection<WeatherDetailsModel> CreateDailyWeatherForecast(JToken daily)
         {
-            var hourlyForecast = new ObservableCollection<WeatherDetailsModel>();
+            var dailyForecast = new ObservableCollection<WeatherDetailsModel>();
             for (var i = 1; i < 7; i++)
             {
-                hourlyForecast.Add(new WeatherDetailsModel()
+                dailyForecast.Add(new WeatherDetailsModel()
                 {
                     dt = DateTimeOffset.FromUnixTimeSeconds(Convert.ToInt32(daily[i]["dt"])).LocalDateTime,
                     sunrise = DateTimeOffset.FromUnixTimeSeconds(Convert.ToInt32(daily[i]["sunrise"])).LocalDateTime,
@@ -98,13 +101,13 @@ namespace WeatherApp.Services.Weather
                     minTemp = Convert.ToDouble(daily[i]["temp"]["min"].ToString()),
                     maxTemp = Convert.ToDouble(daily[i]["temp"]["max"].ToString()),
                     feels_like = Convert.ToDouble(daily[i]["feels_like"]["day"].ToString()),
-                    humidity = Convert.ToDouble(daily[i]["humidity"].ToString()),
-                    wind_speed = Convert.ToDouble(daily[i]["wind_speed"].ToString()),
-                    wind_deg = Convert.ToDouble(daily[i]["wind_deg"].ToString()),
-                    pressure = Convert.ToDouble(daily[i]["pressure"].ToString()),
-                    dew_point = Convert.ToDouble(daily[i]["dew_point"].ToString()),
-                    pop = Convert.ToDouble(daily[i]["pop"].ToString()) * 100,
-                    uvi = Convert.ToDouble(daily[i]["uvi"].ToString()),
+                    //humidity = Convert.ToDouble(daily[i]["humidity"].ToString()),
+                    //wind_speed = Convert.ToDouble(daily[i]["wind_speed"].ToString()),
+                    //wind_deg = Convert.ToDouble(daily[i]["wind_deg"].ToString()),
+                    //pressure = Convert.ToDouble(daily[i]["pressure"].ToString()),
+                    //dew_point = Convert.ToDouble(daily[i]["dew_point"].ToString()),
+                    //pop = Convert.ToDouble(daily[i]["pop"].ToString()) * 100,
+                    //uvi = Convert.ToDouble(daily[i]["uvi"].ToString()),
                     weather = new WeatherModel()
                     {
                         icon = daily[i]["weather"][0]["icon"].ToString(),
@@ -112,7 +115,7 @@ namespace WeatherApp.Services.Weather
                     },
                 });
             }
-            return hourlyForecast;
+            return dailyForecast;
         }
     }
 }

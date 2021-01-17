@@ -17,7 +17,7 @@ namespace WeatherApp.Converters
                 case "temperature": return unit.Equals("metric") ? $"{Math.Round(val)}°C" : $"{Math.Round(val)}°F";
                 case "speed": return unit.Equals("metric") ? $"{Math.Round(val, 1)} m/s" : $"{Math.Round(val, 1)} mph";
                 case "sign": return unit.Equals("metric") ? "C" : "F";
-                default: return "";
+                default: return Math.Round(val, 1);
             }
         }
 

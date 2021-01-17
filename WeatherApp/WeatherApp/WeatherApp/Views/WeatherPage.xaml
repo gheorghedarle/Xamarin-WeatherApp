@@ -44,58 +44,26 @@
                                         <GradientStop Color="{StaticResource PrimaryDarkColor}" Offset="1.0"></GradientStop>
                                     </LinearGradientBrush>
                                 </xct:StateView.Background>
-                                <Grid 
-                                    RowDefinitions=".25*, *, .25*, Auto"
-                                    RowSpacing="0"
-                                    Margin="16, 0, 16, 0">
-                                    <StackLayout
-                                        Grid.Row="1"
-                                        Spacing="0"
-                                        VerticalOptions="End">
-                                        <Label
-                                            Text="Error"
-                                            HorizontalOptions="Start"
-                                            FontFamily="FrankRuhle_Medium"
-                                            FontSize="{StaticResource Headline2FontSize}"
-                                            TextColor="{StaticResource LightPrimaryTextColor}"/>
-                                        <Label
-                                            Text="Oops, something went wrong! Please wait few moments and try again."
-                                            FontSize="{StaticResource Body1FontSize}"
-                                            FontFamily="Barlow_Light"
-                                            TextColor="{StaticResource LightPrimaryTextColor}"
-                                            Margin="0, 4, 0, 0"></Label>
-                                    </StackLayout>
-                                    <Button
-                                        Grid.Row="3"
-                                        Text="TRY AGAIN"
-                                        FontFamily="Barlow_Medium"
-                                        FontSize="{StaticResource ButtonFontSize}"
-                                        BackgroundColor="{StaticResource AccentColor}"
-                                        TextColor="{StaticResource LightPrimaryTextColor}"
-                                        Padding="16, 22, 16, 22"
-                                        Margin="16, 8, 16, 24"
-                                        Command="{Binding TryAgainCommand}"
-                                        CornerRadius="36"></Button>
-                                </Grid>
+                                <fragments:ErrorView></fragments:ErrorView>
                             </xct:StateView>
                         </xct:StateLayout.StateViews>
                         <fragments:ConnectionView
                             Grid.Row="0"/>
-                        <StackLayout
+                        <ImageButton
                             Grid.Row="1"
                             Margin="24, 8, 16, 0"
                             Padding="0, 8, 16, 8"
-                            HorizontalOptions="Start">
-                            <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding MenuCommand}"></TapGestureRecognizer>
-                            </StackLayout.GestureRecognizers>
-                            <Label
-                                Text="&#xf0c9;"
-                                FontSize="{StaticResource Subtitle1FontSize}"
-                                FontFamily="FontAwesome"
-                                TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
-                                HorizontalOptions="Start"></Label>
-                        </StackLayout>
+                            HorizontalOptions="Start"
+                            BackgroundColor="Transparent"
+                            Command="{Binding MenuCommand}">
+                            <ImageButton.Source>
+                                <FontImageSource
+                                    Glyph="&#xf0c9;"
+                                    Size="{StaticResource Subtitle1FontSize}"
+                                    FontFamily="FontAwesome"
+                                    Color="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"></FontImageSource>
+                            </ImageButton.Source>
+                        </ImageButton>
                         <Label
                             Grid.Row="2"
                             Text="{Binding CurrentCity}"
@@ -186,92 +154,33 @@
                             BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}">
                             <Grid
                                 RowDefinitions="Auto, Auto, Auto"
-                                ColumnDefinitions="*, Auto, *, Auto">
-                                <Label
-                                    Grid.Row="0"
-                                    Grid.Column="0"
-                                    Text="Rain: "
-                                    FontFamily="Barlow_Regular"
-                                    FontSize="{StaticResource Body2FontSize}"
-                                    TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}">
-                                </Label>
-                                <Label
-                                    Grid.Row="0"
-                                    Grid.Column="1"
-                                    Text="{Binding SelectedHour.rain, StringFormat='{0} mm/s'}"
-                                    FontFamily="Barlow_Medium"
-                                    FontSize="{StaticResource Body2FontSize}"
-                                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
-                                    HorizontalOptions="End"
-                                    Margin="0, 0, 4, 0"></Label>
-                                <Label
-                                    Grid.Row="1"
-                                    Grid.Column="0"
-                                    Text="Humidity: "
-                                    FontFamily="Barlow_Regular"
-                                    FontSize="{StaticResource Body2FontSize}"
-                                    TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}">
-                                </Label>
-                                <Label
-                                    Grid.Row="1"
-                                    Grid.Column="1"
-                                    Text="{Binding SelectedHour.humidity, StringFormat='{0}%'}"
-                                    FontFamily="Barlow_Medium"
-                                    FontSize="{StaticResource Body2FontSize}"
-                                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
-                                    HorizontalOptions="End"
-                                    Margin="0, 0, 4, 0"></Label>
-                                <Label
-                                    Grid.Row="2"
-                                    Grid.Column="0"
-                                    Text="Wind speed: "
-                                    FontFamily="Barlow_Regular"
-                                    FontSize="{StaticResource Body2FontSize}"
-                                    TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}">
-                                </Label>
-                                <Label
-                                    Grid.Row="2"
-                                    Grid.Column="1"
-                                    Text="{Binding SelectedHour.wind_speed, Converter={StaticResource UnitConverter}, ConverterParameter='speed'}"
-                                    FontFamily="Barlow_Medium"
-                                    FontSize="{StaticResource Body2FontSize}"
-                                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
-                                    HorizontalOptions="End"
-                                    Margin="0, 0, 4, 0"></Label>
-                                <Label
-                                    Grid.Row="0"
-                                    Grid.Column="2"
-                                    Text="Pressure: "
-                                    FontFamily="Barlow_Regular"
-                                    FontSize="{StaticResource Body2FontSize}"
-                                    TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"
-                                    Margin="4, 0, 0, 0">
-                                </Label>
-                                <Label
-                                    Grid.Row="0"
-                                    Grid.Column="3"
-                                    Text="{Binding SelectedHour.pressure, StringFormat='{0} hPa'}"
-                                    FontFamily="Barlow_Medium"
-                                    FontSize="{StaticResource Body2FontSize}"
-                                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
-                                    HorizontalOptions="End"></Label>
-                                <Label
-                                    Grid.Row="1"
-                                    Grid.Column="2"
-                                    Text="Visibility: "
-                                    FontFamily="Barlow_Regular"
-                                    FontSize="{StaticResource Body2FontSize}"
-                                    TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"
-                                    Margin="4, 0, 0, 0">
-                                </Label>
-                                <Label
-                                    Grid.Row="1"
-                                    Grid.Column="3"
-                                    Text="{Binding SelectedHour.visibility, StringFormat='{0} km'}"
-                                    FontFamily="Barlow_Medium"
-                                    FontSize="{StaticResource Body2FontSize}"
-                                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
-                                    HorizontalOptions="End"></Label>
+                                ColumnDefinitions="*, *"
+                                HorizontalOptions="FillAndExpand"
+                                BindableLayout.ItemsSource="{Binding SelectedHour.detailsList}">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout 
+                                            Grid.Row="{Binding row}"
+                                            Grid.Column="{Binding col}"
+                                            Margin="0, 0, 4, 0"
+                                            Orientation="Horizontal"
+                                            HorizontalOptions="FillAndExpand">
+                                                <Label
+                                                    Text="{Binding label}"
+                                                    FontFamily="Barlow_Regular"
+                                                    FontSize="{StaticResource Body2FontSize}"
+                                                    TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"
+                                                    HorizontalOptions="StartAndExpand">
+                                                </Label>
+                                                <Label
+                                                    Text="{Binding value}"
+                                                    FontFamily="Barlow_Medium"
+                                                    FontSize="{StaticResource Body2FontSize}"
+                                                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
+                                                    HorizontalOptions="EndAndExpand"></Label>
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
                             </Grid>
                         </Frame>
                         <StackLayout
