@@ -295,22 +295,32 @@
                                                             Grid.Column="0"
                                                             Source="{Binding weather.icon, Converter={StaticResource AppThemeIconConverter}}"
                                                             WidthRequest="32"
-                                                            VerticalOptions="Center"></Image>
+                                                            VerticalOptions="CenterAndExpand"></Image>
                                                         <Label
                                                             Grid.Column="1"
                                                             Margin="8, 0, 0, 0"
                                                             Text="{Binding dt, StringFormat='{0:dddd}'}"
                                                             TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
                                                             HorizontalOptions="Start"
-                                                            VerticalOptions="Center"
+                                                            VerticalOptions="CenterAndExpand"
                                                             FontFamily="Barlow_Regular"
                                                             FontSize="{StaticResource Body2FontSize}">
+                                                        </Label>
+                                                        <Label
+                                                            Grid.Column="1"
+                                                            Margin="8, 0, 0, 0"
+                                                            Text="{Binding weather.description}"
+                                                            TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"
+                                                            HorizontalOptions="End"
+                                                            VerticalOptions="CenterAndExpand"
+                                                            FontFamily="Barlow_Regular"
+                                                            FontSize="{StaticResource CaptionFontSize}">
                                                         </Label>
                                                         <Label
                                                             Grid.Column="2"
                                                             Margin="0, 0, 8, 0"
                                                             HorizontalOptions="Center"
-                                                            VerticalOptions="Center"
+                                                            VerticalOptions="CenterAndExpand"
                                                             FontFamily="Barlow_Regular"
                                                             FontSize="{StaticResource Body2FontSize}"
                                                             TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}">
@@ -326,144 +336,33 @@
                                             </xct:Expander.Header>
                                             <Grid
                                                 RowDefinitions="Auto, Auto, Auto, Auto"
-                                                ColumnDefinitions="*, Auto, *, Auto"
-                                                Padding="16, 12, 16, 12">
-                                                <Label
-                                                    Grid.Row="0"
-                                                    Grid.Column="0"
-                                                    Text="Rain: "
-                                                    FontFamily="Barlow_Regular"
-                                                    FontSize="{StaticResource Body2FontSize}"
-                                                    TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}">
-                                                </Label>
-                                                <Label
-                                                    Grid.Row="0"
-                                                    Grid.Column="1"
-                                                    Text="{Binding pop, StringFormat='{0}%'}"
-                                                    FontFamily="Barlow_Medium"
-                                                    FontSize="{StaticResource Body2FontSize}"
-                                                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
-                                                    HorizontalOptions="End"
-                                                    Margin="0, 0, 4, 0"></Label>
-                                                <Label
-                                                    Grid.Row="1"
-                                                    Grid.Column="0"
-                                                    Text="Humidity: "
-                                                    FontFamily="Barlow_Regular"
-                                                    FontSize="{StaticResource Body2FontSize}"
-                                                    TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}">
-                                                </Label>
-                                                <Label
-                                                    Grid.Row="1"
-                                                    Grid.Column="1"
-                                                    Text="{Binding humidity, StringFormat='{0}%'}"
-                                                    FontFamily="Barlow_Medium"
-                                                    FontSize="{StaticResource Body2FontSize}"
-                                                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
-                                                    HorizontalOptions="End"
-                                                    Margin="0, 0, 4, 0"></Label>
-                                                <Label
-                                                    Grid.Row="2"
-                                                    Grid.Column="0"
-                                                    Text="Wind speed: "
-                                                    FontFamily="Barlow_Regular"
-                                                    FontSize="{StaticResource Body2FontSize}"
-                                                    TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}">
-                                                </Label>
-                                                <Label
-                                                    Grid.Row="2"
-                                                    Grid.Column="1"
-                                                    Text="{Binding wind_speed, StringFormat='{0:N1} m/s'}"
-                                                    FontFamily="Barlow_Medium"
-                                                    FontSize="{StaticResource Body2FontSize}"
-                                                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
-                                                    HorizontalOptions="End"
-                                                    Margin="0, 0, 4, 0"></Label>
-                                                <Label
-                                                    Grid.Row="3"
-                                                    Grid.Column="0"
-                                                    Text="Sunrise: "
-                                                    FontFamily="Barlow_Regular"
-                                                    FontSize="{StaticResource Body2FontSize}"
-                                                    TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}">
-                                                </Label>
-                                                <Label
-                                                    Grid.Row="3"
-                                                    Grid.Column="1"
-                                                    Text="{Binding sunrise, StringFormat='{0:HH:mm}'}"
-                                                    FontFamily="Barlow_Medium"
-                                                    FontSize="{StaticResource Body2FontSize}"
-                                                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
-                                                    HorizontalOptions="End"
-                                                    Margin="0, 0, 4, 0"></Label>
-                                                <Label
-                                                    Grid.Row="0"
-                                                    Grid.Column="2"
-                                                    Text="Pressure: "
-                                                    FontFamily="Barlow_Regular"
-                                                    FontSize="{StaticResource Body2FontSize}"
-                                                    TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"
-                                                    Margin="4, 0, 0, 0">
-                                                </Label>
-                                                <Label
-                                                    Grid.Row="0"
-                                                    Grid.Column="3"
-                                                    Text="{Binding pressure, StringFormat='{0} hPa'}"
-                                                    FontFamily="Barlow_Medium"
-                                                    FontSize="{StaticResource Body2FontSize}"
-                                                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
-                                                    HorizontalOptions="End"></Label>
-                                                <Label
-                                                    Grid.Row="1"
-                                                    Grid.Column="2"
-                                                    Text="Visibility: "
-                                                    FontFamily="Barlow_Regular"
-                                                    FontSize="{StaticResource Body2FontSize}"
-                                                    TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"
-                                                    Margin="4, 0, 0, 0">
-                                                </Label>
-                                                <Label
-                                                    Grid.Row="1"
-                                                    Grid.Column="3"
-                                                    Text="{Binding visibility, StringFormat='{0} km'}"
-                                                    FontFamily="Barlow_Medium"
-                                                    FontSize="{StaticResource Body2FontSize}"
-                                                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
-                                                    HorizontalOptions="End"></Label>
-                                                <Label
-                                                    Grid.Row="2"
-                                                    Grid.Column="2"
-                                                    Text="UV Index: "
-                                                    FontFamily="Barlow_Regular"
-                                                    FontSize="{StaticResource Body2FontSize}"
-                                                    TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"
-                                                    Margin="4, 0, 0, 0">
-                                                </Label>
-                                                <Label
-                                                    Grid.Row="2"
-                                                    Grid.Column="3"
-                                                    Text="{Binding uvi, StringFormat='{0:N2}'}"
-                                                    FontFamily="Barlow_Medium"
-                                                    FontSize="{StaticResource Body2FontSize}"
-                                                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
-                                                    HorizontalOptions="End"></Label>
-                                                <Label
-                                                    Grid.Row="3"
-                                                    Grid.Column="2"
-                                                    Text="Sunset: "
-                                                    FontFamily="Barlow_Regular"
-                                                    FontSize="{StaticResource Body2FontSize}"
-                                                    TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"
-                                                    Margin="4, 0, 0, 0">
-                                                </Label>
-                                                <Label
-                                                    Grid.Row="3"
-                                                    Grid.Column="3"
-                                                    Text="{Binding sunset, StringFormat='{0:HH:mm}'}"
-                                                    FontFamily="Barlow_Medium"
-                                                    FontSize="{StaticResource Body2FontSize}"
-                                                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
-                                                    HorizontalOptions="End"></Label>
+                                                ColumnDefinitions="*, *"
+                                                Padding="16, 12, 16, 12"
+                                                BindableLayout.ItemsSource="{Binding detailsList}">
+                                                <BindableLayout.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <StackLayout 
+                                                            Grid.Row="{Binding row}"
+                                                            Grid.Column="{Binding col}"
+                                                            Margin="0, 0, 4, 0"
+                                                            Orientation="Horizontal"
+                                                            HorizontalOptions="FillAndExpand">
+                                                            <Label
+                                                                Text="{Binding label}"
+                                                                FontFamily="Barlow_Regular"
+                                                                FontSize="{StaticResource Body2FontSize}"
+                                                                TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"
+                                                                HorizontalOptions="StartAndExpand">
+                                                            </Label>
+                                                            <Label
+                                                                Text="{Binding value}"
+                                                                FontFamily="Barlow_Medium"
+                                                                FontSize="{StaticResource Body2FontSize}"
+                                                                TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
+                                                                HorizontalOptions="EndAndExpand"></Label>
+                                                        </StackLayout>
+                                                    </DataTemplate>
+                                                </BindableLayout.ItemTemplate>
                                             </Grid>
                                         </xct:Expander>
                                     </DataTemplate>

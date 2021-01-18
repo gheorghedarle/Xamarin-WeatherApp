@@ -21,8 +21,6 @@ namespace WeatherApp.Models
     public class WeatherDetailsModel: BaseModel
     {
         public DateTime dt { get; set; }
-        public DateTime sunrise { get; set; }
-        public DateTime sunset { get; set; }
         public double temp { get; set; }
         public double maxTemp { get; set; }
         public double minTemp { get; set; }
