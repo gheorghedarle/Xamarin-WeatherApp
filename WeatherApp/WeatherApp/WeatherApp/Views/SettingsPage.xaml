@@ -11,7 +11,7 @@
                 BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}"
                 xct:StateLayout.CurrentState="{Binding MainState}" 
                 xct:StateLayout.AnimateStateChanges="True"
-                RowDefinitions="Auto, Auto, Auto, Auto"
+                RowDefinitions="Auto, Auto, Auto, Auto, *"
                 RowSpacing="0">
                 <xct:StateLayout.StateViews>
                     <xct:StateView
