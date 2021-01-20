@@ -8,9 +8,9 @@
         prism:DialogLayout.CloseOnBackgroundTapped="True"
         prism:DialogLayout.RelativeWidthRequest=".85"
         CornerRadius="24"
-        BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
+        BackgroundColor="{AppThemeBinding Light={StaticResource LightCardUnselectedBackgroundColor}, Dark={StaticResource DarkCardUnselectedBackgroundColor}}">
     <prism:DialogLayout.Mask>
-        <StackLayout BackgroundColor="{StaticResource TransparentBackgroundColor}"
+        <StackLayout BackgroundColor="{AppThemeBinding Light={StaticResource LightTransparentBackgroundColor}, Dark={StaticResource DarkTransparentBackgroundColor}}"
                      HorizontalOptions="FillAndExpand"
                      VerticalOptions="FillAndExpand"></StackLayout>
     </prism:DialogLayout.Mask>
@@ -24,11 +24,13 @@
             HasShadow="False"
             Padding="4"
             CornerRadius="24"
-            Margin="0, 8, 0, 8">
+            Margin="0, 8, 0, 8"
+                BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}">
             <Entry
                 x:Name="locationName"
                 Margin="8, 0, 8, 0"
                 Placeholder="Add new location name"
+                PlaceholderColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
                 TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}">
                 <Entry.Effects>
                     <xct:RemoveBorderEffect></xct:RemoveBorderEffect>
@@ -46,7 +48,7 @@
             FontFamily="Barlow_Medium"
             FontSize="{StaticResource ButtonFontSize}"
             BackgroundColor="{StaticResource AccentColor}"
-            TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
+            TextColor="{StaticResource PrimaryDarkColor}"
             Padding="8, 0, 8, 0"
             Command="{Binding UseCurrentLocationCommand}"
             CommandParameter="{Binding Text, Source={x:Reference locationName}}"

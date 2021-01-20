@@ -12,7 +12,7 @@
              HasShadow="False"
              x:Name="template">
     <StackLayout
-        VerticalOptions="Center">
+        VerticalOptions="CenterAndExpand">
         <StackLayout.GestureRecognizers>
             <TapGestureRecognizer Command="{Binding Parent.BindingContext.AddLocationCommand, Source={x:Reference template}}" NumberOfTapsRequired="1"></TapGestureRecognizer>
         </StackLayout.GestureRecognizers>
