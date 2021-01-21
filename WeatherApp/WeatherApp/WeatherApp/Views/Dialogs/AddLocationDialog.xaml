@@ -2,6 +2,7 @@
 <Frame xmlns="http://xamarin.com/schemas/2014/forms" 
         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
         xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+        xmlns:fragments="clr-namespace:WeatherApp.Views.Fragments"
         x:Class="WeatherApp.Views.Dialogs.AddLocationDialog"
         xmlns:prism="http://prismlibrary.com"
         prism:ViewModelLocator.AutowireViewModel="True"
@@ -14,7 +15,16 @@
                      HorizontalOptions="FillAndExpand"
                      VerticalOptions="FillAndExpand"></StackLayout>
     </prism:DialogLayout.Mask>
-    <StackLayout>
+    <StackLayout
+        xct:StateLayout.CurrentState="{Binding MainState}" 
+        xct:StateLayout.AnimateStateChanges="True">
+        <xct:StateLayout.StateViews>
+            <xct:StateView
+                StateKey="Loading"
+                VerticalOptions="FillAndExpand">
+                <fragments:LoadingView/>
+            </xct:StateView>
+        </xct:StateLayout.StateViews>
         <Label Text="Add new location"
                TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
                FontSize="{StaticResource Headline4FontSize}"
@@ -25,7 +35,7 @@
             Padding="4"
             CornerRadius="24"
             Margin="0, 8, 0, 8"
-                BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}">
+            BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}">
             <Entry
                 x:Name="locationName"
                 Margin="8, 0, 8, 0"
@@ -43,6 +53,11 @@
                 </Entry.Behaviors>
             </Entry>
         </Frame>
+        <Label
+            Margin="0, 0, 0, 8"
+            IsVisible="{Binding HasError}"
+            Text="Unfortunately, we can't find this location. You can try something like New York"
+            TextColor="{StaticResource FailColor}"></Label>
         <Button 
             Text="ADD LOCATION"
             FontFamily="Barlow_Medium"
