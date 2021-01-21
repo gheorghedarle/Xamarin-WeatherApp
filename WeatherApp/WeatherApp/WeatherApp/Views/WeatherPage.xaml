@@ -223,21 +223,27 @@
                                             <Frame
                                                 Padding="16, 8, 16, 8"
                                                 CornerRadius="24">
-                                                <Frame.Triggers>
-                                                    <MultiTrigger TargetType="Frame">
-                                                        <MultiTrigger.Conditions>
-                                                            <BindingCondition Binding="{Binding isActive}" Value="True"/>
-                                                        </MultiTrigger.Conditions>
-                                                        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}"/>
-                                                    </MultiTrigger>
-                                                    <MultiTrigger TargetType="Frame">
-                                                        <MultiTrigger.Conditions>
-                                                            <BindingCondition Binding="{Binding isActive}" Value="False"/>
-                                                        </MultiTrigger.Conditions>
-                                                        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightCardUnselectedBackgroundColor}, Dark={StaticResource DarkCardUnselectedBackgroundColor}}"/>
-                                                        <Setter Property="HasShadow" Value="False"/>
-                                                    </MultiTrigger>
-                                                </Frame.Triggers>
+                                                <VisualStateManager.VisualStateGroups>
+                                                    <VisualStateGroup>
+                                                        <VisualState x:Name="notSelected">
+                                                            <VisualState.StateTriggers>
+                                                                <StateTrigger IsActive="{Binding isActive}"></StateTrigger>
+                                                            </VisualState.StateTriggers>
+                                                            <VisualState.Setters>
+                                                                <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}"/>
+                                                            </VisualState.Setters>
+                                                        </VisualState>
+                                                        <VisualState x:Name="selected">
+                                                            <VisualState.StateTriggers>
+                                                                <StateTrigger IsActive="{Binding isActive, Converter={xct:InvertedBoolConverter}}"></StateTrigger>
+                                                            </VisualState.StateTriggers>
+                                                            <VisualState.Setters>
+                                                                <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightCardUnselectedBackgroundColor}, Dark={StaticResource DarkCardUnselectedBackgroundColor}}"/>
+                                                                <Setter Property="HasShadow" Value="False"/>
+                                                            </VisualState.Setters>
+                                                        </VisualState>
+                                                    </VisualStateGroup>
+                                                </VisualStateManager.VisualStateGroups>
                                                 <Grid
                                                     RowDefinitions="Auto, *, Auto">
                                                     <Label
