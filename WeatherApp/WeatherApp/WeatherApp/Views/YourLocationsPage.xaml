@@ -45,14 +45,9 @@
                 <Label
                     Grid.Row="1"
                     Text="Locations"
-                    FontSize="{StaticResource Headline2FontSize}"
-                    FontFamily="FrankRuhle_Medium"
-                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
-                    HorizontalOptions="Start"
-                    VerticalOptions="Start"
+                    Style="{StaticResource Headline2_FrankRuhleMedium}"
                     Margin="16, 0, 0, 0"></Label>
                 <FlexLayout 
-                    x:Name="layout"
                     Grid.Row="3"
                     BindableLayout.ItemsSource="{Binding Locations}"
                     BindableLayout.ItemTemplateSelector="{StaticResource LocationTemplateSelector}"

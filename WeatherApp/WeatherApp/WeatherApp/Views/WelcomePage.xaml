@@ -39,9 +39,7 @@
                     <Label
                         Margin="24, 8, 0, 8"
                         Text="Welcome to your weather app"
-                        HorizontalOptions="Start"
-                        FontFamily="FrankRuhle_Medium"
-                        FontSize="{StaticResource Headline2FontSize}"
+                        Style="{StaticResource Headline2_FrankRuhleMedium}"
                         TextColor="{StaticResource DarkPrimaryTextColor}"/>
                     <Button
                         Text="USE YOUR CURRENT LOCATION"
@@ -55,10 +53,9 @@
                         CornerRadius="36"></Button>
                     <Label
                         Text="Or enter your place name"
+                        Style="{StaticResource Button_Barlow_Medium}"
                         HorizontalOptions="Center"
-                        FontFamily="Barlow_Medium"
                         TextDecorations="Underline"
-                        FontSize="{StaticResource ButtonFontSize}"
                         Margin="0, 8, 0, 24"
                         TextColor="{StaticResource DarkPrimaryTextColor}"/>
                 </StackLayout>

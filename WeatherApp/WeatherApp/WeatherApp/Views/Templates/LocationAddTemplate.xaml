@@ -12,22 +12,18 @@
              HasShadow="False"
              x:Name="template">
     <StackLayout
+        HorizontalOptions="Center"
         VerticalOptions="CenterAndExpand">
         <StackLayout.GestureRecognizers>
             <TapGestureRecognizer Command="{Binding Parent.BindingContext.AddLocationCommand, Source={x:Reference template}}" NumberOfTapsRequired="1"></TapGestureRecognizer>
         </StackLayout.GestureRecognizers>
         <Label
             Text="&#xf067;"
-            FontSize="{StaticResource Headline2FontSize}"
-            FontFamily="FontAwesome"
-            TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
-            HorizontalOptions="Center"
+            Style="{StaticResource FontAwesome_FrankRuhleMedium}"
+            HorizontalTextAlignment="Center"
             Margin="4"></Label>
         <Label
             Text="Add location"
-            FontSize="{StaticResource Body1FontSize}"
-            FontFamily="Barlow_Regular"
-            TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
-            HorizontalOptions="Center"></Label>
+            Style="{StaticResource Body2_BarlowRegular}"></Label>
     </StackLayout>
 </Frame>

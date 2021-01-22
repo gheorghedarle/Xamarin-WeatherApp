@@ -16,22 +16,14 @@
         xct:TouchEffect.LongPressCommandParameter="{Binding BindingContext.Locality, Source={x:Reference template}}">
         <Label
             Text="{Binding Locality}"
-            FontSize="{StaticResource Headline4FontSize}"
-            FontFamily="FrankRuhle_Medium"
-            TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
+            Style="{StaticResource Headline4_FrankRuhleMedium}"
             HorizontalOptions="Start"></Label>
         <Label
             Text="{Binding CountryName}"
-            FontSize="{StaticResource Subtitle2FontSize}"
-            FontFamily="Barlow_Regular"
-            TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
-            HorizontalOptions="Start"
+            Style="{StaticResource Subtitle2_BarlowRegular}"
             Margin="0, -8, 0, 0"></Label>
         <Label
-            FontSize="{StaticResource Body2FontSize}"
-            FontFamily="Barlow_Regular"
-            TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
-            HorizontalOptions="Start"
+            Style="{StaticResource Body2_BarlowRegular}"
             VerticalOptions="EndAndExpand">
             <Label.Text>
                 <MultiBinding StringFormat="{}{0}, {1}">

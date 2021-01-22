@@ -39,12 +39,8 @@
                 <Label
                     Grid.Row="1"
                     Text="Settings"
-                    FontSize="{StaticResource Headline2FontSize}"
-                    FontFamily="FrankRuhle_Medium"
-                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
-                    HorizontalOptions="Start"
-                    VerticalOptions="Start"
-                    Margin="16, 0, 0, 8"></Label>
+                    Style="{StaticResource Headline2_FrankRuhleMedium}"
+                    Margin="16, 0, 0, 0"></Label>
                 <StackLayout
                     Grid.Row="2"
                     Margin="16, 6, 16, 6"
@@ -52,9 +48,7 @@
                     <Label
                         Grid.Row="2"
                         Text="Units"
-                        TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
-                        FontFamily="Barlow_Medium"
-                        FontSize="{StaticResource Body1FontSize}"
+                        Style="{StaticResource Body2_BarlowRegular}"
                         VerticalOptions="Center"></Label>
                     <StackLayout
                         Orientation="Horizontal"
@@ -83,9 +77,7 @@
                             </Frame.Triggers>
                             <Label
                                 Text="Metric"
-                                TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
-                                FontFamily="Barlow_Medium"
-                                FontSize="{StaticResource Body1FontSize}"></Label>
+                                Style="{StaticResource Body2_BarlowRegular}"></Label>
                         </Frame>
                         <Frame
                             Padding="12, 6, 12, 6"
@@ -110,9 +102,7 @@
                             </Frame.Triggers>
                             <Label
                                 Text="Imperial"
-                                TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
-                                FontFamily="Barlow_Medium"
-                                FontSize="{StaticResource Body1FontSize}"></Label>
+                                Style="{StaticResource Body2_BarlowRegular}"></Label>
                         </Frame>
                     </StackLayout>
                 </StackLayout>
@@ -123,9 +113,7 @@
                     <Label
                         Grid.Row="2"
                         Text="Dark mode"
-                        TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
-                        FontFamily="Barlow_Medium"
-                        FontSize="{StaticResource Body1FontSize}"></Label>
+                        Style="{StaticResource Body2_BarlowMedium}"></Label>
                     <Switch
                         IsToggled="{Binding IsDarkMode}"
                         HorizontalOptions="EndAndExpand"

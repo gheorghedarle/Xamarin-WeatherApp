@@ -11,8 +11,7 @@
             <converters:UnitConverter x:Key="UnitConverter"/>
 
             <ResourceDictionary.MergedDictionaries>
-                <styles:Colors></styles:Colors>
-                <styles:Fonts></styles:Fonts>
+                <styles:Theme></styles:Theme>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </prism:PrismApplication.Resources>

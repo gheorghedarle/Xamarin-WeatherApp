@@ -2,7 +2,6 @@
 <ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WeatherApp.Styles.Colors">
-
     <Color x:Key="PrimaryColor">#007CD1</Color>
     <Color x:Key="PrimaryDarkColor">#001532</Color>
     <Color x:Key="AccentColor">#F3C623</Color>

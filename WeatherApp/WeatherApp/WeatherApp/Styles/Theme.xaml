@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:styles="clr-namespace:WeatherApp.Styles"
+             x:Class="WeatherApp.Styles.Theme">
+    <ResourceDictionary.MergedDictionaries>
+        <styles:Colors></styles:Colors>
+        <styles:Fonts></styles:Fonts>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="FontAwesome_FrankRuhleMedium" TargetType="Label">
+        <Setter Property="FontFamily" Value="FontAwesome" />
+        <Setter Property="FontSize" Value="{StaticResource Headline2FontSize}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
+    </Style>
+
+    <Style x:Key="Headline0_FrankRuhleBold" TargetType="Label">
+        <Setter Property="FontFamily" Value="FrankRuhle_Bold" />
+        <Setter Property="FontSize" Value="{StaticResource Headline0FontSize}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
+    </Style>
+    <Style x:Key="Headline2_FrankRuhleMedium" TargetType="Label">
+        <Setter Property="FontFamily" Value="FrankRuhle_Medium" />
+        <Setter Property="FontSize" Value="{StaticResource Headline2FontSize}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
+    </Style>
+    <Style x:Key="Headline4_BarlowRegular" TargetType="Label">
+        <Setter Property="FontFamily" Value="Barlow_Regular" />
+        <Setter Property="FontSize" Value="{StaticResource Headline4FontSize}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
+    </Style>
+    <Style x:Key="Headline4_FrankRuhleMedium" TargetType="Label">
+        <Setter Property="FontFamily" Value="FrankRuhle_Medium" />
+        <Setter Property="FontSize" Value="{StaticResource Headline4FontSize}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
+    </Style>
+    
+    <Style x:Key="Subtitle1_BarlowRegular" TargetType="Label">
+        <Setter Property="FontFamily" Value="Barlow_Regular" />
+        <Setter Property="FontSize" Value="{StaticResource Subtitle1FontSize}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
+    </Style>
+    <Style x:Key="Subtitle1_FrankRuhleMedium" TargetType="Label">
+        <Setter Property="FontFamily" Value="FrankRuhle_Medium" />
+        <Setter Property="FontSize" Value="{StaticResource Headline4FontSize}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
+    </Style>
+    <Style x:Key="Subtitle2_BarlowRegular" TargetType="Label">
+        <Setter Property="FontFamily" Value="Barlow_Regular" />
+        <Setter Property="FontSize" Value="{StaticResource Body1FontSize}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
+    </Style>
+
+    <Style x:Key="Body2_BarlowRegular" TargetType="Label">
+        <Setter Property="FontFamily" Value="Barlow_Regular" />
+        <Setter Property="FontSize" Value="{StaticResource Body2FontSize}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
+    </Style>
+    <Style x:Key="Body2_BarlowRegular_SecondaryColor" TargetType="Label">
+        <Setter Property="FontFamily" Value="Barlow_Regular" />
+        <Setter Property="FontSize" Value="{StaticResource Body2FontSize}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}" />
+    </Style>
+    <Style x:Key="Body2_BarlowMedium" TargetType="Label">
+        <Setter Property="FontFamily" Value="Barlow_Medium" />
+        <Setter Property="FontSize" Value="{StaticResource Body2FontSize}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
+    </Style>
+
+    <Style x:Key="Button_Barlow_Medium" TargetType="Label">
+        <Setter Property="FontFamily" Value="Barlow_Regular" />
+        <Setter Property="FontSize" Value="{StaticResource CaptionFontSize}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
+    </Style>
+
+    <Style x:Key="Caption_BarlowRegular_SecondaryColor" TargetType="Label">
+        <Setter Property="FontFamily" Value="Barlow_Regular" />
+        <Setter Property="FontSize" Value="{StaticResource CaptionFontSize}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
+    </Style>
+</ResourceDictionary>

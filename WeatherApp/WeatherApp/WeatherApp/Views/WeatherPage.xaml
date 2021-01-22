@@ -69,27 +69,18 @@
                         <Label
                             Grid.Row="2"
                             Text="{Binding CurrentCity}"
-                            FontSize="{StaticResource Headline2FontSize}"
-                            FontFamily="FrankRuhle_Medium"
-                            TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
-                            HorizontalOptions="Start"
+                            Style="{StaticResource Headline2_FrankRuhleMedium}"
                             Margin="24, 0, 0, 0"></Label>
                         <Label
                             Grid.Row="3"
                             Text="{Binding CurrentCountry}"
-                            FontSize="{StaticResource Headline4FontSize}"
-                            FontFamily="Barlow_Regular"
-                            TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
-                            HorizontalOptions="Start"
+                            Style="{StaticResource Subtitle1_BarlowRegular}"
                             Margin="24, -8, 0, 0"></Label>
                         <Label
                             Grid.Row="4"
                             Text="{Binding SelectedHour.dt, StringFormat='{0:dddd, d MMMM yyyy HH:mm}'}"
-                            FontSize="{StaticResource Body1FontSize}"
-                            FontFamily="Barlow_Regular"
-                            TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
-                            HorizontalOptions="Start"
-                            Margin="24, 0, 0, 0"></Label>
+                            Style="{StaticResource Subtitle2_BarlowRegular}"
+                            Margin="24, 2, 0, 0"></Label>
                         <Grid
                             ColumnDefinitions="*, *"
                             Grid.Row="5"
@@ -111,14 +102,10 @@
                                         <FormattedString>
                                             <Span
                                                 Text="{Binding SelectedHour.temp, StringFormat='{0:N0}°'}"
-                                                FontFamily="FrankRuhle_Bold"
-                                                FontSize="{StaticResource Headline0FontSize}"
-                                                TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"></Span>
+                                                Style="{StaticResource Headline0_FrankRuhleBold}"></Span>
                                             <Span
                                                 Text="{Binding SelectedHour.temp, Converter={StaticResource UnitConverter}, ConverterParameter='sign'}"
-                                                FontFamily="Barlow_Regular"
-                                                FontSize="{StaticResource Subtitle1FontSize}"
-                                                TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"></Span>
+                                                Style="{StaticResource Subtitle1_BarlowRegular}"></Span>
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
@@ -129,22 +116,16 @@
                                         <FormattedString>
                                             <Span
                                                 Text="Feels like "
-                                                FontFamily="Barlow_Regular"
-                                                FontSize="{StaticResource Body2FontSize}"
-                                                TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"></Span>
+                                                Style="{StaticResource Body2_BarlowRegular}"></Span>
                                             <Span
                                                 Text="{Binding SelectedHour.feels_like, Converter={StaticResource UnitConverter}, ConverterParameter='temperature'}"
-                                                FontFamily="Barlow_Medium"
-                                                FontSize="{StaticResource Body2FontSize}"
-                                                TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"></Span>
+                                                Style="{StaticResource Body2_BarlowMedium}"></Span>
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
                                 <Label
                                     Text="{Binding SelectedHour.weather.description}"
-                                    FontSize="{StaticResource Body2FontSize}"
-                                    FontFamily="Barlow_Medium"
-                                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
+                                    Style="{StaticResource Body2_BarlowMedium}"
                                     HorizontalOptions="EndAndExpand"></Label>
                             </StackLayout>
                         </Grid>
@@ -169,16 +150,12 @@
                                             HorizontalOptions="FillAndExpand">
                                                 <Label
                                                     Text="{Binding label}"
-                                                    FontFamily="Barlow_Regular"
-                                                    FontSize="{StaticResource Body2FontSize}"
-                                                    TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"
+                                                    Style="{StaticResource Body2_BarlowRegular_SecondaryColor}"
                                                     HorizontalOptions="StartAndExpand">
                                                 </Label>
                                                 <Label
                                                     Text="{Binding value}"
-                                                    FontFamily="Barlow_Medium"
-                                                    FontSize="{StaticResource Body2FontSize}"
-                                                    TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
+                                                    Style="{StaticResource Body2_BarlowMedium}"
                                                     HorizontalOptions="EndAndExpand"></Label>
                                         </StackLayout>
                                     </DataTemplate>
@@ -191,10 +168,7 @@
                             Padding="0, 0, 0, 2">
                             <Label
                                 Text="Hourly"
-                                FontSize="{StaticResource Headline4FontSize}"
-                                FontFamily="FrankRuhle_Medium"
-                                TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
-                                HorizontalOptions="Start"
+                                Style="{StaticResource Subtitle1_FrankRuhleMedium}"
                                 Margin="0, 12, 0, 0"></Label>
                             <CollectionView
                                 x:Name="hourlyForecast"
@@ -249,24 +223,21 @@
                                                     <Label
                                                         Grid.Row="0"
                                                         Text="{Binding dt, StringFormat='{0:HH:mm}'}"
-                                                        HorizontalOptions="Center"
-                                                        FontSize="{StaticResource Body2FontSize}"
-                                                        TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
-                                                        FontFamily="Barlow_Regular">
+                                                        Style="{StaticResource Body2_BarlowRegular}"
+                                                        HorizontalOptions="Center">
                                                     </Label>
                                                     <Image 
                                                         Grid.Row="1"
                                                         Source="{Binding weather.icon, Converter={StaticResource AppThemeIconConverter}}"
-                                                        HeightRequest="30"
+                                                        WidthRequest="36"
+                                                        HeightRequest="36"
                                                         VerticalOptions="Center">
                                                     </Image>
                                                     <Label
                                                         Grid.Row="2"
                                                         Text="{Binding temp, Converter={StaticResource UnitConverter}, ConverterParameter='temperature'}"
-                                                        HorizontalOptions="Center"
-                                                        FontSize="{StaticResource Body2FontSize}"
-                                                        TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
-                                                        FontFamily="Barlow_Regular">
+                                                        Style="{StaticResource Body2_BarlowRegular}"
+                                                        HorizontalOptions="Center">
                                                     </Label>
                                                 </Grid>
                                             </Frame>
@@ -280,10 +251,7 @@
                             Margin="24, 0, 24, 8">
                             <Label
                                 Text="Daily"
-                                FontSize="{StaticResource Headline4FontSize}"
-                                FontFamily="FrankRuhle_Medium"
-                                TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
-                                HorizontalOptions="Start"
+                                Style="{StaticResource Subtitle1_FrankRuhleMedium}"
                                 Margin="0, 8, 0, 0"></Label>
                             <StackLayout
                                 BindableLayout.ItemsSource="{Binding CurrentWeather.dailyWeatherForecast}">
@@ -302,36 +270,31 @@
                                                         <Image 
                                                             Grid.Column="0"
                                                             Source="{Binding weather.icon, Converter={StaticResource AppThemeIconConverter}}"
-                                                            WidthRequest="32"
+                                                            WidthRequest="36"
+                                                            HeightRequest="36"
                                                             VerticalOptions="CenterAndExpand"></Image>
                                                         <Label
                                                             Grid.Column="1"
-                                                            Margin="8, 0, 0, 0"
                                                             Text="{Binding dt, StringFormat='{0:dddd}'}"
-                                                            TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
+                                                            Style="{StaticResource Body2_BarlowRegular}"
+                                                            Margin="8, 0, 0, 0"
                                                             HorizontalOptions="Start"
-                                                            VerticalOptions="CenterAndExpand"
-                                                            FontFamily="Barlow_Regular"
-                                                            FontSize="{StaticResource Body2FontSize}">
+                                                            VerticalOptions="CenterAndExpand">
                                                         </Label>
                                                         <Label
                                                             Grid.Column="1"
-                                                            Margin="8, 0, 0, 0"
                                                             Text="{Binding weather.description}"
-                                                            TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"
+                                                            Style="{StaticResource Caption_BarlowRegular_SecondaryColor}"
+                                                            Margin="8, 0, 0, 0"
                                                             HorizontalOptions="End"
-                                                            VerticalOptions="CenterAndExpand"
-                                                            FontFamily="Barlow_Regular"
-                                                            FontSize="{StaticResource CaptionFontSize}">
+                                                            VerticalOptions="CenterAndExpand">
                                                         </Label>
                                                         <Label
                                                             Grid.Column="2"
+                                                            Style="{StaticResource Body2_BarlowRegular}"
                                                             Margin="0, 0, 8, 0"
                                                             HorizontalOptions="Center"
-                                                            VerticalOptions="CenterAndExpand"
-                                                            FontFamily="Barlow_Regular"
-                                                            FontSize="{StaticResource Body2FontSize}"
-                                                            TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}">
+                                                            VerticalOptions="CenterAndExpand">
                                                             <Label.Text>
                                                                 <MultiBinding StringFormat="{}{0} / {1}">
                                                                     <Binding Path="minTemp" Converter="{StaticResource UnitConverter}" ConverterParameter="temperature"/>
@@ -357,16 +320,12 @@
                                                             HorizontalOptions="FillAndExpand">
                                                             <Label
                                                                 Text="{Binding label}"
-                                                                FontFamily="Barlow_Regular"
-                                                                FontSize="{StaticResource Body2FontSize}"
-                                                                TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"
+                                                                Style="{StaticResource Body2_BarlowRegular_SecondaryColor}"
                                                                 HorizontalOptions="StartAndExpand">
                                                             </Label>
                                                             <Label
                                                                 Text="{Binding value}"
-                                                                FontFamily="Barlow_Medium"
-                                                                FontSize="{StaticResource Body2FontSize}"
-                                                                TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
+                                                                Style="{StaticResource Body2_BarlowMedium}"
                                                                 HorizontalOptions="EndAndExpand"></Label>
                                                         </StackLayout>
                                                     </DataTemplate>
