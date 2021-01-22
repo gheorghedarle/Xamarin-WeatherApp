@@ -48,7 +48,7 @@
                     <Label
                         Grid.Row="2"
                         Text="Units"
-                        Style="{StaticResource Body2_BarlowRegular}"
+                        Style="{StaticResource Body2_BarlowMedium}"
                         VerticalOptions="Center"></Label>
                     <StackLayout
                         Orientation="Horizontal"

@@ -5,11 +5,17 @@
              BackgroundColor="Transparent"
              HorizontalOptions="FillAndExpand"
              VerticalOptions="FillAndExpand">
-    <ActivityIndicator
-        Color="{StaticResource PrimaryColor}"
-        IsRunning="True"
-        WidthRequest="48"
-        HeightRequest="48"
+    <StackLayout
         HorizontalOptions="CenterAndExpand"
-        VerticalOptions="CenterAndExpand"></ActivityIndicator>
+        VerticalOptions="CenterAndExpand"
+        Orientation="Vertical">
+        <ActivityIndicator
+            Color="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
+            IsRunning="True"
+            WidthRequest="48"
+            HeightRequest="48"></ActivityIndicator>
+        <Label
+            Text="Loading"
+            Style="{StaticResource Body2_BarlowRegular}"></Label>
+    </StackLayout>
 </StackLayout>
