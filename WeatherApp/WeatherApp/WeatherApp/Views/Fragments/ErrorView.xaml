@@ -2,35 +2,33 @@
 <Grid xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="WeatherApp.Views.Fragments.ErrorView"
-    RowDefinitions=".25*, *, .25*, Auto"
+    RowDefinitions="*, Auto"
     RowSpacing="0"
     Margin="16, 0, 16, 0">
-    <StackLayout
-        Grid.Row="1"
-        Spacing="0"
-        VerticalOptions="End">
+    <Image
+        Grid.Row="0"
+        Aspect="AspectFit"
+        Source="error.png"></Image>
+    <StackLayout 
+        Grid.Row="1">
         <Label
             Text="Error"
-            HorizontalOptions="Start"
-            FontFamily="FrankRuhle_Medium"
-            FontSize="{StaticResource Headline2FontSize}"
-            TextColor="{StaticResource LightPrimaryTextColor}"/>
+            Style="{StaticResource Headline2_FrankRuhleMedium}"
+            TextColor="{StaticResource DarkPrimaryTextColor}"/>
         <Label
             Text="Oops, something went wrong! Please wait few moments and try again."
-            FontSize="{StaticResource Body1FontSize}"
-            FontFamily="Barlow_Light"
+            Style="{StaticResource Body1_BarlowLight}"
+            TextColor="{StaticResource DarkPrimaryTextColor}"
+            Margin="0, 8, 0, 16"></Label>
+        <Button
+            Text="TRY AGAIN"
+            FontFamily="Barlow_Medium"
+            FontSize="{StaticResource ButtonFontSize}"
+            BackgroundColor="{StaticResource AccentColor}"
             TextColor="{StaticResource LightPrimaryTextColor}"
-            Margin="0, 4, 0, 0"></Label>
+            Padding="16, 22, 16, 22"
+            Margin="16, 8, 16, 24"
+            Command="{Binding TryAgainCommand}"
+            CornerRadius="36"></Button>
     </StackLayout>
-    <Button
-        Grid.Row="3"
-        Text="TRY AGAIN"
-        FontFamily="Barlow_Medium"
-        FontSize="{StaticResource ButtonFontSize}"
-        BackgroundColor="{StaticResource AccentColor}"
-        TextColor="{StaticResource LightPrimaryTextColor}"
-        Padding="16, 22, 16, 22"
-        Margin="16, 8, 16, 24"
-        Command="{Binding TryAgainCommand}"
-        CornerRadius="36"></Button>
 </Grid>

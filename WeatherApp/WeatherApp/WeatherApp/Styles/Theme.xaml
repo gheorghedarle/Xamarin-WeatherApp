@@ -51,6 +51,12 @@
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
     </Style>
 
+    <Style x:Key="Body1_BarlowLight" TargetType="Label">
+        <Setter Property="FontFamily" Value="Barlow_Light" />
+        <Setter Property="FontSize" Value="{StaticResource Body1FontSize}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
+    </Style>
+
     <Style x:Key="Body2_BarlowRegular" TargetType="Label">
         <Setter Property="FontFamily" Value="Barlow_Regular" />
         <Setter Property="FontSize" Value="{StaticResource Body2FontSize}" />

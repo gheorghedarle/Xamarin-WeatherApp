@@ -26,19 +26,19 @@
                 Grid.Row="0"/>
             <Grid
                 Grid.Row="1"
-                RowDefinitions="*, Auto, Auto"
+                RowDefinitions="*, Auto"
                 RowSpacing="0">
                 <Image
                     Grid.Row="0"
                     Aspect="AspectFit"
-                    Source="welcome.png"
-                    VerticalOptions="End"></Image>
+                    Source="welcome.png"></Image>
                 <StackLayout 
                     Grid.Row="1"
                     VerticalOptions="End">
                     <Label
                         Margin="24, 8, 0, 8"
                         Text="Welcome to your weather app"
+                        LineHeight="0.85"
                         Style="{StaticResource Headline2_FrankRuhleMedium}"
                         TextColor="{StaticResource DarkPrimaryTextColor}"/>
                     <Button
@@ -53,10 +53,11 @@
                         CornerRadius="36"></Button>
                     <Label
                         Text="Or enter your place name"
+                        FontSize="{StaticResource Body1FontSize}"
                         Style="{StaticResource Button_Barlow_Medium}"
                         HorizontalOptions="Center"
                         TextDecorations="Underline"
-                        Margin="0, 8, 0, 24"
+                        Margin="0, 4, 0, 36"
                         TextColor="{StaticResource DarkPrimaryTextColor}"/>
                 </StackLayout>
             </Grid>
