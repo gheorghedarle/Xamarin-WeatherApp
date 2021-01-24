@@ -5,28 +5,27 @@
              IsVisible="{Binding HasNoInternetConnection}" 
              RowDefinitions="Auto, Auto"
              ColumnDefinitions="Auto, *"
-             RowSpacing="4"
+             RowSpacing="0"
              ColumnSpacing="16"
-             Padding="16"
+             Padding="24, 16, 24, 16"
              BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}">
     <Label
         Grid.Column="0"
         Grid.RowSpan="2"
-        Text="&#xf12a;"
-        FontSize="{StaticResource Headline3FontSize}"
-        FontFamily="FontAwesome"
+        Text="&#xf06a;"
+        Style="{StaticResource Headline2_FontAwesome}"
         TextColor="{StaticResource FailColor}"
-        HorizontalOptions="Center"></Label>
+        HorizontalOptions="Center"
+        VerticalOptions="Center"></Label>
     <Label
         Grid.Column="1"
         Grid.Row="0"
         Text="No Internet Connection"
-        FontFamily="Barlow_Medium"
+        Style="{StaticResource Body1_BarlowRegular}"
         TextColor="{StaticResource FailColor}"/>
     <Label
         Grid.Column="1"
         Grid.Row="1"
         Text="It looks like you do not have internet connection"
-        FontFamily="Barlow_Regular"
-        TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"/>
+        Style="{StaticResource Body2_BarlowRegular}"/>
 </Grid>

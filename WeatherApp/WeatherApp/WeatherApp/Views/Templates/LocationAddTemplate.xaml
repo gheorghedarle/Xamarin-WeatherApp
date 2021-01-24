@@ -19,7 +19,7 @@
         </StackLayout.GestureRecognizers>
         <Label
             Text="&#xf067;"
-            Style="{StaticResource FontAwesome_FrankRuhleMedium}"
+            Style="{StaticResource Headline2_FontAwesome}"
             HorizontalTextAlignment="Center"
             Margin="4"></Label>
         <Label

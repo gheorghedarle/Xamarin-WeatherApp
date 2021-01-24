@@ -8,67 +8,55 @@
     BackgroundColor="{AppThemeBinding Light={StaticResource LightCardBackgroundColor}, Dark={StaticResource DarkCardBackgroundColor}}">
     <Label 
         Text="Weather App"
-        TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
-        FontFamily="FrankRuhle_Medium"
-        FontSize="{StaticResource Headline4FontSize}"
+        Style="{StaticResource Headline4_FrankRuhleMedium}"
         Margin="16, 16, 0, 24"></Label>
     <Grid
         Margin="16, 24, 0, 0"
         Padding="0, 8, 0, 6"
-        ColumnDefinitions="24, Auto">
+        ColumnDefinitions="36, Auto">
         <Grid.GestureRecognizers>
             <TapGestureRecognizer Command="{Binding YourLocationsCommand}" NumberOfTapsRequired="1"></TapGestureRecognizer>
         </Grid.GestureRecognizers>
         <Label
             Grid.Column="0"
             Text="&#xf3c5;"
-            FontSize="{StaticResource Headline4FontSize}"
-            FontFamily="FontAwesome"
+            Style="{StaticResource Headline4_FontAwesome}"
             TextColor="{StaticResource AccentColor}"
-            HorizontalOptions="CenterAndExpand"></Label>
+            HorizontalOptions="Center"></Label>
         <Label 
             Grid.Column="1"
             Text="Locations"
-            TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
-            FontFamily="Barlow_Medium"
-            FontSize="{StaticResource Body1FontSize}"
+            Style="{StaticResource Body1_BarlowRegular}"
             VerticalOptions="Center"></Label>
     </Grid>
     <Grid
         Margin="16, 0, 0, 0"
         Padding="0, 6, 0, 8"
-        ColumnDefinitions="24, Auto">
+        ColumnDefinitions="36, Auto">
         <Grid.GestureRecognizers>
             <TapGestureRecognizer Command="{Binding SettingsCommand}" NumberOfTapsRequired="1"></TapGestureRecognizer>
         </Grid.GestureRecognizers>
         <Label
             Grid.Column="0"
             Text="&#xf013;"
-            FontSize="{StaticResource Headline4FontSize}"
-            FontFamily="FontAwesome"
+            Style="{StaticResource Headline4_FontAwesome}"
             TextColor="{StaticResource AccentColor}"
-            HorizontalOptions="CenterAndExpand"></Label>
+            HorizontalOptions="Center"></Label>
         <Label 
             Grid.Column="1"
             Text="Settings"
-            TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
-            FontFamily="Barlow_Medium"
-            FontSize="{StaticResource Body1FontSize}"
+            Style="{StaticResource Body1_BarlowRegular}"
             VerticalOptions="Center"></Label>
     </Grid>
     <StackLayout
         VerticalOptions="EndAndExpand">
         <Label 
             Text="Log out"
-            TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
-            FontFamily="Barlow_Medium"
-            FontSize="{StaticResource Body1FontSize}"
+            Style="{StaticResource Body1_BarlowRegular}"
             Margin="16, 0, 0, 8"></Label>
         <Label 
             Text="Version 1.0.0"
-            TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"
-            FontFamily="Barlow_Regular"
-            FontSize="{StaticResource Body1FontSize}"
+            Style="{StaticResource Caption_BarlowRegular_SecondaryColor}"
             Margin="16, 0, 0, 36"></Label>
     </StackLayout>
 </StackLayout>

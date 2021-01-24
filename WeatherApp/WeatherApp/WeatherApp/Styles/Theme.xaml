@@ -8,9 +8,14 @@
         <styles:Fonts></styles:Fonts>
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="FontAwesome_FrankRuhleMedium" TargetType="Label">
+    <Style x:Key="Headline2_FontAwesome" TargetType="Label">
         <Setter Property="FontFamily" Value="FontAwesome" />
         <Setter Property="FontSize" Value="{StaticResource Headline2FontSize}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
+    </Style>
+    <Style x:Key="Headline4_FontAwesome" TargetType="Label">
+        <Setter Property="FontFamily" Value="FontAwesome" />
+        <Setter Property="FontSize" Value="{StaticResource Headline4FontSize}" />
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
     </Style>
 
@@ -53,6 +58,11 @@
 
     <Style x:Key="Body1_BarlowLight" TargetType="Label">
         <Setter Property="FontFamily" Value="Barlow_Light" />
+        <Setter Property="FontSize" Value="{StaticResource Body1FontSize}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
+    </Style>
+    <Style x:Key="Body1_BarlowRegular" TargetType="Label">
+        <Setter Property="FontFamily" Value="Barlow_Regular" />
         <Setter Property="FontSize" Value="{StaticResource Body1FontSize}" />
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
     </Style>
