@@ -10,44 +10,33 @@
         Text="Weather App"
         Style="{StaticResource Headline4_FrankRuhleMedium}"
         Margin="16, 16, 0, 24"></Label>
-    <Grid
-        Margin="16, 24, 0, 0"
-        Padding="0, 8, 0, 6"
-        ColumnDefinitions="36, Auto">
-        <Grid.GestureRecognizers>
-            <TapGestureRecognizer Command="{Binding YourLocationsCommand}" NumberOfTapsRequired="1"></TapGestureRecognizer>
-        </Grid.GestureRecognizers>
-        <Label
-            Grid.Column="0"
-            Text="&#xf3c5;"
-            Style="{StaticResource Headline4_FontAwesome}"
-            TextColor="{StaticResource AccentColor}"
-            HorizontalOptions="Center"></Label>
-        <Label 
-            Grid.Column="1"
-            Text="Locations"
-            Style="{StaticResource Body1_BarlowRegular}"
-            VerticalOptions="Center"></Label>
-    </Grid>
-    <Grid
-        Margin="16, 0, 0, 0"
-        Padding="0, 6, 0, 8"
-        ColumnDefinitions="36, Auto">
-        <Grid.GestureRecognizers>
-            <TapGestureRecognizer Command="{Binding SettingsCommand}" NumberOfTapsRequired="1"></TapGestureRecognizer>
-        </Grid.GestureRecognizers>
-        <Label
-            Grid.Column="0"
-            Text="&#xf013;"
-            Style="{StaticResource Headline4_FontAwesome}"
-            TextColor="{StaticResource AccentColor}"
-            HorizontalOptions="Center"></Label>
-        <Label 
-            Grid.Column="1"
-            Text="Settings"
-            Style="{StaticResource Body1_BarlowRegular}"
-            VerticalOptions="Center"></Label>
-    </Grid>
+    <StackLayout
+        Margin="16, 16, 0, 0"
+        BindableLayout.ItemsSource="{Binding MenuItems}"
+        x:Name="menuList">
+        <BindableLayout.ItemTemplate>
+            <DataTemplate>
+                <Grid
+                    Padding="0, 12, 0, 0"
+                    ColumnDefinitions="36, Auto">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BindingContext.SideMenuCommand, Source={x:Reference menuList}}" CommandParameter="{Binding Label}"></TapGestureRecognizer>
+                    </Grid.GestureRecognizers>
+                    <Label
+                        Grid.Column="0"
+                        Text="{Binding Icon}"
+                        Style="{StaticResource Headline4_FontAwesome}"
+                        TextColor="{StaticResource AccentColor}"
+                        HorizontalOptions="Center"></Label>
+                    <Label 
+                        Grid.Column="1"
+                        Text="{Binding Label}"
+                        Style="{StaticResource Body1_BarlowRegular}"
+                        VerticalOptions="Center"></Label>
+                </Grid>
+            </DataTemplate>
+        </BindableLayout.ItemTemplate>
+    </StackLayout>
     <StackLayout
         VerticalOptions="EndAndExpand">
         <Label 

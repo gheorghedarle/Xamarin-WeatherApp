@@ -3,10 +3,12 @@ using Prism.Events;
 using Prism.Navigation;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using WeatherApp.Events;
+using WeatherApp.Helpers;
 using WeatherApp.Models;
 using WeatherApp.Services.Weather;
 using WeatherApp.Views;
@@ -29,10 +31,10 @@ namespace WeatherApp.ViewModels
         public CurrentWeatherModel CurrentWeather { get; set; }
         public WeatherDetailsModel SelectedHour { get; set; }
         public bool IsRefreshing { get; set; }
+        public ObservableCollection<MenuItemModel> MenuItems { get; set; }
         public Command RefreshCommand { get; set; }
         public Command TryAgainCommand { get; set; }
-        public Command YourLocationsCommand { get; set; }
-        public Command SettingsCommand { get; set; }
+        public Command SideMenuCommand { get; set; }
         public Command MenuCommand { get; set; }
 
         public WeatherPageViewModel(
@@ -45,9 +47,10 @@ namespace WeatherApp.ViewModels
 
             RefreshCommand = new Command(RefreshCommandHandler);
             TryAgainCommand = new Command(TryAgainCommandHandler);
-            YourLocationsCommand = new Command(YourLocationsCommandHandler);
-            SettingsCommand = new Command(SettingsCommandHandler);
+            SideMenuCommand = new Command<string>(SideMenuCommandHandler);
             MenuCommand = new Command(MenuCommandHandler);
+
+            MenuItems = MenuItemsHelper.Items;
 
             MainState = LayoutState.Loading;
         }
@@ -72,16 +75,14 @@ namespace WeatherApp.ViewModels
             await GetCurrentWeather();
         }
 
-        private async void YourLocationsCommandHandler()
+        private async void SideMenuCommandHandler(string label)
         {
             _eventAggregator.GetEvent<MenuEvent>().Publish();
-            await _navigationService.NavigateAsync(nameof(YourLocationsPage));
-        }
-
-        private async void SettingsCommandHandler()
-        {
-            _eventAggregator.GetEvent<MenuEvent>().Publish();
-            await _navigationService.NavigateAsync(nameof(SettingsPage));
+            switch(label)
+            {
+                case "Locations": await _navigationService.NavigateAsync(nameof(YourLocationsPage)); break;
+                case "Settings": await _navigationService.NavigateAsync(nameof(SettingsPage)); break;
+            }
         }
 
         private void MenuCommandHandler()
