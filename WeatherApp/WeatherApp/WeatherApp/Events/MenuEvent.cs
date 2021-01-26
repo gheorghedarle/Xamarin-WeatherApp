@@ -2,7 +2,5 @@
 
 namespace WeatherApp.Events
 {
-    public class MenuEvent: PubSubEvent
-    {
-    }
+    public class MenuEvent : PubSubEvent { }
 }

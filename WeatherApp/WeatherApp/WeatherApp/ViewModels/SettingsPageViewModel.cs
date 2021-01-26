@@ -7,12 +7,23 @@ namespace WeatherApp.ViewModels
 {
     public class SettingsPageViewModel: BaseViewModel
     {
+        #region Properties
+
         public bool IsDarkMode { get; set; }
         public string Units { get; set; }
+
+        #endregion
+
+        #region Commands
+
         public Command BackCommand { get; set; }
         public Command DarkModeToggleCommand { get; set; }
         public Command MetricCommand { get; set; }
         public Command ImperialCommand { get; set; }
+
+        #endregion
+
+        #region Constructors
 
         public SettingsPageViewModel(
             INavigationService navigationService) : base(navigationService)
@@ -24,9 +35,28 @@ namespace WeatherApp.ViewModels
 
             MainState = LayoutState.Loading;
         }
+
+        #endregion
+
+        #region Command Handlers
+
         private async void BackCommandHandler()
         {
             await _navigationService.GoBackAsync();
+        }
+
+        private void DarkModeToggleCommandHandler()
+        {
+            if (IsDarkMode)
+            {
+                Application.Current.UserAppTheme = OSAppTheme.Dark;
+                Preferences.Set("theme", "dark");
+            }
+            else
+            {
+                Application.Current.UserAppTheme = OSAppTheme.Light;
+                Preferences.Set("theme", "light");
+            }
         }
 
         private void MetricCommandHandler()
@@ -41,19 +71,9 @@ namespace WeatherApp.ViewModels
             Preferences.Set("units", Units);
         }
 
-        private void DarkModeToggleCommandHandler()
-        {
-            if(IsDarkMode)
-            {
-                Application.Current.UserAppTheme = OSAppTheme.Dark;
-                Preferences.Set("theme", "dark");
-            }
-            else
-            {
-                Application.Current.UserAppTheme = OSAppTheme.Light;
-                Preferences.Set("theme", "light");
-            }
-        }
+        #endregion
+
+        #region Navigation
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
@@ -62,5 +82,7 @@ namespace WeatherApp.ViewModels
 
             MainState = LayoutState.None;
         }
+
+        #endregion
     }
 }

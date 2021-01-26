@@ -19,15 +19,29 @@ namespace WeatherApp.ViewModels
 {
     public class YourLocationsPageViewModel: BaseViewModel
     {
+        #region Private & Protected
+
         private readonly ILocationService _locationService;
         private readonly IDialogService _dialogService;
 
+        #endregion
+
+        #region Properties
+
         public ObservableCollection<LocationModel> Locations { get; set; }
+
+        #endregion
+
+        #region Commands
 
         public Command BackCommand { get; set; }
         public Command AddLocationCommand { get; set; }
         public Command SelectLocationCommand { get; set; }
         public Command DeleteLocationCommand { get; set; }
+
+        #endregion
+
+        #region Constructors
 
         public YourLocationsPageViewModel(
             INavigationService navigationService,
@@ -46,6 +60,10 @@ namespace WeatherApp.ViewModels
 
             MainState = LayoutState.Loading;
         }
+
+        #endregion
+
+        #region Command Handlers
 
         private async void BackCommandHandler()
         {
@@ -100,12 +118,20 @@ namespace WeatherApp.ViewModels
             MainState = LayoutState.None;
         }
 
+        #endregion
+
+        #region Navigation
+
         public override async void OnNavigatedTo(INavigationParameters parameters)
         {
             await GetPlacemarkAndLocation();
 
             MainState = LayoutState.None;
         }
+
+        #endregion
+
+        #region Private Methods
 
         private async Task GetPlacemarkAndLocation()
         {
@@ -124,6 +150,7 @@ namespace WeatherApp.ViewModels
                 Debug.WriteLine(ex);
             }
         }
-    }
 
+        #endregion
+    }
 }

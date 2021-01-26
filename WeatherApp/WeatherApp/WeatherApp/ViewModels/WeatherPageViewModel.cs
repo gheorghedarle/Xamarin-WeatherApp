@@ -20,11 +20,17 @@ namespace WeatherApp.ViewModels
 {
     public class WeatherPageViewModel : BaseViewModel
     {
+        #region Private & Protected
+
         private readonly IWeatherService _weatherService;
         private readonly IEventAggregator _eventAggregator;
 
         private double _currentLat;
         private double _currentLon;
+
+        #endregion
+
+        #region Properties
 
         public string CurrentCity { get; set; }
         public string CurrentCountry { get; set; }
@@ -32,10 +38,19 @@ namespace WeatherApp.ViewModels
         public WeatherDetailsModel SelectedHour { get; set; }
         public bool IsRefreshing { get; set; }
         public ObservableCollection<MenuItemModel> MenuItems { get; set; }
+
+        #endregion
+
+        #region Commands
+
         public Command RefreshCommand { get; set; }
         public Command TryAgainCommand { get; set; }
         public Command SideMenuCommand { get; set; }
         public Command MenuCommand { get; set; }
+
+        #endregion
+
+        #region Constructors
 
         public WeatherPageViewModel(
             INavigationService navigationService,
@@ -54,6 +69,10 @@ namespace WeatherApp.ViewModels
 
             MainState = LayoutState.Loading;
         }
+
+        #endregion
+
+        #region Command Handlers
 
         private async void RefreshCommandHandler()
         {
@@ -90,17 +109,29 @@ namespace WeatherApp.ViewModels
             _eventAggregator.GetEvent<MenuEvent>().Publish();
         }
 
+        #endregion
+
+        #region Properties Changed Event Handlers
+
         private void OnSelectedHourChanged()
         {
             CurrentWeather.hourlyWeatherForecast.ToList().ForEach(a => a.isActive = false);
             SelectedHour.isActive = true;
         }
 
+        #endregion
+
+        #region Navigation
+
         public override async void OnNavigatedTo(INavigationParameters parameters)
         {
             await GetSelectedPlacemarkAndLocation();
             await GetCurrentWeather();
         }
+
+        #endregion
+
+        #region Private Methods
 
         private async Task GetSelectedPlacemarkAndLocation()
         {
@@ -147,5 +178,7 @@ namespace WeatherApp.ViewModels
                 MainState = LayoutState.Error;
             }
         }
+
+        #endregion
     }
 }

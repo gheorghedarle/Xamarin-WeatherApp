@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using Prism.Commands;
 using Prism.Navigation;
 using System;
 using System.Collections.Generic;
@@ -11,17 +10,32 @@ using WeatherApp.Services.Location;
 using WeatherApp.Views;
 using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.Essentials;
+using Xamarin.Forms;
 
 namespace WeatherApp.ViewModels
 {
     public class WelcomePageViewModel: BaseViewModel
     {
+        #region Private & Protected
+
         private ILocationService _locationService;
         private ILocalSettingsService _localSettingsService;
 
+        #endregion
+
+        #region Properties
+
         public string CurrentLocation { get; set; }
 
-        public DelegateCommand UseCurrentLocationCommand { get; set; }
+        #endregion
+
+        #region Commands
+
+        public Command UseCurrentLocationCommand { get; set; }
+
+        #endregion
+
+        #region Constructors
 
         public WelcomePageViewModel(
             INavigationService navigationService, 
@@ -31,7 +45,7 @@ namespace WeatherApp.ViewModels
             _locationService = locationService;
             _localSettingsService = localSettingsService;
 
-            UseCurrentLocationCommand = new DelegateCommand(UseCurrentLocationCommandHandler);
+            UseCurrentLocationCommand = new Command(UseCurrentLocationCommandHandler);
         }
 
         public override async void OnAppearing()
@@ -39,6 +53,10 @@ namespace WeatherApp.ViewModels
             base.OnAppearing();
             await LoadAndSaveLocalSettings();
         }
+
+        #endregion
+
+        #region Command Handlers
 
         private async void UseCurrentLocationCommandHandler()
         {
@@ -65,6 +83,10 @@ namespace WeatherApp.ViewModels
             }
         }
 
+        #endregion
+
+        #region Private Methods
+
         private async Task SaveLocationAndPlacemark(Location location, Placemark placemark)
         {
             var loc = new LocationModel()
@@ -86,5 +108,7 @@ namespace WeatherApp.ViewModels
             await SecureStorage.SetAsync("weatherApiBaseUrl", localSettings.WeatherApiBaseUrl);
             await SecureStorage.SetAsync("weatherApiKey", localSettings.WeatherApiKey);
         }
+
+        #endregion
     }
 }

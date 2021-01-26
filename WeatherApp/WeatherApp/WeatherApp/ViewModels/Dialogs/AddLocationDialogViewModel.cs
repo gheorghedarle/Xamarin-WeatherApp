@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using Prism.Mvvm;
 using Prism.Navigation;
 using Prism.Services.Dialogs;
 using System;
@@ -14,11 +13,22 @@ namespace WeatherApp.ViewModels.Dialogs
 {
     public class AddLocationDialogViewModel : BaseViewModel, IDialogAware
     {
-        private List<LocationModel> _locations;
+        #region Private & Protected
+
         private readonly LocationService _locationService;
+
+        private List<LocationModel> _locations;
+
+        #endregion
+
+        #region Properties
 
         public Command UseCurrentLocationCommand { get; set; }
         public bool HasError { get; set; }
+
+        #endregion
+
+        #region Constructors
 
         public AddLocationDialogViewModel(
             INavigationService navigationService,
@@ -30,6 +40,10 @@ namespace WeatherApp.ViewModels.Dialogs
 
             MainState = LayoutState.Loading;
         }
+
+        #endregion
+
+        #region Command Handlers
 
         private async void UseCurrentLocationCommandHandler(string locationName)
         {
@@ -57,6 +71,10 @@ namespace WeatherApp.ViewModels.Dialogs
             RequestClose(null);
         }
 
+        #endregion
+
+        #region Dialog
+
         public event Action<IDialogParameters> RequestClose;
 
         public bool CanCloseDialog() => true;
@@ -70,5 +88,7 @@ namespace WeatherApp.ViewModels.Dialogs
             _locations = JsonConvert.DeserializeObject<List<LocationModel>>(listLocJson);
             MainState = LayoutState.None;
         }
+
+        #endregion
     }
 }

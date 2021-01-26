@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using WeatherApp.Models;
+﻿using WeatherApp.Models;
 using WeatherApp.Views.Templates;
 using Xamarin.Forms;
 

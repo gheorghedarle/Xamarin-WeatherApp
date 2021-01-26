@@ -24,21 +24,25 @@ namespace WeatherApp.Services.Location
             catch (FeatureNotSupportedException fnsEx)
             {
                 // Handle not supported on device exception
+                Debug.WriteLine(fnsEx);
                 return null;
             }
             catch (FeatureNotEnabledException fneEx)
             {
                 // Handle not enabled on device exception
+                Debug.WriteLine(fneEx);
                 return null;
             }
             catch (PermissionException pEx)
             {
                 // Handle permission exception
+                Debug.WriteLine(pEx);
                 return null;
             }
             catch (Exception ex)
             {
                 // Unable to get location
+                Debug.WriteLine(ex);
                 return null;
             }
         }
