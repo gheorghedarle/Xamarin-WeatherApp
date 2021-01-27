@@ -72,7 +72,11 @@ namespace WeatherApp.ViewModels
 
         private async void AddLocationCommandHandler()
         {
-            await _dialogService.ShowDialogAsync(nameof(AddLocationDialog));
+            var param = new DialogParameters()
+            {
+                { "fromPage" , "locations" }
+            };
+            await _dialogService.ShowDialogAsync(nameof(AddLocationDialog), param);
         }
 
         private async void SelectLocationCommandHandler(string selectedLocality)

@@ -58,7 +58,11 @@
                         HorizontalOptions="Center"
                         TextDecorations="Underline"
                         Margin="0, 4, 0, 36"
-                        TextColor="{StaticResource DarkPrimaryTextColor}"/>
+                        TextColor="{StaticResource DarkPrimaryTextColor}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding AddLocationCommand}"></TapGestureRecognizer>
+                        </Label.GestureRecognizers>
+                    </Label>
                 </StackLayout>
             </Grid>
         </Grid>

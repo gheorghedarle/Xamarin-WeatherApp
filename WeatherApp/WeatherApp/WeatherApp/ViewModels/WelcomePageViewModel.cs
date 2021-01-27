@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Prism.Navigation;
+using Prism.Services.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -8,6 +9,7 @@ using WeatherApp.Models;
 using WeatherApp.Services.LocalSettings;
 using WeatherApp.Services.Location;
 using WeatherApp.Views;
+using WeatherApp.Views.Dialogs;
 using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -20,6 +22,7 @@ namespace WeatherApp.ViewModels
 
         private ILocationService _locationService;
         private ILocalSettingsService _localSettingsService;
+        private IDialogService _dialogService;
 
         #endregion
 
@@ -32,6 +35,7 @@ namespace WeatherApp.ViewModels
         #region Commands
 
         public Command UseCurrentLocationCommand { get; set; }
+        public Command AddLocationCommand { get; set; }
 
         #endregion
 
@@ -40,12 +44,15 @@ namespace WeatherApp.ViewModels
         public WelcomePageViewModel(
             INavigationService navigationService, 
             ILocationService locationService,
-            ILocalSettingsService localSettingsService) : base(navigationService) 
+            ILocalSettingsService localSettingsService,
+            IDialogService dialogService) : base(navigationService) 
         {
             _locationService = locationService;
             _localSettingsService = localSettingsService;
+            _dialogService = dialogService;
 
             UseCurrentLocationCommand = new Command(UseCurrentLocationCommandHandler);
+            AddLocationCommand = new Command(AddLocationCommandHandler);
         }
 
         public override async void OnAppearing()
@@ -81,6 +88,15 @@ namespace WeatherApp.ViewModels
             {
                 MainState = LayoutState.None;
             }
+        }
+
+        private async void AddLocationCommandHandler()
+        {
+            var param = new DialogParameters()
+            {
+                { "fromPage" , "welcome" }
+            };
+            await _dialogService.ShowDialogAsync(nameof(AddLocationDialog), param);
         }
 
         #endregion
