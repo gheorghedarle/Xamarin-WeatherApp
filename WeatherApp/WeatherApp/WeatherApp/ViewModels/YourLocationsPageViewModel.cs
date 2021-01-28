@@ -103,7 +103,7 @@ namespace WeatherApp.ViewModels
                 if (item.Selected)
                 {
                     var index = Locations.IndexOf(item);
-                    if (index < Locations.Count)
+                    if (index < Locations.Count - 2)
                     {
                         Locations[index + 1].Selected = true;
                     }
