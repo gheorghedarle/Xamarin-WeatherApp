@@ -5,9 +5,22 @@
 
 ## Screenshots
 
+![Welcome](https://github.com/[username]/[reponame]/blob/[branch]/welcome.png?raw=true)
+
 #### Light mode
 
+![Weather](https://github.com/[username]/[reponame]/blob/[branch]/light_weather.png?raw=true)
+![SideMenu](https://github.com/[username]/[reponame]/blob/[branch]/light_sidemenu.png?raw=true)
+![Locations](https://github.com/[username]/[reponame]/blob/[branch]/light_locations.png?raw=true)
+![AddLocation](https://github.com/[username]/[reponame]/blob/[branch]/light_addlocation.png?raw=true)
+![Settings](https://github.com/[username]/[reponame]/blob/[branch]/light_settings.png?raw=true)
+
 #### Dark mode
+![Weather](https://github.com/[username]/[reponame]/blob/[branch]/dark_weather.png?raw=true)
+![SideMenu](https://github.com/[username]/[reponame]/blob/[branch]/dark_sidemenu.png?raw=true)
+![Locations](https://github.com/[username]/[reponame]/blob/[branch]/dark_locations.png?raw=true)
+![AddLocation](https://github.com/[username]/[reponame]/blob/[branch]/dark_addlocation.png?raw=true)
+![Settings](https://github.com/[username]/[reponame]/blob/[branch]/dark_settings.png?raw=true)
 
 ## Libraries
 - [Xamarin Forms 5.0](https://github.com/xamarin/Xamarin.Forms)
