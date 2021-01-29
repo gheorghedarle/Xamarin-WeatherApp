@@ -4,21 +4,13 @@
 **Weather App** is a simple weather app developed with Xamarin. The app allows you to see the weather from your current location or another location around the globe using **OpenWeather Api**. Using **One Call API** the app display the current weather, 24 hours and 6 days forward forecast. You can add and switch location from Locations screen and also you can switch unit from metric to imperial. The app is available in *light mode* and *dark mode*.
 
 ## Screenshots
-<img src="https://github.com/gheorghedarle/Xamarin-WeatherApp/blob/main/Screenshots/welcome.png?raw=true" Width="200" /> 
+<img src="https://github.com/gheorghedarle/Xamarin-WeatherApp/blob/main/Screenshots/welcome.png?raw=true" Width="160" /> 
 
 #### Light mode
-<img src="https://github.com/gheorghedarle/Xamarin-WeatherApp/blob/main/Screenshots/light_weather.png?raw=true" Width="200" /> 
-<img src="https://github.com/gheorghedarle/Xamarin-WeatherApp/blob/main/Screenshots/light_sidemenu.png?raw=true" Width="200" /> 
-<img src="https://github.com/gheorghedarle/Xamarin-WeatherApp/blob/main/Screenshots/light_locations.png?raw=true" Width="200" /> 
-<img src="https://github.com/gheorghedarle/Xamarin-WeatherApp/blob/main/Screenshots/light_addlocation.png?raw=true" Width="200" /> 
-<img src="https://github.com/gheorghedarle/Xamarin-WeatherApp/blob/main/Screenshots/light_settings.png?raw=true" Width="200" /> 
+<img src="https://github.com/gheorghedarle/Xamarin-WeatherApp/blob/main/Screenshots/light_weather.png" Width="160"/> <img src="https://github.com/gheorghedarle/Xamarin-WeatherApp/blob/main/Screenshots/light_sidemenu.png" Width="160"/> <img src="https://github.com/gheorghedarle/Xamarin-WeatherApp/blob/main/Screenshots/light_locations.png?raw=true" Width="160"/> <img src="https://github.com/gheorghedarle/Xamarin-WeatherApp/blob/main/Screenshots/light_addlocation.png?raw=true" Width="160"/> <img src="https://github.com/gheorghedarle/Xamarin-WeatherApp/blob/main/Screenshots/light_settings.png?raw=true" Width="160"/> 
 
 #### Dark mode
-<img src="https://github.com/gheorghedarle/Xamarin-WeatherApp/blob/main/Screenshots/dark_weather.png?raw=true" Width="200" /> 
-<img src="https://github.com/gheorghedarle/Xamarin-WeatherApp/blob/main/Screenshots/dark_sidemenu.png?raw=true" Width="200" /> 
-<img src="https://github.com/gheorghedarle/Xamarin-WeatherApp/blob/main/Screenshots/dark_locations.png?raw=true" Width="200" /> 
-<img src="https://github.com/gheorghedarle/Xamarin-WeatherApp/blob/main/Screenshots/dark_addlocation.png?raw=true" Width="200" /> 
-<img src="https://github.com/gheorghedarle/Xamarin-WeatherApp/blob/main/Screenshots/dark_settings.png?raw=true" Width="200" /> 
+<img src="https://github.com/gheorghedarle/Xamarin-WeatherApp/blob/main/Screenshots/dark_weather.png" Width="160"/> <img src="https://github.com/gheorghedarle/Xamarin-WeatherApp/blob/main/Screenshots/dark_sidemenu.png" Width="160"/> <img src="https://github.com/gheorghedarle/Xamarin-WeatherApp/blob/main/Screenshots/dark_locations.png?raw=true" Width="160"/> <img src="https://github.com/gheorghedarle/Xamarin-WeatherApp/blob/main/Screenshots/dark_addlocation.png?raw=true" Width="160"/> <img src="https://github.com/gheorghedarle/Xamarin-WeatherApp/blob/main/Screenshots/dark_settings.png?raw=true" Width="160"/>
 
 ## Libraries
 - [Xamarin Forms 5.0](https://github.com/xamarin/Xamarin.Forms)
