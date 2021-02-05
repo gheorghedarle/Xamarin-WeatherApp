@@ -1,7 +1,7 @@
 # Xamarin Weather App
 ![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)
 
-**Weather App** is a simple weather app developed with Xamarin. The app allows you to see the weather from your current location or another location around the globe using **OpenWeather Api**. Using **One Call API** the app display the current weather, 24 hours and 6 days forward forecast. You can add and switch location from Locations screen and also you can switch unit from metric to imperial. The app is available in *light mode* and *dark mode*.
+**Weather App** is a simple weather app developed using Xamarin Forms. The app allows you to see the weather from your current location or another location around the globe using **OpenWeather Api**. Using **One Call API** the app displays the current weather, 24 hours and 6 days forecast. You can add new locations and switch between them from the Locations screen. From Settings screen you can change the unit system from metric to imperial. The app is available in **light mode** and **dark mode**.
 
 ## Screenshots
 <img src="https://github.com/gheorghedarle/Xamarin-WeatherApp/blob/main/Screenshots/welcome.png?raw=true" Width="160" /> 
@@ -24,7 +24,7 @@
 ## Setup
 The app is using **One Call API** from OpenWeather Api. To start the project you need an **account** and **OpenWeather Api Key**.
 
-Create a file called **local.settings.json** in the root of the WeatherApp project.
+Create a file called **local.settings.json** in the root of the WeatherApp project. Add the following code in the file.
 ```json
 {
   "openWeatherMapApiBaseUrl": "https://api.openweathermap.org/data/2.5",
