@@ -6,7 +6,10 @@
              x:Class="WeatherApp.Views.WelcomePage"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <Grid RowDefinitions="Auto, *">
+        <Grid 
+            RowDefinitions="Auto, *"
+            xct:StateLayout.CurrentState="{Binding MainState}" 
+            xct:StateLayout.AnimateStateChanges="True">
             <Grid.Background>
                 <LinearGradientBrush 
                     StartPoint="0, 0" 
@@ -18,7 +21,8 @@
             <xct:StateLayout.StateViews>
                 <xct:StateView
                     StateKey="Loading"
-                    VerticalOptions="FillAndExpand">
+                    VerticalOptions="FillAndExpand"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
                     <fragments:LoadingView/>
                 </xct:StateView>
             </xct:StateLayout.StateViews>
