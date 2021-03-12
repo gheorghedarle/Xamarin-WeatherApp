@@ -125,7 +125,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json">
-      <Version>13.0.1-beta1</Version>
+      <Version>13.0.1-beta2</Version>
     </PackageReference>
     <PackageReference Include="Prism.DryIoc.Forms">
       <Version>8.0.0.1909</Version>
