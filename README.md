@@ -1,4 +1,4 @@
-<img src="https://github.com/gheorghedarle/Xamarin-WeatherApp/blob/main/Screenshots/icon.png" width="64" /> 
+<img src="https://github.com/gheorghedarle/Xamarin-WeatherApp/blob/main/Screenshots/icon.png" width="96" /> 
 
 # Xamarin Weather App
 
