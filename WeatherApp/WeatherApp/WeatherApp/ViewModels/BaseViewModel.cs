@@ -1,12 +1,13 @@
 ﻿using Prism.AppModel;
 using Prism.Navigation;
 using System.ComponentModel;
+using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.Essentials;
 
 namespace WeatherApp.ViewModels
 {
-    public class BaseViewModel: INavigationAware, IPageLifecycleAware, INotifyPropertyChanged
+    public class BaseViewModel: ObservableObject, INavigationAware, IPageLifecycleAware, INotifyPropertyChanged
     {
         #region Private & Protected
 
