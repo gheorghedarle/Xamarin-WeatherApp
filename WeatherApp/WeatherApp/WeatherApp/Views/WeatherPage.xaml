@@ -51,36 +51,37 @@
                         </xct:StateLayout.StateViews>
                         <fragments:ConnectionView
                             Grid.Row="0"/>
-                        <ImageButton
+                        <StackLayout
                             Grid.Row="1"
-                            Margin="24, 8, 16, 0"
-                            Padding="0, 8, 16, 8"
+                            Margin="16, 8, 16, 0"
+                            Padding="0, 8, 8, 8"
                             HorizontalOptions="Start"
-                            BackgroundColor="Transparent"
-                            Command="{Binding MenuCommand}">
-                            <ImageButton.Source>
-                                <FontImageSource
-                                    Glyph="&#xf0c9;"
-                                    Size="{StaticResource Subtitle1FontSize}"
-                                    FontFamily="FontAwesome"
-                                    Color="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"></FontImageSource>
-                            </ImageButton.Source>
-                        </ImageButton>
+                            Orientation="Horizontal">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding MenuCommand}"></TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                            <Label
+                                Text="&#xf0c9;"
+                                FontSize="{StaticResource Subtitle1FontSize}"
+                                FontFamily="FontAwesome"
+                                TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
+                                HorizontalOptions="Start"></Label>
+                        </StackLayout>
                         <Label
                             Grid.Row="2"
                             Text="{Binding CurrentCity}"
                             Style="{StaticResource Headline2_FrankRuhleMedium}"
-                            Margin="24, 0, 0, 0"></Label>
+                            Margin="16, 0, 0, 0"></Label>
                         <Label
                             Grid.Row="3"
                             Text="{Binding CurrentCountry}"
                             Style="{StaticResource Subtitle1_BarlowRegular}"
-                            Margin="24, -8, 0, 0"></Label>
+                            Margin="16, -8, 0, 0"></Label>
                         <Label
                             Grid.Row="4"
                             Text="{Binding SelectedHour.dt, StringFormat='{0:dddd, d MMMM yyyy HH:mm}'}"
                             Style="{StaticResource Subtitle2_BarlowRegular}"
-                            Margin="24, 2, 0, 0"></Label>
+                            Margin="16, 2, 0, 0"></Label>
                         <Grid
                             ColumnDefinitions="*, *"
                             Grid.Row="5"
@@ -165,7 +166,7 @@
                         </Frame>
                         <StackLayout
                             Grid.Row="7"
-                            Margin="24, 0, 24, 0"
+                            Margin="16, 0, 16, 0"
                             Padding="0, 0, 0, 2">
                             <Label
                                 Text="Hourly"
@@ -249,7 +250,7 @@
                         </StackLayout>
                         <StackLayout
                             Grid.Row="8"
-                            Margin="24, 0, 24, 8">
+                            Margin="16, 0, 16, 8">
                             <Label
                                 Text="Daily"
                                 Style="{StaticResource Subtitle1_FrankRuhleMedium}"
