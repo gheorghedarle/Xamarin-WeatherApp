@@ -7,7 +7,7 @@ using Xamarin.Essentials;
 
 namespace WeatherApp.ViewModels
 {
-    public class BaseViewModel: ObservableObject, INavigationAware, IPageLifecycleAware, INotifyPropertyChanged
+    public class BaseViewModel: INavigationAware, IPageLifecycleAware, INotifyPropertyChanged
     {
         #region Private & Protected
 

@@ -66,8 +66,6 @@ namespace WeatherApp.ViewModels
             MenuCommand = new Command(MenuCommandHandler);
 
             MenuItems = MenuItemsHelper.Items;
-
-            MainState = LayoutState.Loading;
         }
 
         #endregion

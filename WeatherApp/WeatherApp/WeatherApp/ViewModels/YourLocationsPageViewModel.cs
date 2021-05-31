@@ -57,8 +57,6 @@ namespace WeatherApp.ViewModels
             DeleteLocationCommand = new Command<string>(DeleteLocationCommandHandler);
 
             Locations = new ObservableCollection<LocationModel>();
-
-            MainState = LayoutState.Loading;
         }
 
         #endregion
@@ -128,6 +126,8 @@ namespace WeatherApp.ViewModels
 
         public override async void OnNavigatedTo(INavigationParameters parameters)
         {
+            MainState = LayoutState.Loading;
+
             await GetPlacemarkAndLocation();
 
             MainState = LayoutState.None;

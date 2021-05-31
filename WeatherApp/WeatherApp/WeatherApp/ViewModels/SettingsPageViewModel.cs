@@ -32,8 +32,6 @@ namespace WeatherApp.ViewModels
             DarkModeToggleCommand = new Command(DarkModeToggleCommandHandler);
             MetricCommand = new Command(MetricCommandHandler);
             ImperialCommand = new Command(ImperialCommandHandler);
-
-            MainState = LayoutState.Loading;
         }
 
         #endregion
@@ -77,6 +75,8 @@ namespace WeatherApp.ViewModels
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
+            MainState = LayoutState.Loading;
+
             IsDarkMode = Application.Current.UserAppTheme.Equals(OSAppTheme.Dark);
             Units = Preferences.Get("units", "metric");
 
