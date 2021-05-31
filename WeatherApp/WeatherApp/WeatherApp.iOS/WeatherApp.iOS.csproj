@@ -128,10 +128,10 @@
       <Version>13.0.1</Version>
     </PackageReference>
     <PackageReference Include="Prism.DryIoc.Forms">
-      <Version>8.0.0.1909</Version>
+      <Version>8.1.97</Version>
     </PackageReference>
     <PackageReference Include="Prism.Forms">
-      <Version>8.0.0.1909</Version>
+      <Version>8.1.97</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
