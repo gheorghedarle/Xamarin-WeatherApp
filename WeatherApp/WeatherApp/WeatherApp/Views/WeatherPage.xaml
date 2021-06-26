@@ -102,11 +102,11 @@
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span
-                                                Text="{Binding SelectedHour.temp, StringFormat='{0:N0}°'}"
+                                                Text="{Binding CurrentTemp, StringFormat='{0:N0}°'}"
                                                 Style="{StaticResource Headline0_FrankRuhleBold}"
                                                 CharacterSpacing="-0.5"></Span>
                                             <Span
-                                                Text="{Binding SelectedHour.temp, Converter={StaticResource UnitConverter}, ConverterParameter='sign'}"
+                                                Text="{Binding CurrentTemp, Converter={StaticResource UnitConverter}, ConverterParameter='sign'}"
                                                 Style="{StaticResource Subtitle1_BarlowRegular}"></Span>
                                         </FormattedString>
                                     </Label.FormattedText>

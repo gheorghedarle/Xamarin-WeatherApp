@@ -34,6 +34,7 @@ namespace WeatherApp.ViewModels
 
         public string CurrentCity { get; set; }
         public string CurrentCountry { get; set; }
+        public double CurrentTemp { get; set; }
         public CurrentWeatherModel CurrentWeather { get; set; }
         public WeatherDetailsModel SelectedHour { get; set; }
         public bool IsRefreshing { get; set; }
@@ -114,6 +115,7 @@ namespace WeatherApp.ViewModels
         private void OnSelectedHourChanged()
         {
             CurrentWeather.hourlyWeatherForecast.ToList().ForEach(a => a.isActive = false);
+            AnimateTemp(SelectedHour.temp);
             SelectedHour.isActive = true;
         }
 
@@ -130,6 +132,40 @@ namespace WeatherApp.ViewModels
         #endregion
 
         #region Private Methods
+
+        private void AnimateTemp(double temp)
+        {
+            var stopwatch = new Stopwatch();
+            stopwatch.Start();
+
+            var sign = temp > CurrentTemp ? 1 : -1;
+
+            Device.StartTimer(TimeSpan.FromSeconds(1 / 1000f), () =>
+            {
+                double t = stopwatch.Elapsed.TotalMilliseconds % 500 / 1000;
+                if(sign == 1)
+                {
+                    CurrentTemp = Math.Min((double)temp, (double)t + CurrentTemp);
+                    if (CurrentTemp >= (double)temp)
+                    {
+                        stopwatch.Stop();
+                        return false;
+                    }
+                }
+                else
+                {
+                    CurrentTemp = Math.Max((double)temp, CurrentTemp - (double)t);
+                    if (CurrentTemp <= (double)temp)
+                    {
+                        stopwatch.Stop();
+                        return false;
+                    }
+                }
+
+
+                return true;
+            });
+        }
 
         private async Task GetSelectedPlacemarkAndLocation()
         {
