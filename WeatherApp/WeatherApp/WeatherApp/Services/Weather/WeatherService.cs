@@ -62,7 +62,7 @@ namespace WeatherApp.Services.Weather
                     feels_like = Convert.ToDouble(hourly[i]["feels_like"].ToString()),
                     detailsList = new List<WeatherDetailsListModel>()
                     {
-                        new WeatherDetailsListModel() { row = 0, col = 0, label = "Rain:", value = $"{Math.Round(Convert.ToDouble(hourly[i]["pop"].ToString()), 1)}%"},
+                        new WeatherDetailsListModel() { row = 0, col = 0, label = "Rain:", value = $"{Math.Round(Convert.ToDouble(hourly[i]["pop"].ToString()) * 100, 1)}%"},
                         new WeatherDetailsListModel() { row = 0, col = 1, label = "Pressure", value = $"{Math.Round(Convert.ToDouble(hourly[i]["pressure"].ToString()), 1)}hPa"},
                         new WeatherDetailsListModel() { row = 1, col = 0, label = "Humidity:", value = $"{Math.Round(Convert.ToDouble(hourly[i]["humidity"].ToString()), 1)}%"},
                         new WeatherDetailsListModel() { row = 1, col = 1, label = "Visibility", value = $"{Math.Round(Convert.ToDouble(hourly[i]["visibility"].ToString()) / 1000, 1)} km"},
@@ -91,7 +91,7 @@ namespace WeatherApp.Services.Weather
                     maxTemp = Convert.ToDouble(daily[i]["temp"]["max"].ToString()),
                     detailsList = new List<WeatherDetailsListModel>()
                     {
-                        new WeatherDetailsListModel() { row = 0, col = 0, label = "Rain:", value = $"{Math.Round(Convert.ToDouble(daily[i]["pop"].ToString()), 1)}%"},
+                        new WeatherDetailsListModel() { row = 0, col = 0, label = "Rain:", value = $"{Math.Round(Convert.ToDouble(daily[i]["pop"].ToString()) * 100, 1)}%"},
                         new WeatherDetailsListModel() { row = 0, col = 1, label = "Pressure", value = $"{Math.Round(Convert.ToDouble(daily[i]["pressure"].ToString()), 1)}hPa"},
                         new WeatherDetailsListModel() { row = 1, col = 0, label = "Humidity:", value = $"{Math.Round(Convert.ToDouble(daily[i]["humidity"].ToString()), 1)}%"},
                         new WeatherDetailsListModel() { row = 1, col = 1, label = "Clouds", value = $"{Convert.ToDouble(daily[i]["clouds"].ToString())}%"},
