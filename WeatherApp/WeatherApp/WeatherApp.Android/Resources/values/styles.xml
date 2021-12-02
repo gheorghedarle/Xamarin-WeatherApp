@@ -6,13 +6,11 @@
     <item name="android:windowIsTranslucent">false</item>
     <item name="android:windowIsFloating">false</item>
     <item name="android:backgroundDimEnabled">true</item>
-    <item name="android:statusBarColor">#001532</item>
   </style>
   <style name="MainTheme" parent="Theme.AppCompat.Light.NoActionBar">
-    <item name="colorPrimary">#007CD1</item>
-    <item name="colorPrimaryDark">#001532</item>
-    <item name="colorAccent">#F3C623</item>
-    <item name="android:statusBarColor">#001532</item>
-    <item name="android:windowBackground">@drawable/splash_screen</item>
+    <item name="colorPrimary">#003366</item>
+    <item name="colorPrimaryDark">#001F3D</item>
+    <item name="colorAccent">#FFCC00</item>
+    <item name="android:statusBarColor">#003366</item>
   </style>
 </resources>
