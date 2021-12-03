@@ -1,5 +1,4 @@
-﻿using Plugin.SharedTransitions;
-using Prism;
+﻿using Prism;
 using Prism.DryIoc;
 using Prism.Ioc;
 using WeatherApp.Core;
@@ -59,7 +58,7 @@ namespace WeatherApp
             containerRegistry.Register<ILocalSettingsService, LocalSettingsService>();
             containerRegistry.Register<IWeatherService, WeatherService>();
 
-            containerRegistry.RegisterForNavigation<SharedTransitionNavigationPage>("NavigationPage");
+            containerRegistry.RegisterForNavigation<NavigationPage>("NavigationPage");
             containerRegistry.RegisterForNavigation<WelcomePage, WelcomePageViewModel>("WelcomePage");
             containerRegistry.RegisterForNavigation<WeatherPage, WeatherPageViewModel>("WeatherPage");
             containerRegistry.RegisterForNavigation<YourLocationsPage, YourLocationsPageViewModel>("YourLocationsPage");
