@@ -1,6 +1,5 @@
 ﻿using Prism.Events;
 using Prism.Navigation;
-using System;
 using WeatherApp.Events;
 using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.Forms;

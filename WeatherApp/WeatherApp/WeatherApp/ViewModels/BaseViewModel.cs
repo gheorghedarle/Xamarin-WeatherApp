@@ -1,7 +1,6 @@
 ﻿using Prism.AppModel;
 using Prism.Navigation;
 using System.ComponentModel;
-using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.Essentials;
 
