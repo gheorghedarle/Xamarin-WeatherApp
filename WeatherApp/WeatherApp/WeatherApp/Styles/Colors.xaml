@@ -4,7 +4,7 @@
              x:Class="WeatherApp.Styles.Colors">
     <Color x:Key="PrimaryColor">#003366</Color>
     <Color x:Key="PrimaryDarkColor">#001F3D</Color>
-    <Color x:Key="AccentColor">#FFCC00</Color>
+    <Color x:Key="AccentColor">#FFBB00</Color>
 
     <Color x:Key="FailColor">#D04C41</Color>
     <Color x:Key="SuccessColor">#00AF49</Color>
@@ -23,9 +23,9 @@
     <Color x:Key="DarkPrimaryTextColor">#F5F5F5</Color>
     <Color x:Key="DarkSecondaryTextColor">#BDBDBD</Color>
 
-    <Color x:Key="DarkPageBackgroundColor">#000F1F</Color>
-    <Color x:Key="DarkCardBackgroundColor">#001A33</Color>
-    <Color x:Key="DarkCardUnselectedBackgroundColor">#001429</Color>
+    <Color x:Key="DarkPageBackgroundColor">#001F3D</Color>
+    <Color x:Key="DarkCardBackgroundColor">#002952</Color>
+    <Color x:Key="DarkCardUnselectedBackgroundColor">#001A33</Color>
     
     <Color x:Key="DarkTransparentBackgroundColor">#99003366</Color>
 </ResourceDictionary>

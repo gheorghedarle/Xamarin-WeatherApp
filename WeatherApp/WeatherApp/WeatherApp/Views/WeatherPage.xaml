@@ -177,14 +177,13 @@
                                 ItemsSource="{Binding CurrentWeather.hourlyWeatherForecast}"
                                 HeightRequest="90">
                                 <CollectionView.ItemsLayout>
-                                    <LinearItemsLayout Orientation="Horizontal" ItemSpacing="6" SnapPointsType="Mandatory" SnapPointsAlignment="Start"/>
+                                    <LinearItemsLayout Orientation="Horizontal" ItemSpacing="4" SnapPointsType="Mandatory" SnapPointsAlignment="Start"/>
                                 </CollectionView.ItemsLayout>
                                 <CollectionView.ItemTemplate>
                                     <DataTemplate>
                                         <StackLayout
                                             Margin="0"
-                                            Spacing="0"
-                                            Padding="0, 0, 0, 4">
+                                            Padding="2">
                                             <VisualStateManager.VisualStateGroups>
                                                 <VisualStateGroup Name="CommonStates">
                                                     <VisualState Name="Selected">
@@ -195,7 +194,7 @@
                                                 </VisualStateGroup>
                                             </VisualStateManager.VisualStateGroups>
                                             <Frame
-                                                Padding="16, 8, 16, 8"
+                                                Padding="10, 8, 10, 8"
                                                 CornerRadius="24">
                                                 <VisualStateManager.VisualStateGroups>
                                                     <VisualStateGroup>
