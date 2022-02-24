@@ -81,7 +81,7 @@ namespace WeatherApp.Services.Weather
         private ObservableCollection<WeatherDetailsModel> CreateDailyWeatherForecast(JToken daily)
         {
             var dailyForecast = new ObservableCollection<WeatherDetailsModel>();
-            for (var i = 1; i < 7; i++)
+            for (var i = 1; i <= 7; i++)
             {
                 dailyForecast.Add(new WeatherDetailsModel()
                 {
