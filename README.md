@@ -40,3 +40,6 @@ For **local.settings.json** go to **Properties** and select **Embedded resource*
 
 ## Resources
 Illustrations are from [Freepik](https://www.freepik.com/)
+
+## Other versions
+[React-WeatherApp](https://github.com/gheorghedarle/React-WeatherApp) - developed in **React**
